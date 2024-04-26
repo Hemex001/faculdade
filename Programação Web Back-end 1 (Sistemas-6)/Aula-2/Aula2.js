@@ -1,3 +1,7 @@
+/*
+https://github.com/igornfaustino/aula-backend-2024
+*/
+
 // Uma função que não tem nome, é uma função que usamos em apenas um lugar
 const soma = function (a, b) {
     return a + b

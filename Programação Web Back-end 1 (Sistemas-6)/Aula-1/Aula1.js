@@ -1,3 +1,7 @@
+/*
+https://github.com/igornfaustino/aula-backend-2024
+*/
+
 //executar no terminal: node teste.js
 console.log("Hello World");
 console.log("Hello World", 123, "Teste");
