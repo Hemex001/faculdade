@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1"
+  },
+  "name": "tde-05",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "calculadora.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
