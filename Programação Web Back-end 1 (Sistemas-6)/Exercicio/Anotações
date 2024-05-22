@@ -1,0 +1,37 @@
+// Iniciar projeto: npm init (cria o package.json)
+// Instalar pacotes: npm i colors
+// sempre adicionar a pasta node_modules ao .gitignore
+// npm i = vai instalar do zero todos os pacotes que estao inclusos no projeto
+// node index.js = executa o arquivo js desejado no console
+
+// videoaula 4-a
+// modulo servidor = express
+// npm i express >> instala o express no projeto
+// criamos o arquivo server.js, nele vamos importar o express e configurar nosso servidor
+// no server.js, criamos um get padrão "/" para que ele possa receber gets normalmente
+// no package.json, adicionamos um script:     "start": "node index.js", - dessa forma, podemos executar o projeto com "npm start" ao inves de executar arquivo por arquivo
+// instalamos o pacote nodemon. Ele é responsavel por sempre manter atualizado o projeto, ele vai restartar o servidor toda vez que tiver alguma modificação
+// npm i --save-dev nodemon -> para instalar o nodemon
+// adicionamos no package.json o script:     "dev": "nodemon index.js", - para que ele seja executado sempre que tiver alguma att
+// usando ele: npm run dev
+// resumo: toda vez que atualizarmos algum arquivo, o nodemon vai matar o servidor e startar ele novamente para que o projeto esteja atualizado
+
+
+// videoaula 4-b
+// definimos um array para retornar no get
+// criamos os metodos post, put, delete no server.js
+// tambem adicionamos server.use(express.json()); para dizer ao server que vamos passar e obter informacoes em json
+
+
+// viddeoaula 5-a
+// criamos um products.js para passar as funcoes de post, put, delete, para ele
+// criamos os Routers dentro do products.js e exportamos
+// importamos os routers para dentro do server.js
+// criamos um sistema de auth ~withAuth~ como uma função
+
+
+// videoaula 5-b
+
+
+
+

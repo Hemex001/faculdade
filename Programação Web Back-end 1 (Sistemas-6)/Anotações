@@ -1,0 +1,45 @@
+/*
+express, prisma, bcrypt
+servidor, banco de dados, criptografar senha
+
+
+
+
+// npm run start
+// npm start
+// https://www.npmjs.com/
+// npm i colors
+// npm i (puxa todos os pacotes inclusos no package.json)
+// npm i -D nodemon (instala o nodemon: ele vai rodar o arquivo no console sempre que for salvo)
+// npm run dev (habilita o nodemon)
+// npm uninstall nodemon (desinstala o nodemon)
+
+// inicia
+npm init -y
+
+https://www.npmjs.com/
+npm i -D nodemon
+
+
+npm run dev
+// Aula 08/05
+npm install prisma --save-dev
+npx prisma init --datasource-provider sqlite
+npx prisma migrate dev --name "create movies table"
+npm install prisma --save-dev 
+npx prisma studio  // Abre a interface do banco de dados no navegador
+
+// pacote servidor: express -> https://www.npmjs.com/package/express
+
+npx prisma migrate dev --name "add user table" 
+
+// Aula 8
+bcrypt -> faz hash (criptografa) senhas - https://www.npmjs.com/package/bcrypt
+npm i bcrypt
+
+
+jwt.io - tokens, assinatura eletronica
+jsonwebtoken
+npm i jsonwebtoken
+
+
