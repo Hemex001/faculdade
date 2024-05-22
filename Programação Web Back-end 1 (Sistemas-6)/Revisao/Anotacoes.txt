@@ -1,0 +1,23 @@
+// inicializando o projeto
+npm init -y
+npm i express
+npm i --save-dev nodemon
+
+package.json
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+-> npm run dev
+
+// instalando os pacotes mais usados
+npm i bcrypt // encprit passwords
+npm i prisma // banco de dados
+npm i jsonwebtoken // hash de login
+
+npx prisma init --datasource-provider sqlite // inicia o prisma 
+
+npx prisma format = formata o script sql (schema.prisma) de forma correta
+npx prisma migrate dev --name "init db" // gera as migrations
+
+
+biblioteca para validação de dados: ZOD
+npm i zod
