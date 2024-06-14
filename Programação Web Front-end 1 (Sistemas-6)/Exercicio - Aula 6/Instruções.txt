@@ -1,0 +1,8 @@
+Criar 3 páginas:
+- /profile -> Informações sobre voces (simulando um usuário logado). 
+    Adicionar um botão para voltar para /
+
+- /list -> listar informações sobre vocês (hobbies, comidas favoridas, jogo favorito, etc)
+    Adicionar um botão para voltar para /
+
+- / -> colocar 2 botões: um que vai para /profile, um que vai para /list

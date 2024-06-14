@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       Int       @id @default(autoincrement())
+  name     String
+  email    String    @unique
+  password String
+  Product  Product[]
+}
+
+model Product {
+  id     Int    @id @default(autoincrement())
+  name   String
+  price  Float
+  userId Int
+  User   User   @relation(fields: [userId], references: [id])
+}
+
+// npx prisma format = formata o script sql de forma correta
