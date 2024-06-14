@@ -1,23 +1,29 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import "./App.css";
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import List from "./pages/List";
+import { ChakraProvider } from "@chakra-ui/react";
+/*
 import SimulateApi from "./components/SimulateApi";
 import ToDoList from "./pages/ToDoList";
-/*
-
-
 import UseEffect from "./pages/UseEffect";
 */
 
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <SimulateApi/>,
+    path: '/',
+    element: <Home />
   },
   {
-    path: "/todolist",
-    element: <ToDoList/>,
+    path: '/profile',
+    element: <Profile />
   },
+  {
+    path: '/list',
+    element: <List />
+  }
 ]);
 
 function App() {
@@ -31,9 +37,9 @@ function App() {
         </div>
 */
 
-
-        <RouterProvider router={router} />
-
+        <ChakraProvider>
+          <RouterProvider router={router} />
+        </ChakraProvider>
 
     );
 }
