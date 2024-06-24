@@ -1,10 +1,11 @@
 import { useCallback, useEffect, useState } from "react";
 import axios from 'axios';
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Box, Button, useDisclosure } from "@chakra-ui/react";
 
 const List = () => {
     const [pokemons, setPokemons] = useState([]);
-
-    const getPokemons = useCallback(async() => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
+    const getPokemons = useCallback(async () => {
         try {
             const response = await axios.get('https://pokeapi.co/api/v2/pokemon');
             setPokemons(response.data.results);
@@ -13,11 +14,11 @@ const List = () => {
             console.log(error)
         }
 
-    },[]);
+    }, []);
 
     useEffect(() => {
         getPokemons();
-    },[]);
+    }, []);
 
     if (!pokemons.length) {
         return <div>Carregando...</div>;
@@ -26,8 +27,41 @@ const List = () => {
     return (
         <div>
             {pokemons.map((pokemon, index) => {
-                return <div key={index}>{pokemon.name}</div>;
+                return (
+                    <Box key={index} marginBottom={4} bgColor="pink.50">
+                        {pokemon.name}
+                    </Box>
+                );
             })}
+
+
+            <>
+                <Button colorScheme='red' onClick={onOpen}>
+                    Open Dialog
+                </Button>
+                <AlertDialog isOpen={isOpen} onClose={onClose}>
+                    <AlertDialogOverlay>
+                        <AlertDialogContent>
+                            <AlertDialogHeader fontSize='lg' fontWeight='bold'>
+                                Titulo da Dialog
+                            </AlertDialogHeader>
+                            <AlertDialogBody>
+                                Descrição da Dialog
+                            </AlertDialogBody>
+                            <AlertDialogFooter>
+                                <Button onClick={onClose}>
+                                    Cancel
+                                </Button>
+                                <Button colorScheme='red' onClick={onClose} ml={3}>
+                                    Confirm
+                                </Button>
+                            </AlertDialogFooter>
+                        </AlertDialogContent>
+                    </AlertDialogOverlay>
+                </AlertDialog>
+            </>
+
+
         </div>
     );
 };

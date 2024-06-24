@@ -1,0 +1,41 @@
+.digimon-list-container {
+    text-align: center;
+  }
+  
+  .digimon-list-container h2 {
+    color: #333;
+  }
+  
+  .digimon-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .digimon-card {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 200px;
+  }
+  
+  .digimon-card img {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .digimon-card p {
+    margin: 5px 0;
+  }
+  
+  .digimon-card a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .digimon-card a:hover {
+    text-decoration: underline;
+  }
+  

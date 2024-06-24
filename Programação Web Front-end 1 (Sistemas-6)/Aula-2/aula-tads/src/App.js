@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import List from "./pages/List";
 import { ChakraProvider } from "@chakra-ui/react";
+import SearchPokemon from "./pages/SearchPokemon";
+import CreatePostLibForm from "./pages/CreatePostLibForm";
 /*
 import SimulateApi from "./components/SimulateApi";
 import ToDoList from "./pages/ToDoList";
@@ -21,8 +23,16 @@ const router = createBrowserRouter([
     element: <Profile />
   },
   {
+    path: '/postLibForm',
+    element: <CreatePostLibForm />
+  },
+  {
     path: '/list',
     element: <List />
+  },
+  {
+    path: '/search',
+    element: <SearchPokemon />
   }
 ]);
 
