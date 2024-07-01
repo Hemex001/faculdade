@@ -1,0 +1,27 @@
+*************** Aula 1 - 11/03/2024)
+- O nome do arquivo deve ser o mesmo nome da classe principal
+@@ Convenções de código
+- Case sensitive
+- Classes x variáveis / metodos
+	- Classe sempre começa em maiusculo e variável sempre minusculo
+	- sem caracteres especiais (exceto o underscore)
+	- não começar com um numero
+
+
+*************** Aula 2 - 12/03/2024)
+String;
+Classes Wrapper;
+vetores;
+matrizes;
+Objetos;*
+
+
+*************** Aula 3 - 13/03/2024)
+FIFO = Filas
+O que a classe precisa ter?
+- propriedade
+- construtor
+- comportamento
+
+
+

@@ -1,0 +1,17 @@
+{
+    "name": "hemex/aula-6",
+    "description": "Projeto da aula 6",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Hemex\\Aula6\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Hemerson Lacovic"
+        }
+    ],
+    "require": {}
+}

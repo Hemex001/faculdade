@@ -1,0 +1,157 @@
+use hemersonlacovic;
+
+/***********************************************************************/
+/* 1 1,0pts) A empresa X querendo motivar seus vendedores resolveu bonifalos conforme sua performance de vendas no mes.
+ * Sabendo disso o gerente desenvolveu a seguinte regra:
+ * - Se o total das vendas no mês for entre 1000 e 2000 tera um bonus de 10% sobre o valor total das vendas 
+ * - Se o total das vendas no mês for entre 2001 e 5000 tera um bonus de 15% sobre o valor total das vendas
+ * - Se o total das vendas no mês for entre 5001 e 10000 tera um bonus de 20% sobre o valor total das vendas
+ * - Se o total das vendas no mês for superior a 10001 tera um bonus de 30% sobre o valor total das vendas 
+ * - Se o total das vendas no mês for inferior a 1000 não tera nenhum bonus ! 
+ * 
+ * Sabendo dessas informações criar uma procedure que receba e grave os valores acima na tabela COMISSAO_VENDAS */
+
+delimiter $$
+create or replace procedure bonus_venda(in faixa_inicio decimal(11,2),in faixa_fim decimal(11,2),in percentual decimal(11,2))
+begin
+	
+	insert into comissao_vendas (vl_faixa_inicio, vl_faixa_fim, vl_percentual) 
+	values (faixa_inicio, faixa_fim, percentual);
+
+end $$
+delimiter ;
+
+
+call bonus_venda(0,999,0);
+call bonus_venda(1000,2000,0.1);
+call bonus_venda(2001,5000,0.15);
+call bonus_venda(5001,10000,0.2);
+call bonus_venda(10001,99999,0.3);
+
+select * from COMISSAO_VENDAS;
+
+
+
+
+
+/*
+ * 2.1) 2,5pts) function total_vendas_mes_vendedor, a mesma sera ultilizada na function bonificação para simplificar codigo;
+ * - Que receba o codigo do vendedor, mes e ano como parametro;
+ * - Retorne o valor total das vendas do vendedor no mês;
+/*2.1) ******************************************************************************/
+
+delimiter $$
+create or replace function total_vendas_mes_vendedor(codVendedor int, mes int, ano int)
+returns decimal(11,2)
+begin
+	declare vl_ajustado decimal(11,2);
+
+	select sum(p.VALOR * p.QUANTIDADE) into vl_ajustado
+		from produto p
+		inner join itens_venda iv on iv.codproduto = p.CODIGO 
+		inner join vendas v on v.codvenda = iv.codvenda 
+		inner join vendedores vd on vd.codvendedor = v.codvendedor 
+	where
+		vd.codvendedor = codVendedor and 
+		month(v.datavenda) = mes and
+		year(v.datavenda) = ano
+	group by vd.codvendedor;
+
+
+	return vl_ajustado;
+end $$
+delimiter ;
+
+
+select total_vendas_mes_vendedor(4, 02, 2023);
+
+/*
+ * 2.2) 2,5pts) function bonificacao: 
+ * - Que receba o codigo do vendedor, mes e ano como parametro;
+ * - Retorne o valor do seu bonus, caso o mesmo tenha 
+*/
+ /*2.2) ******************************************************************************/
+
+delimiter $$
+create or replace function bonificacao(codVendedor int, mes int, ano int)
+returns decimal(11,2)
+begin
+	declare vl_ajustado decimal(11,2);
+
+		select (total_vendas_mes_vendedor(codVendedor, mes, ano) * cvp.VL_PERCENTUAL) into vl_ajustado
+			from vendedores v2 	
+			left join vendas v on v.codvendedor = v2.codvendedor 
+			inner join itens_venda iv on v.codvenda = iv.codvenda
+			inner join produto p on	iv.codproduto = p.CODIGO
+			inner join COMISSAO_VENDAS cvp on
+			cvp.VL_FAIXA_INICIO <= total_vendas_mes_vendedor(v.codvendedor ,month(v.datavenda),year(v.datavenda))
+			and cvp.VL_FAIXA_FIM >= total_vendas_mes_vendedor(v.codvendedor ,month(v.datavenda),year(v.datavenda))
+		where
+			v.codvendedor = codVendedor and 
+			month(v.datavenda) = mes and
+			year(v.datavenda) = ano
+		group by v.codvendedor;
+
+	return vl_ajustado;
+end $$
+delimiter ;
+
+
+select total_vendas_mes_vendedor(1, 02, 2023);
+
+select bonificacao(1, 02, 2023);
+
+
+
+
+
+/*3) 1,0pts) Criar uma View que mostre o codigo do vendedor, seu nome, e seu bonus (chamar a function)
+ * Esta view será somente do bonus do periodo 01/2023 
+ * CREATE OR REPLACE VIEW NOME AS 
+ * 
+ * RESULTADO
+ * 1	JOAO	1287.00
+ * 2	MARIA	160.00
+ * 3	JOSE
+ * 4	ANA	367.20
+ * 5	Johnny	3298.50 
+ * 
+ * OBS: DEVE SER CADASTRADO UM VENDEDOR COM CODIGO 5;
+ * */
+
+create or replace view bonificacao_vendedores as
+	select
+		vd.codvendedor, 
+		vd.nome, 
+		bonificacao(vd.codvendedor, 01, 2023)
+	from vendedores vd;
+
+
+select * from bonificacao_vendedores;
+
+
+/*4) 1,0pts) Escreva com suas palavras o que é e para que serve cada item a seguir:
+ * - procedure 
+ * - function
+ *  */
+
+/*
+ * 
+Procedure: São "procedimentos", ou seja, permite fazer alterações no banco (update, insert, delete, etc). Não tem retorno de dados
+ *
+Function: Funções tem retorno de dados, servem para retornar resultados de algo que se queira do banco, fazer calculos, etc.
+ *
+ */
+
+
+/*5) 1,0pts) Corrija a sintaxe:
+ * - Retornar todas as vendas, com todos os produtos que a quantidade esteja entre 2 e 25; 
+ * As colunas do select não podem ser alteradas, somente o corpo da sintaxe (do from pra frente)
+ * O numero de linhas CORRETO é 76 LINHAS*/
+
+select v.codvenda,p.DESCRICAO,p.QUANTIDADE,p.VALOR ,c.DESCRICAO  
+	from vendas v 
+	inner join itens_venda iv on iv.codvenda = v.codvenda  
+	inner join produto p on p.CODIGO = iv.codproduto 
+	inner join classificacao c on c.CODIGO  = p.CODIGO_CLASSIFICACAO 
+where p.QUANTIDADE between 2 and 25;

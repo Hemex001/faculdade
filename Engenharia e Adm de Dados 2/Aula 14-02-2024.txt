@@ -1,0 +1,90 @@
+/*
+ * Aula 14/02/2024
+ */
+
+SELECT *
+FROM produto p
+join classificacao c on p.CODIGO_CLASSIFICACAO = c.CODIGO
+ 
+ 
+ SELECT
+ c.nome as 'cliente',
+ ci.descricao as 'cidade',
+ p.CODIGO as 'cod.prod',
+ p.DESCRICAO as 'desc.prod',
+ p.QUANTIDADE as 'qt.prod',
+ P.VALOR AS 'vl.prod',
+ cla.DESCRICAO as 'desc.classificao',
+ vd.nome as 'vendedor',
+ p.QUANTIDADE * p.VALOR as 'TOTAL'
+FROM vendas v
+ JOIN cliente c on v.codcliente = c.codcliente
+ JOIN cidades ci on ci.codcidade = c.codcidade
+ JOIN itens_venda iv on iv.codvenda = v.codvenda
+ JOIN produto p on iv.codproduto = p.CODIGO
+ join classificacao cla on cla.CODIGO = p.CODIGO_CLASSIFICACAO
+ join vendedores vd on vd.codvendedor = v.codvendedor
+ 
+ select * from vendas
+
+ select * from itens_venda
+ 
+ select * from vendedores
+ 
+ select * from produto
+         
+ /*
+ 1) Quantidade de produtos vendidos ?
+ */
+ select SUM(p.quantidade) from itens_venda iv 
+ inner join produto p on p.CODIGO = iv.codproduto 
+ 
+ 
+ /*
+ 2) Quantidade de vendas por vendedor ?
+ */
+ select ven.nome, count(v.codvenda) as quantidadeVendas from vendedores ven
+ left join vendas v on v.codvendedor = ven.codvendedor 
+ group by ven.codvendedor 
+ order by quantidadeVendas desc
+ 
+ 
+ /*
+ 3) Melhor vendedor nos 3 primeiros meses do ano ? 
+ */
+ select ven.nome, count(v.codvenda) as quantidadeVendas from vendedores ven
+ left join vendas v on v.codvendedor = ven.codvendedor 
+ 	where v.datavenda >= '2023-01-01' and v.datavenda <= '2023-03-31'
+ group by ven.codvendedor 
+ having count(v.codvenda) = (select count(v.codvenda) as quantidadeVendas from vendedores ven
+ 							 left join vendas v on v.codvendedor = ven.codvendedor 
+ 							 	where v.datavenda >= '2023-01-01' and v.datavenda <= '2023-03-31'
+ 							 group by ven.codvendedor 
+ 							 order by 1 desc limit 1)
+
+
+ 
+ /*
+ 4) A melhor venda ( valor mais alto) ?
+ */
+ select *, p.QUANTIDADE * p.VALOR as valorTotalVenda from itens_venda iv 
+ inner join produto p on p.CODIGO = iv.codproduto 
+ group by iv.codvenda
+ order by valorTotalVenda desc
+ limit 1
+
+
+ /*
+ 5) Qual é o valor da Média de vendas por mês ? 
+ */
+ 
+ 
+ 
+ 
+
+ 
+
+ 
+ 
+ 
+ 

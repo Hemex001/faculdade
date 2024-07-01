@@ -1,0 +1,20 @@
+.list-page {
+    font-family: Arial, sans-serif;
+  }
+  
+  .list-page h2 {
+    color: #333;
+    text-align: center;
+  }
+  
+  .list-page ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .container-recipes {
+    margin: 0 auto;
+    width: 80%;
+
+  }

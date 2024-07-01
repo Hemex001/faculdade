@@ -1,0 +1,9 @@
+**** Quais beneficios a herança pode proporcionar na construção de codigos mais eficientes?
+- É o relacionamento hierárquico entre classes, em que uma classe chamada de subclasse (classe filha) é uma extensão, um subtipo, de outra classe chamada de superclasse (classe pai).
+- https://prnt.sc/GHAEEreKdHZY
+
+
+*** Se a herança é o relacionamento hierárquico entre classes, o polimorfismo permite que os métodos da subclasse (classe filha) sobreponham os métodos da classe pai, desde que tenham a mesma assinatura.
+- https://prnt.sc/IcCZgy_OfNCA
+
+
