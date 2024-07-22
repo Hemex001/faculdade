@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html -->
+<html data-wf-page="6132866aeb2b4f3c8cb0e55c" data-wf-site="61328588219ec1cbc8a4eaec" class="w-mod-js wf-opensans-n3-active wf-opensans-i3-active wf-opensans-n4-active wf-opensans-i4-active wf-opensans-n6-active wf-opensans-i6-active wf-opensans-n7-active wf-opensans-i7-active wf-opensans-n8-active wf-opensans-i8-active wf-montserrat-n1-active wf-montserrat-i1-active wf-montserrat-n2-active wf-montserrat-i2-active wf-montserrat-n3-active wf-montserrat-i3-active wf-montserrat-n4-active wf-montserrat-i4-active wf-montserrat-n5-active wf-montserrat-i5-active wf-montserrat-n6-active wf-montserrat-i6-active wf-montserrat-n7-active wf-montserrat-i7-active wf-montserrat-n8-active wf-montserrat-i8-active wf-montserrat-n9-active wf-montserrat-i9-active wf-active w-mod-ix"><div id="in-page-channel-node-id" data-channel-name="in_page_channel_Aq2sVW"></div><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style>
+  
+  <title>Módulo 3 - Cultura organizacional e individualidade</title>
+  <meta content="modulo_1" property="og:title">
+  <meta content="modulo_1" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="./normalize.css" rel="stylesheet" type="text/css">
+  <link href="./webflow.css" rel="stylesheet" type="text/css">
+  <link href="./final-fundacao-bradesco-pg.webflow.css" rel="stylesheet" type="text/css">
+  <script src="./webfont.js.download" type="text/javascript"></script>
+  <link rel="stylesheet" href="./css" media="all"><script type="text/javascript">WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });</script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
+  
+	<link rel="icon" type="image/png" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/images/favicon.png">
+  
+  <script src="./jquery.min(1).js.download"></script>
+  <script src="./adapt_scorm.js.download"></script>
+  <script type="text/javascript">
+    function strReplace(haystack = '', needle, replacement) {
+      var temp = haystack.split(needle);
+      return temp.join(replacement);
+    }
+    $(document).ready(function () {
+      const f = 'grayscale(0%) brightness(100%) contrast(100%)'
+      $('body').children().css('filter', f)
+      const filters = $('a.toogle-switch').data('filter', f)
+      filters.off().on('click', (e) => {
+        const t = $(e.currentTarget)
+        const ball = t.find('.toogle-switch-before')
+        const back = t.find('.toogle-switch-checked')
+        let filter
+
+        if(Math.round(ball.position().left) === 4) {
+          gsap.to(ball[0], {left: 24, duration: 0.2})
+          gsap.to(back[0], {backgroundColor: 'rgb(48,48,48)', duration: 0.2})          
+
+          if(t.data('id') === 'moon') {
+            filter = t.data('filter').replace(/grayscale\(\d+\%\)/, 'grayscale(100%)')            
+            
+          } else if (t.data('id') === 'sun') {
+            filter = t.data('filter').replace(/brightness\(\d+\%\)/, 'brightness(120%)').replace(/contrast\(\d+\%\)/, 'contrast(110%)')
+          }
+          
+        } else {
+          gsap.to(ball[0], {left: 4, duration: 0.2})
+          gsap.to(back[0], {backgroundColor: '#898989', duration: 0.2})
+
+          if(t.data('id') === 'moon') {
+            filter = t.data('filter').replace(/grayscale\(\d+\%\)/, 'grayscale(0%)')            
+            
+          } else if (t.data('id') === 'sun') {
+            filter = t.data('filter').replace(/brightness\(\d+\%\)/, 'brightness(100%)').replace(/contrast\(\d+\%\)/, 'contrast(100%)')
+          }
+        }
+
+        filters.data('filter', filter)
+        gsap.to($('body').children(), {filter, duration: 0.2})
+
+      })
+
+      $('body').removeAttr('style')
+
+      const menubt = $('.dropdown-trigger').data('open', false)
+      const menu = $('.nav-menu')
+
+      menubt.off().on('click', () => {
+        if(!menubt.data('open')) {
+          menubt.data('open', true)
+          gsap.fromTo(menu, {display: 'block'}, {autoAlpha: 1, duration: 0.3})
+
+          $(window).off('pointerdown').on('pointerdown', (e) => {            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const bounds = menu[0].getBoundingClientRect();
+
+            if (
+              mouseX < bounds.x ||
+              mouseY < bounds.y ||
+              mouseX > bounds.x + bounds.width ||
+              mouseY > bounds.y + bounds.height
+            ) {
+              menuClose()
+            }
+          })
+        }
+      })
+
+      function menuClose(){
+        $(window).off('pointerdown')        
+        gsap.to(menu, {autoAlpha: 0, duration: 0.3, onComplete: () => {
+          menu.css('display', 'none')
+          menubt.data('open', false)
+        }})
+      }
+
+
+      var div = '#content-3',
+        contador = 0,
+        obj_tratados = [
+          div + " *"
+        ],
+
+        reset_fonte = [],
+        reset_linha = [];
+      setDefaultZoom(obj_tratados, reset_fonte, reset_linha, contador);
+      $('#a_mais,#a_menos,#a_reset').on('click', function () {
+        var id = $(this).attr('id');
+        var min = 6;
+        var max = 150;
+        for (var i in obj_tratados) {
+          var tratados = $(obj_tratados[i]);
+          var tamanho_fonte = strReplace(tratados.css('fontSize'), 'px', '');
+          var tamanho_entrelinha = strReplace(tratados.css('lineHeight'), 'px', '');
+          switch (id) {
+            case 'a_mais':
+              if (tamanho_fonte <= max) {
+                tamanho_fonte++;
+                // tamanho entrelinha aumento
+                tamanho_entrelinha = (tamanho_fonte * 1.8);
+                tamanho_entrelinha++;
+                contador++;
+              }
+              break;
+            case 'a_menos':
+              if (tamanho_fonte >= min) {
+                tamanho_fonte--;
+                // tamanho entrelinha redução;
+                var val = tamanho_entrelinha - (tamanho_entrelinha * 3 / 100);
+                // tamanho_entrelinha = arredondarValor(val);
+                tamanho_entrelinha = (tamanho_fonte * 1.8);
+                tamanho_entrelinha--;
+                contador++;
+              }
+              break;
+            case 'a_reset':
+            default:
+              // resetar 
+              tamanho_fonte = reset_fonte[i];
+              tamanho_entrelinha = reset_linha[i];
+              break;
+          }
+          tratados.css({ 'fontSize': tamanho_fonte + 'px', 'lineHeight': tamanho_entrelinha + 'px' });
+        }
+        //cancel a click event
+        return false;
+      });
+      function setDefaultZoom(obj_tratados, reset_fonte, reset_linha, contador) {
+        for (var i in obj_tratados) {
+          var tratados = $(obj_tratados[i]);
+          if (contador == 0) {
+            reset_fonte[i] = strReplace(tratados.css('fontSize'), 'px', '');
+            reset_linha[i] = strReplace(tratados.css('lineHeight'), 'px', '');
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .ocutar {
+      display: none;
+    }
+
+  </style>
+
+  <script>
+    $(() => {
+      // const abertura = $('.link-nav .text-nav').parent()
+      // abertura.off().on('click', () => {
+      //   scorm.gotoModule(0)
+      // })
+
+      const nav = $('.link-nav .percentual-avanco')
+
+      const check = nav.find('.div-block-153')
+      check.remove()
+
+      nav.children().removeClass('ocultar-1')
+      nav.children().removeClass('ocultar-2')
+
+      nav.find('.barra-progresso').addClass('barra-zerada')
+      nav.find('.percent').removeClass('concluido').text('0%')
+
+      const current = 3
+
+      scorm.current = current
+
+      if(scorm.data.mod[current].full) {
+        scorm.setLoc(current, 0)
+      }
+
+      // if(scorm.data.curr !== current) {
+      //   if(scorm.data.mod[current].pct > 0) {
+      //     if(window.top.confirm('Você quer continuar de onde parou?')){
+      //       scorm.gotoModule(scorm.data.curr)
+      //     } else {
+      //       scorm.setLoc(0, 0)
+      //       scorm.current = current
+      //     }
+      //   }
+      //   else {
+      //     scorm.setLoc(0, 0)
+      //     scorm.current = current
+      //   }        
+      // }
+      // else {
+      //   scorm.current = current
+      // }
+
+      nav.parent().each((index, item) => {
+        const it = $(item)
+        it.data('id', index + 1)
+        const module = scorm.data.mod[index + 1]
+        if (module.full) {
+          it.find('.barra1').addClass('ocutar')
+          it.find('.barra-progresso').addClass('ocutar')
+          it.find('.percent').before(check.clone(true)).addClass('concluido').text('Concluído')
+        } else {
+          if (module.pct > 0) {
+            const bp = it.find('.barra-progresso').removeClass('barra-zerada').css('width', `${module.pct}px`)
+            it.find('.percent').text(`${module.pct}%`)
+          }
+        }
+      })
+      // .off().on('click', gotoModule)
+
+      // $('#avancar-button').off().on('click', () => {
+      //   scorm.gotoModule(1)
+      // })
+
+      /*$('#concluir-button-end-modulo').off().on('click', () => {
+        $(window.top).off()
+        window.top.removeEventListener('beforeunload', window.top.endListener);
+        scorm.send()
+        let new_window = window.top.open(window.top.location, '_self')
+        new_window.removeEventListener('beforeunload', new_window.endListener)
+        new_window.close()
+      })*/
+
+      $('#concluir-button-end-modulo').off().on('click', () => { 
+          $(window.top).off() 
+          window.top.removeEventListener('beforeunload', window.top.endListener); 
+          scorm.send() 
+          let new_window = window.top.open(window.top.location, '_self') 
+          new_window.removeEventListener('beforeunload', new_window.endListener) 
+          new_window.close() 
+          }) 
+
+      scorm.onProgress = (pct) => {
+        const index = scorm.data.curr
+        const mod = scorm.data.mod[index]
+        const tg = $(nav[index - 1])
+
+        if (!mod.full) {
+          tg.find('.barra-progresso').removeClass('barra-zerada').css('width', `${pct}px`)
+          tg.find('.percent').text(`${pct}%`)
+        } else {
+          if (tg.find('.percent').text() !== 'Concluído') {
+            tg.find('.barra1').addClass('ocutar')
+            tg.find('.barra-progresso').addClass('ocutar')
+            tg.find('.percent').before(check.clone(true)).addClass('concluido').text('Concluído')
+          }
+        }
+      }
+
+      function gotoModule(e) {
+        const target = $(e.currentTarget)
+        const id = target.data('id')
+
+        if ((scorm.data.mod[id].full || scorm.data.mod[id - 1].pct === 100) && id !== scorm.current) {
+          scorm.gotoModule(id)
+        }
+      }
+    })
+  </script>
+	
+	<style>
+	
+	/* IMAGEM DESTAQUE E TEXTO */
+	.imagem1 {	
+		background-image: url("images/img-mod1/cod04.png");
+	}	  
+	 
+	/* IMAGENS SLIDES */
+	  
+	.img1c {
+		background-image: url("images/img-mod2/slid1.jpg");
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}  
+	  
+	.img2d {
+		background-image: url("images/img-mod2/slid2.jpg");
+		background-position: 50% 50%;
+		background-size: cover;
+		background-repeat: no-repeat;
+	}  
+  #concluir-button-end-modulo { display: none; }
+  #fim-de-curso { text-align: left; width: 60%; margin-left: auto; margin-right: auto; }
+  #fim-de-curso > .container { padding: 30px 20px; }
+  #fim-de-curso > .container.superior { padding-bottom: 0; text-align: center; }
+  #fim-de-curso > .container.superior .componente.imagem-ilustrativa.fixa { height: 250px; margin-bottom: 0; background: url("images/fim_de_curso.png") center bottom / contain no-repeat; }
+  #fim-de-curso > .container.inferior { background-color: rgba(255, 255, 255, 0.2); }
+  #fim-de-curso > .container.inferior .container-alinhamento { max-width: 400px; margin-left: auto; margin-right: auto; }
+  #fim-de-curso > .container.inferior .container-alinhamento .componente.imagem-estrutural { background-color: transparent; text-align: center; }
+  #fim-de-curso > .container.inferior .container-alinhamento .caixa-baixa { text-transform: lowercase; }
+  #fim-de-curso > .container.inferior .container-alinhamento .conteudo-desktop,
+  #fim-de-curso > .container.inferior .container-alinhamento .conteudo-mobile { display: none; }
+  body.desktop #fim-de-curso > .container.inferior .container-alinhamento .conteudo-desktop,
+  body.mobile #fim-de-curso > .container.inferior .container-alinhamento .conteudo-mobile { display: block; }
+
+  @media screen and (max-width: 767px) {
+      /*FIM DE CURSO*/
+      #fim-de-curso { width: 90%; }
+  }
+  @media screen and (max-width: 600px) {
+      /*FIM DE CURSO*/
+      #fim-de-curso > .container.inferior { padding-top: 20px; }
+  }
+  @media screen and (max-width: 400px) {
+      /*FIM DE CURSO*/
+      #fim-de-curso > .container.superior .componente.imagem-ilustrativa.fixa { height: 175px; }
+  }
+
+</style>	
+	
+	<script type="text/javascript">
+	
+	function abrirJanela(pagina, largura, altura) {
+	// Definindo centro da tela
+	var esquerda = (screen.width - largura)/2;
+	var topo = (screen.height - altura)/2;
+	// Abre a nova janela
+	minhaJanela = window.open(pagina,'','height=' + altura + ', width=' + largura + ', top=' + topo + ', left=' + esquerda);
+	}
+	</script>
+	
+	<script>
+    $(() => {
+      $("#animated-arrow").off().on('click', (e) => {
+        e.preventDefault()
+        gsap.to("html", {scrollTo: "#animated-arrow-target", duration: 1})
+      })
+    })
+  </script>
+	
+</head>
+
+<body class="body-home desktop" marginwidth="0" marginheight="0" __processed_2b5ed1ae-e63d-492f-938d-aca71a9fb9d7__="true">
+  <div class="capa-modulo wf-section" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    <div class="main-capa">
+      <div class="titulo">
+        <h4 class="modulo-titulo" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Módulo 3</h4>
+        <h1 class="heading"><strong class="bold-text-91" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Cultura organizacional e individualidade</strong></h1>
+        <div class="linha-branca"></div>
+        <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html" id="animated-arrow" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 0.3005; transform-style: preserve-3d; will-change: opacity;" class="setaa w-inline-block"><img src="./arrow-whitte.png" loading="lazy" data-w-id="19b31c16-65ed-b662-9fc2-141051a748aa" sizes="(max-width: 1279px) 40px, (max-width: 1439px) 3vw, 40px" srcset="images/arrow-whitte-p-500.png 500w, images/arrow-whitte.png 512w" alt=""></a>
+      </div>
+    </div>
+    <div class="img-capa bg-img-capa"><p id="elemento-acessibilidade">#PraCegoVer: na imagem, existem cinco funcionários de uma empresa sentados em uma mesa de escritório. Quatro estão conversando ao fundo, enquanto que uma funcionária está digitando no notebook que está na sua frente.</p></div>
+  </div>
+	<div id="content-3" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+	<div class="bg-apresentacao adequacao-app-ev-mobile">
+  <div class="content wf-section">
+    
+	  <div id="animated-arrow-target" class="box--fundo">
+		  
+		  <div style="height: 50px;"></div> 
+		  
+		  <p class="p-cont">Após estudar acerca da postura física e da postura enquanto atitudes não só no ambiente social, mas também no profissional, neste último módulo, você aprenderá o que é cultura organizacional e qual a importância de estar alinhado a ela. Confira!</p>
+		  
+		<!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">O que é cultura organizacional?</h1>
+        </div>
+		<!-- FIM H1 -->  
+		 <p class="p-cont">Toda empresa tem sua cultura organizacional mesmo que não divulgada ou mesmo não sabendo exatamente o que é isso, de forma inconsciente isso já foi predefinido no momento da montagem de plano de negócio dela para que “nascesse”. Ela é a identidade da empresa, assim como nossa imagem profissional, a cultura organizacional é a imagem da empresa para o mercado.</p>
+		 
+		  <!-- BOX ENTENDA O CONCEITO -->  		  
+        <div class="box-atencao" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <div data-w-id="76ec7998-2f35-1f17-a100-7092b97502f8" class="fundo-icon fundo-entendaconceito" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-1.99105deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./entenda-conceito-br_1entenda-conceito-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque titulo-entenda">Entenda o Conceito</h3>
+            <div class="cont-box-p p-cont"><p>A <strong>cultura organizacional</strong> é formada por um conjunto de regras, ideologias e valores predefinidos como diretrizes a serem seguidas. Nesse sentido, a empresa pode ser reconhecida por seus diferenciais e ideais, e pode manter seus colaboradores neste comum objetivo: “trabalhar para chegar em determinado patamar, de acordo com suas estratégias”.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX ENTENDA O CONCEITO -->
+		   <p class="p-cont">Temos como exemplo sobre a cultura em grupo, o que escreveu Schein (2009):</p>
+		  <!-- CITAÇÃO -->  
+        <p data-w-id="4874a766-01d2-44cf-7618-ad2e77b839be" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="p-citacao">Um padrão de pressupostos básicos compartilhados que o grupo aprendeu ao resolver seus problemas de adaptação externa e integração interna, que funcionou bem o bastante para ser considerado válido e, portanto, para ser ensinado aos novos membros como a maneira correta de perceber, pensar e sentir em relação àqueles problemas.</p>
+		<!-- FIM CITAÇÃO -->
+		 <p class="p-cont">Ou seja, entendemos que a cultura organizacional é uma prática que demonstrou excelência e que deve ser replicada a todos os envolvidos, para uma boa execução de suas atividades e exemplo de convivência. O que não quer dizer que seja imutável, pois, a mudança é inevitável. Conforme evoluímos, os lugares em que estamos inseridos também evoluem e necessitam de adequações, principalmente quanto a questões de tratamento pessoal e inovações tecnológicas.</p>
+		  <p class="p-cont">Essas mudanças são transformadoras, porém, podem ser dolorosas tanto para quem já está inserido em determinada cultura que será alterada, quanto para quem está entrando nesta cultura agora, pois, esse também traz práticas e costumes de outros lugares por onde passou e que podem ser bem diferentes do atual, por isso devemos ser continuamente adaptáveis e abertos a mudanças.
+</p>
+		  
+		  <!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="texto-destaque">
+          <p class="paragraph-179">É importante que, quando pensamos em trabalhar em algum lugar, seja ponto primordial o conhecimento mínimo dessa cultura, pois, o ambiente e suas práticas devem ser parecidos com o que acreditamos, senão com o tempo não estaremos mais felizes naquele ambiente, causando sofrimento e descontentamento para o ambiente de trabalho e para nós mesmos.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE --> 
+		 <p class="p-cont">Outro ponto é salientar a importância que uma cultura organizacional, bem estruturada, tem sobre seus colaboradores, pois, é por meio dela que podem ser analisadas certas posturas indevidas e vícios que carregamos conosco desde nossa casa, ambiente de estudos ou outras empresas por onde já tenhamos passado. Portanto, esteja sempre de acordo com essas políticas internas trazidas pela aplicação da cultura organizacional, estando atento sobre como estas políticas tem que ser minimamente razoáveis para o seu perfil como indivíduo, pois justamente no momento da contratação é que se pode melhor alinhar os objetivos da empresa com os nossos objetivos e valores pessoais. </p>
+		  <p class="p-cont">Uma forma de ilustrar isso, é tendo em mente a grande estrutura que permeia uma empresa, que são basicamente, os subgrupos apresentados abaixo:</p>
+		  
+		  <!-- IMAGEM --> 
+		<!-- ALTERAR ENDEREÇO DA IMAGEM, LEGENDA E FONTE (SE NECESSÁRIO ALTERAR WIDTH NA DIV)-->
+        <div class="box-img" style="width: 50%;">
+          <img src="./info-empresa.png" loading="lazy" style="opacity: 1;" data-w-id="4874a766-01d2-44cf-7618-ad2e77b83a0a" alt="" class="image-24">          
+			<p class="elemento-acessibilidade"></p>
+        </div>
+		<!--FIM BOX IMAGEM --> 
+		  
+		  
+		  <p class="p-cont">Sem esquecermos que cada um desses subgrupos tem seus próprios subgrupos, pois as práticas devem de alguma forma estarem próximas, senão o próprio indivíduo não consegue administrar tamanhas diferenças.</p>
+		  
+		  <p class="p-cont">Logo, fica claro a importância da identificação de cada pessoa, com a cultura da empresa em que pretende trabalhar, uma vez que o futuro colaborador deve estar em função dela, a fim de garantir uma convivência equilibrada e um ambiente de trabalho produtivo.</p>
+		  <p class="p-cont">E, para que isso ocorra, é preciso que você entenda os conceitos de missão, visão, valores e estratégia, os quais serão vistos no próximo tópico.</p>
+		  
+		  <!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Missão, visão, valores e estratégia</h1>
+        </div>
+		<!-- FIM H1 -->
+		  
+		  
+		  <p class="p-cont">A cultura organizacional é relevante para dar coesão à instituição, gerar uma identidade própria e para garantir que ela seja produtiva e, assim, que se destaque no mercado. Para que isso seja alcançado, os conceitos de missão, visão, valores e estratégia devem ser estabelecidos e compartilhados com todos os funcionários.  Sabendo disso, vamos começar pelos três primeiros.</p>
+		  
+		  <p class="p-cont">A missão, a visão e os valores de uma empresa devem dizer claramente o que ela faz, para que existem, o que querem oferecer aos seus clientes e ao mundo e como ela faz para alcançar isso de forma íntegra. Esses são os pilares de uma grande organização e que podem, ao longo dos anos, ser alterados, melhorados para acompanhar as novidades trazidas pelo mercado, que sabemos que assim como a gente, mudam constantemente. Vamos entender um pouco melhor:</p>
+		  
+		  <!-- ACCORDION+ E - -->  
+        <div class="sanfona-menor">
+			
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540789" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Missão</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">É a razão, o real motivo da existência da empresa; o porquê ela foi constituída e qual o papel dela no mercado e no mundo.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->
+			
+		  <!-- ITEM ACCORDION -->	
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540796" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Visão</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">
+É o destino desta empresa, onde ela quer chegar e em quanto tempo; qual lugar ela quer ocupar no futuro e como ela enxerga seu desenvolvimento.
+
+                </p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+		  
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Valores</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">São as questões, pautas que ela defende e se apoia para existir e fazer o que faz; são inegociáveis e funcionam como um mantra que deve ser replicado e seguido por todos os colaboradores.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			
+        </div>
+		<!-- FIM ACCORDION + E - -->
+		  
+		  <!-- BOX NA PRÁTICA -->  		  
+        <div class="box-atencao" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <div class="fundo-icon fundo-napratica" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(-1.99105deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./610d6c929ae0c185346ccb04_na-pratica-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque titulo-pratica">Na Prática</h3>
+            <div class="cont-box-p p-cont"><p>Imagine você ser vegano e trabalhar numa empresa frigorífica. Ou ser contra o uso de tabaco e trabalhar numa empresa de cigarros. Ser contra injustiças, mas vivenciar situações desagradáveis sofridas por alguém, devido sua raça, religião, gênero etc. Esses são alguns exemplos, mas qualquer situação que não esteja de acordo com o que o indivíduo acredita e luta, não fará bem nem para ele, nem para a empresa.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX NA PRÁTICA --> 
+		  
+		  
+		  
+		  
+		  <p class="p-cont">Obviamente é preciso que você tenha em mente de que todos precisamos trabalhar e nem tudo será exatamente como sonhamos. Algumas regras podem realmente não nos agradar. Nesses casos, devemos pesar o quanto isso nos fará bem ou não, antes de aceitar o cargo, bem como o que é possível aceitar dentro dos nossos limites e ideais e o que não é possível.</p>
+		  <p class="p-cont">O mesmo vale para o tipo de <strong>estratégia</strong> que a empresa assume, se seus prazos e metas são atingíveis, se seu RH cumpre com o que tem que cumprir, se as políticas internas condizem com o mercado, se existe plano de cargos e salários ou não, se existe uma cultura de formação de substituto ou não.</p>
+		  <p class="p-cont">Estes são todos os pontos importantes que devem ser conhecidos pelo indivíduo, e que deve estar devidamente alinhado para a melhor execução de suas atividades.</p>
+		  
+		  <!-- IMAGEM --> 
+		<!-- ALTERAR ENDEREÇO DA IMAGEM, LEGENDA E FONTE (SE NECESSÁRIO ALTERAR WIDTH NA DIV)-->
+        <div class="box-img" style="width: 100%;">
+          <img src="./info-cultura1.png" loading="lazy" style="opacity: 1;" data-w-id="4874a766-01d2-44cf-7618-ad2e77b83a0a" alt="" class="image-24">          
+			<p class="elemento-acessibilidade"></p>
+        </div>
+		<!--FIM BOX IMAGEM --> 
+		  
+		  <p class="p-cont">Até aqui você compreendeu os conceitos de missão (o papel da empresa no mercado), visão (como a empresa enxerga o seu crescimento e desenvolvimento), valores (as pautas que a empresa defende e apoia) e estratégia (a maneira pela qual a empresa cumprirá os seus objetivos e metas), os quais são importantes para se alcançar a cultura organizacional.</p>
+		  <p class="p-cont">Porém, a fim de que isso se viabilize, é necessário que duas atribuições não só sejam compreendidas, mas também que sejam postas em prática. Essas atribuições são a postura do líder e a do liderado, assuntos que abordaremos a seguir. 
+</p>
+		  
+		  <!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">A postura ao ser líder ou liderado</h1>
+        </div>
+		<!-- FIM H1 -->
+		  <p class="p-cont">Para muitos a relação entre líder (chefe) e liderado (empregado) é distante e vazia. Além de até mesmo, muito dolorosa, pois, muitos líderes não exercem seu papel de apoiador e desenvolvedor de equipes, tendo uma imagem pouco profissional quanto a educação no ambiente de trabalho. Além de não ter todas as competências necessárias para liderar de forma sadia, essa relação deve ser forçada a mudar e tem mudado. </p>
+		  <p class="p-cont">Nos dias atuais é muito comum notarmos a liberdade e satisfação entre algumas equipes e seus líderes, o que facilita o alcance das metas e o cumprimento dos prazos e o melhor, sem causar mal-estar no ambiente profissional, pois existe respeito e humildade nesta relação.
+</p>
+		  <p class="p-cont">A imagem e postura do líder deve ser sempre gentil, o que não quer dizer que ele deve aceitar posturas inadequadas e relevar erros recorrentes. Essa imagem deve ser agradável e confiável, para que o liderado se sinta à vontade de perguntar, dizer que errou, pedir ajuda, contar novidades e/ou trazer novas ideias. Já a imagem e postura do liderado deve seguir os mesmos padrões, mostrando-se sempre aberto a melhorar e evoluir como profissional e, em seu particular também, aceitando os feedbacks de maneira humilde e com disposição a melhorar onde for preciso.
+</p>
+		  
+		
+		  
+		  	<!-- IMAGEM DESTAQUE E TEXTO; em elemento-acessibilidade, incluir o #PraCegoVer-->
+        <div class="box-img-texto">
+          <div class="div-block-150">
+            <p class="p-img-e-texto">A liderança é o processo que conduz e influência nas ações, comportamentos e na mentalidade dos outros indivíduos a quem lidera, alterando o meio onde opera, ou seja, a liderança tem um grande papel na formação, disseminação e possíveis alterações que visam melhorias contínuas nas políticas internas e consequentemente na cultura organizacional da empresa.</p>
+          </div>
+		  <!-- ALTERAR CLASS imagem1 E INCLUIR NO STYLE NO TOPO DESTE CÓDIGO INFORMANDO O BACKGROUND-IMAGE DA CLASS-->
+          <div class="img-text-img imagem1" style="background-image: url(&quot;images/img-23.jpg&quot;); opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"></div>
+		  <p class="elemento-acessibilidade">#PraCegoVer: Na imagem, existem sete funcionários de uma empresa em uma sala de reunião. A líder está em pé com os braços cruzados e encarando a câmera, enquanto seus colaboradores estão sentados em suas respectivas cadeiras olhando para ela sorrindo.</p>
+        </div>
+		<!-- FIM IMAGEM DESTAQUE E TEXTO -->  
+		  
+		  
+		 <p class="p-cont">Devemos sempre destacar a importância do líder e sua imagem positiva, bem como a imagem do liderado frente a cultura organizacional da empresa onde trabalham, entendemos que além da imagem pessoal ou profissional, existe uma imagem da própria empresa. Percebemos e nos adequamos fazendo parte de nós como indivíduo, o que nos traz maior responsabilidade quando nos expressamos em ambiente público, pois, além da nossa imagem, levamos a imagem de toda a empresa e a qualquer erro que cometamos de forma nada profissional, isso recairá sobre nós, com seus devidos pesos que são impostos pelo mercado. <br><br>
+			 
+			 Neste terceiro módulo, você pôde compreender o conceito de cultura organizacional, isto é, a identidade de uma empresa (como se fosse a imagem profissional de um indivíduo, mas aplicada a uma organização). Essa identidade não é fixa, mas pode mudar com o tempo. Porém, o importante é que todos os funcionários estejam alinhados a ela. <br><br>
+
+Além disso, você viu também, os conceitos de missão, visão e estratégia, os quais são importantes para se alcançar a cultura organizacional. Ao final, aprendeu sobre a postura adequada que um líder e os liderados devem ter, com o intuito de que a empresa tenha coesão e possa alcançar as metas e os objetivos traçados.
+
+</p> 
+		
+		  
+		 <!-- =====================================================================================================  -->   
+		 	
+		  
+		
+	<!-- =====================================================================================================  -->  
+		 <div style="height: 50px;"></div>  
+		  
+      </div>
+	  
+    <div class="box-download">
+      <div class="video-destaque downlaod">
+        <div class="box-video-left box-down">
+          <div class="box-img-video-2"><img src="./download.svg" loading="lazy" width="60" height="60" alt="" class="image-26"></div>
+          <h1 data-w-id="d40d14d4-c083-8f0f-eff8-0f1082cbc443" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="titulo-destaque h3-video downa">
+            <em>E-book</em> PDF</h1>
+          <div class="linha-branca linha-content"></div>
+          
+            <p data-w-id="d40d14d4-c083-8f0f-eff8-0f1082cbc447" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="p-cont-2 branco-p">Você pode, também, ter na íntegra e sempre a mão o <em>e-book</em> do curso de Postura e Imagem Profissional. Selecione o botão Download e confira!<br></p>
+            <a data-w-id="d40d14d4-c083-8f0f-eff8-0f1082cbc44a" style="background-color: rgba(0, 0, 0, 0); margin: 0px auto;" class="a-botton branco-bt w-inline-block adequacao-app-ev-mobile" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/postura-img.pdf" target="_blank">  
+              <div class="text-a"><strong>Download</strong></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+	</div>
+
+	  
+	  
+    <div class="bg-download">
+      <div class="conteudo-interno">
+        <div class="titulo-h1-capa">
+          <h1 class="heading-2 apresentacao-rosa">Referências</h1>
+          <div class="linha-branca linha-red"></div>
+        </div>
+        <div class="box-mat-apoio">
+          <p class="p-cont">AGÊNCIA FIEP. <strong> Sesi oferece consultorias especializadas em ergonomia a indústrias do Paraná. Agência FIEP.</strong> 2017.  Disponível em: <a target="_blank" href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fagenciafiep.com.br%2F2017%2F03%2F07%2Fsesi-oferece-consultorias-especializadas-em-ergonomia-a-industrias-do-parana%2F&amp;psig=AOvVaw3tudFs4xwBbca4esm_h379&amp;ust=1613058631974000&amp;source=images&amp;cd=vfe&amp;ved=0CA0QjhxqFwoTCJD7sPDV3-4CFQAAAAAdAAAAABAs." class="link-2">https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fagenciafiep.com.br %2F2017%2F03%2F07%2Fsesi-oferece-consultorias-especializadas-em-ergonomia-a-industrias-do-parana%2F&amp;psig= AOvVaw3tudFs4xwBbca4esm_h379&amp;ust= 1613058631974000&amp;source=images&amp;cd= vfe&amp;ved=0CA0QjhxqFwoTCJD7sPDV3-4CFQAAAAAdAAAAABAs.</a>. Acesso em: 31 jan. 2021.
+ <br></p>
+          <p class="p-cont">Arianne. <strong>  Boy Characters. Pinterest.</strong>. Disponível em:  <a target="_blank" href="https://br.pinterest.com/pin/814729388815904727/" class="link-2">https://br.pinterest.com/pin/81472938 8815904727/</a>. Acesso em: 2 fev. 2021. <br></p>
+			
+          <p class="p-cont">BENDER, Arthur. <strong> Personal branding:  </strong>Construindo sua marca pessoal.  Editora Integrare, v. 3, f. 136, 2017.  272 p.<br></p>
+			
+			<p class="p-cont">CLIFTON, Donald O. <strong> Descubra seus pontos fortes: </strong>Um programa revolucionário que mostra como desenvolver seus talentos especiais e os das pessoas que você lidera. Sextante, v. 2, f. 136, 2015.  272 p.
+ <br></p>
+			<p class="p-cont">CLUBE DA FALA. <strong> Saiba como desenvolver postura e imagem profissional. Clube da Fala.  </strong>2019.  Disponível em: <a target="_blank" href="https://www.clubedafala.com.br/blog/postura-e-imagem-profissional/#:~:text=Postura%20e%20imagem%20profissionais%20s%C3%A3o,A%20resposta%20%C3%A9%20n%C3%A3o!." class="link-2">https://www.clubedafala.com.br/blog...</a> Acesso em: 7 fev. 2021.
+ <br></p>
+			<p class="p-cont">CUSTÓDIO, Alexandre. <strong> Como me vestir para uma entrevista de emprego?</strong> Professor Alexandre Custódio. 2014.  Disponível em <a target="_blank" href="http://professoralexandrecustodio.blogspot.com/2014/09/como-me-vestir-para-uma-entrevista-de_23.html." class="link-2">http://professoralexa...</a>. Acesso em: 2 fev. 2021. <br></p>
+			
+			<p class="p-cont">CÉSAR, Caio. <strong> Comunicação assertiva:  </strong>8 dicas para se expressar melhor! Voitto. 2020.  Disponível em: <a target="_blank" href="https://www.voitto.com.br/blog/artigo/comunicacao-assertiva" class="link-2">https://www.voitto.com.br/blog/artigo/ comunicacao-assertiva</a>. Acesso em 30 de junho de 2021. <br></p>
+			
+			<p class="p-cont">DUHIGG, Charles. <strong> O poder do hábito:  </strong>Por que fazemos o que fazemos na vida e nos negócios. Objetiva, v. 3, f. 204, 2012.  408 p. <br></p>
+			
+			<p class="p-cont">FLORES, Larissa.  <strong> Imagem profissional:   </strong>a imagem pode em alguns casos falar mais do que as palavras. Uma imagem é apenas a maneira como nos apresentamos. Será? Administradores.com. 2015.  Disponível em:  <a target="_blank" href="https://administradores.com.br/artigos/imagem-profissional" class="link-2">https://administradores.com.br/artigos/ imagem-profissional</a> Acesso em: 5 fev. 2021. <br></p>
+			
+			<p class="p-cont">FOOD SAFETY BRAZIL. <strong> Gestão da cultura organizacional e a segurança dos alimentos.</strong> Food Safety Brazil.2018.  Disponível em: https://foodsafetybrazil.org/gestao-cultura-organizacional/. Acesso em: 1 fev. 2021<br></p>
+			
+			<p class="p-cont">GAEDKE, Ilse.  <strong> 5 dicas para manter sua imagem pessoal.</strong> Olhar Dinâmico. 2019.  Disponível em: <a target="_blank" href="https://www.portalolhardinamico.com.br/noticia/2731/5-dicas-para-manter-sua-imagem-pessoal" class="link-2">https://www.portalolhardinamico.com.br/ noticia/2731/5-dicas-para-manter-sua-imagem-pessoal</a>. Acesso em: 2 fev. 2021. <br></p>
+			
+			
+			<p class="p-cont">GALAN, Barbara.  <strong>  Ergonomia:</strong> 10 dicas para manter a postura correta para sentar no trabalho. Beecorp. 2020.  Disponível em:  <a target="_blank" href="https://beecorp.com.br/blog/dicas-para-manter-a-postura-correta-para-sentar/" class="link-2">https://beecorp.com.br/blog/dicas-para-manter-a-postura-correta-para-sentar/</a>. Acesso em: 15 fev. 2021.
+ <br></p>
+			<p class="p-cont">GEHRINGER, Max.  <strong>  Emprego de A a Z.</strong> 1. ed. Globo, 2008.  328 p. 
+ <br></p>
+			<p class="p-cont">GOLEMAN, Daniel.  <strong>  Inteligência emocional: </strong> A teoria revolucionária que redefine o que é ser inteligente. Objetiva, v. 3, f. 186, 2012.  372 p.
+ <br></p>
+			<p class="p-cont">GONÇALVES, Rosana Fa.  <strong>  Postura Profissional:</strong>  comportamento pode pesar mais que desempenho. 1. ed. Qualitymark, f. 38, 2006.  96 p.
+ <br></p>
+			<p class="p-cont">IBC.  <strong>  A importância de cuidar da imagem profissional no ambiente de trabalho. Instituto Brasileiro de Coaching.</strong> 2019.  Disponível em:   <a target="_blank" href="https://www.ibccoaching.com.br/portal/comportamento/importancia-cuidar-imagem-pessoal-ambiente-trabalho" class="link-2">https://www.ibccoaching.com.br/portal/ comportamento/importancia-cuidar-imagem-pessoal-ambiente-trabalho</a>. Acesso em: 5 fev. 2021.
+ <br></p>
+			<p class="p-cont">JCOMP.  <strong>  Imagens e vetores grátis</strong>  Freepick.  Disponível em:  <a target="_blank" href="https://br.freepik.com/vetores-gratis/homens-de-negocios-apertam-as-maos-para-parabenizar-o-sucesso-nos-negocios_12397495.htm#page=1&amp;query=aperto%20de%20m%C3%A3o%20&amp;position=5." class="link-2">https://br.freepik.com/vetores-gratis/homens-de-negocios-apertam-as-maos-para-parabenizar-o-sucesso-nos-negocios_12397495.htm#page=1&amp;query= aperto%20de%20m%C3%A3o%20&amp;position=5</a> Acesso em: 3 fev. 2021.
+ <br></p>
+			<p class="p-cont">LUIDY, Luis.  <strong>  Rede Social e sua postura profissional.</strong> Luidy Suporte. 2014.  Disponível em:   <a target="_blank" href="https://beecorp.com.br/blog/dicas-para-manter-a-postura-correta-para-sentar/" class="link-2">https://beecorp.com.br/blog...</a>. Acesso em: 15 fev. 2021.
+ <br></p>
+			<p class="p-cont">GALAN, Barbara.  <strong>  Ergonomia:</strong> 10 dicas para manter a postura correta para sentar no trabalho. Beecorp. 2020.  Disponível em:  <a target="_blank" href="https://luidysuporte.wordpress.com/2014/08/13/rede-social-e-sua-postura-profissional/" class="link-2">https://luidysuporte.wordpress.com/...</a>. Acesso em: 14 fev. 2021.
+ <br></p>
+			<p class="p-cont">MACROVETOR. <strong>  Imagens e vetores grátis.</strong> Freepick.  Disponível em: <a target="_blank" href="https://br.freepik.com/vetores-gratis/danca-de-salao-de-baile-desenho-de-mulher-jovem-e-bonita-em-vestido-vermelho-sexy-isolado_10703295.htm#page=1&amp;query=vestido%20sensual&amp;position=13" class="link-2">https://br.freepik.com/vetores-gratis/danca-de-salao-de-baile-desenho-de-mulher-jovem-e-bonita-em-vestido-vermelho-sexy-isolado_10703295.htm#page=1&amp;query= vestido%20sensual&amp;position=13</a>. Acesso em: 1 fev. 2021.<br></p>
+				
+			<p class="p-cont">MARTINS, Ivone.  <strong>  A falta de educação.</strong>  O Segredo. 2016.  Disponível em: <a target="_blank" href="https://osegredo.com.br/falta-de-educacao/" class="link-2">https://osegredo.com.br/falta-de-educacao/</a>. Acesso em: 3 fev. 2021.<br></p>
+					
+			<p class="p-cont">MELATTI, Juliana.  <strong>  Ergonomia.</strong>  Info Escola. Rio Grande do Sul, 2014.  Disponível em:<a target="_blank" href="https://www.infoescola.com/saude/ergonomia/" class="link-2">https://www.infoescola.com/saude/ ergonomia/</a>. Acesso em: 9 fev. 2021.<br></p>
+			
+			<p class="p-cont">MENDES, Tatyane. <strong>  Você sabia que existem 3 tipos de empatia?</strong> Conheça cada um deles e como desenvolver essa habilidade. Na Prática.  Disponível em: <a target="_blank" href="https://www.napratica.org.br/tipos-de-empatia" class="link-2">https://www.napratica.org.br/tipos-de-empatia</a>. Acesso em: 9 fev. 2021.<br></p>
+				
+			<p class="p-cont">PATI, Camila.  <strong> 8 insultos curiosos em português que quase ninguém conhece.</strong> Exame. 2016.  Disponível em: <a target="_blank" href="https://exame.com/carreira/8-insultos-em-portugues-que-quase-ninguem-conhece/" class="link-2">https://exame.com/carreira/8-insultos-em-portugues-que-quase-ninguem-conhece/</a>. Acesso em: 1 fev. 2021.<br></p>
+					
+			<p class="p-cont">PORFÍRIO, Francisco.  <strong> O que é ética?</strong>  Brasil Escola.  Disponível em: <a target="_blank" href="https://brasilescola.uol.com.br/o-que-e/o-que-e-sociologia/o-que-e-etica.htm" class="link-2">https://brasilescola.uol.com.br/o-que-e/o-que-e-sociologia/o-que-e-etica.htm</a>.  Acesso em: 10 fev. 2021.<br></p>
+			
+			<p class="p-cont">PRODERG.  <strong> Dicas de postura ao sentar.</strong>  Pinterest.  Disponível em: <a target="_blank" href="https://fi.pinterest.com/pin/653444227156425430/" class="link-2">https://fi.pinterest.com/pin/ 653444227156425430/</a>.  Acesso em: 1 fev. 2021.<br></p>
+			
+			<p class="p-cont"> <strong> QUAIS são os tipos de Ergonomia?</strong>  Ergocorp.  Disponível em:  <a target="_blank" href="https://www.ergocorp.com.br/noticia/quais-sao-os-tipos-de-ergonomia-confira_1" class="link-2">https://www.ergocorp.com.br/noticia/quais-sao-os-tipos-de-ergonomia-confira_1</a>.  Acesso em: 8 fev. 2021.<br></p>
+			
+			<p class="p-cont">RAMALHO, Camila.  <strong> A importância da gentileza no dia a dia. </strong>  Catho. 2015.  Disponível em: <a target="_blank" href="https://www.catho.com.br/carreira-sucesso/colunistas/convidados/a-importancia-da-gentileza-no-dia-a-dia" class="link-2">https://www.catho.com.br/carreira-sucesso/colunistas/convidados/a-importancia-da-gentileza-no-dia-a-dia</a>.  Acesso em: 9 fev. 2021.<br></p>
+			
+			<p class="p-cont">RANGEL, Alexandre.  <strong> 7 dicas para se tornar um profissional mais proativo:</strong> A proatividade no mundo corporativo significa trazer soluções. Administradores.com. 2018.  Disponível em:  <a target="_blank" href="https://administradores.com.br/noticias/7-dicas-para-se-tornar-um-profissional-mais-proativo" class="link-2">https://administradores.com.br/noticias/7-dicas-para-se-tornar-um-profissional-mais-proativo</a>.  Acesso em: 9 fev. 2021.<br></p>
+			
+			<p class="p-cont">RESENDE, Francisca A. M. <strong> Como pegar peso corretamente.</strong> Postura Saudável. 2017.  Disponível em:  <a target="_blank" href="https://blog.franciscaresende.com/2017/07/17/como-pegar-peso-corretamente/" class="link-2">https://blog.franciscaresende.com/...</a>.  Acesso em: 9 fev. 2021.<br></p>
+			
+			<p class="p-cont">ROSENBERG, Marshall B.  <strong>Comunicação não-violenta:</strong>  Técnicas para aprimorar relacionamentos pessoais e profissionais. Editora Agora, v. 3, f. 144, 2010.  288 p.
+<br></p>
+			<p class="p-cont">RUSSO, Giuseppe Maria.  <strong>Diagnóstico da cultura organizacional:</strong>   o impacto dos valores organizacionais no desempenho das terceirizações. Elsevier, f. 73, 2009.  146 p.
+<br></p>
+			<p class="p-cont">SCHEIN, Edgar Henry.   <strong>Cultura organizacional e liderança.</strong> 3. ed. Atlas, 2009.  413 p.
+
+<br></p>
+			<p class="p-cont">SOCIEDADE BRASILEIRA DE COACHING.  <strong>O que é a Cultura Organizacional?</strong> Sbcoaching. 2018.  Disponível em: <a target="_blank" href="https://www.sbcoaching.com.br/blog/cultura-organizacional/" class="link-2">https://www.sbcoaching.com.br/blog/cultura-organizacional/</a>.  Acesso em: 8 fev. 2021.
+<br></p>
+			<p class="p-cont">SOUZA, Keila.   <strong>Cuide da sua coluna:</strong> dicas de ergonomia para suas atividades diárias. Acquafisian. 2017.  Disponível em: <a target="_blank" href="https://acquafisian.com.br/cuide-da-sua-coluna-dicas-de-ergonomia-para-suas-atividades-diarias/" class="link-2">https://acquafisian.com.br/cuide-da-sua-coluna-dicas-de-ergonomia-para-suas-atividades-diarias/</a>.  Acesso em: 7 fev. 2021.
+<br></p>
+			<p class="p-cont">SPENCER, Phil. <strong>Videogames:</strong> uma força unificadora para o mundo. Microsoft News Center Brasil. 2019.  Disponível em:<a target="_blank" href="https://news.microsoft.com/pt-br/videogames-uma-forca-unificadora-para-o-mundo/" class="link-2">https://news.microsoft.com/pt-br/videogames-uma-forca-unificadora-para-o-mundo/</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">Stories. <strong>Imagens e vetores grátis.</strong> Freepik.  Disponível em:<a target="_blank" href="https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-fim-do-dia-de-trabalho_9793132.htm" class="link-2">https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-fim-do-dia-de-trabalho_9793132.htm</a>.  Acesso em: 3 fev. 2021.
+
+<br></p>
+			<p class="p-cont">Stories. <strong>Imagens e vetores grátis.</strong> Freepik.  Disponível em: <a target="_blank" href="https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-fone-de-ouvido_11602396.htm#page=1&amp;query=pessoas%20com%20fone%20de%20ouvido&amp;position=16" class="link-2">https://br.freepik.com/vetores-gratis/ilustracao-do-conceito-de-fone-de-ouvido_11602396.htm#page=1&amp;query= pessoas%20com%20fone%20de %20ouvido&amp;position=16</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">UNIFEOB. <strong>Postura Profissional:</strong> importância, dicas e como desenvolver. EAD Unifeob. 2020.  Disponível em:<a target="_blank" href="https://ead.unifeob.edu.br/blog/postura-profissional" class="link-2"> https://ead.unifeob.edu.br/blog/postura-profissional</a>.  Acesso em: 7 fev. 2021.
+<br></p>
+			<p class="p-cont">WEIL, Pierre; TOMPAKOW, Roland.  <strong>O Corpo Fala:</strong> A linguagem silenciosa da comunicação não-verbal. Editora Vozes Limitada, v. 3, f. 144, 2017.  288 p.
+<br></p>
+			<p class="p-cont">___________. <strong>Imagens e vetores.</strong> Freepik.  Disponível em: <a target="_blank" href="https://br.freepik.com/" class="link-2">https://br.freepik.com</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Imagens e vetores.</strong> Shutterstock.  Disponível em: <a target="_blank" href="https://www.shutterstock.com/pt/" class="link-2">https://www.shutterstock.com/pt/</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Foto de pessoas fazendo apertos de mão.</strong> Pexels.  Disponível em: <a target="_blank" href="https://www.pexels.com/pt-br/foto/foto-de-pessoas-fazendo-apertos-de-mao-3184301/" class="link-2">https://www.pexels.com/pt-br/foto/foto-de-pessoas-fazendo-apertos-de-mao-3184301/
+</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Homem em camisa de esporte marrom.</strong> Pexels.  Disponível em: <a target="_blank" href="https://www.pexels.com/pt-br/foto/homem-em-camisa-esporte-marrom-apertando-as-maos-de-um-homem-3184294/" class="link-2">https://www.pexels.com/pt-br/foto/homem-em-camisa-esporte-marrom-apertando-as-maos-de-um-homem-3184294/
+</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Apartamento, caixas, bau.</strong> Pexels.  Disponível em: <a target="_blank" href="https://www.pexels.com/pt-br/foto/apartamento-caixa-bau-arca-4554238/" class="link-2">https://www.pexels.com/pt-br/foto/apartamento-caixa-bau-arca-4554238/
+</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Afeição, carinho, simpatia.</strong> Pexels.  Disponível em: <a target="_blank" href="https://www.pexels.com/pt-br/foto/afeicao-carinho-simpatia-apartamento-4246102/" class="link-2">https://www.pexels.com/pt-br/foto/afeicao-carinho-simpatia-apartamento-4246102/
+</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			<p class="p-cont">___________. <strong>Colegas multirraciais no trabalho.</strong> Pexels.  Disponível em: <a target="_blank" href="https://www.pexels.com/pt-br/foto/colegas-multirraciais-apertando-as-maos-no-trabalho-5668838/" class="link-2">https://www.pexels.com/pt-br/foto/colegas-multirraciais-apertando-as-maos-no-trabalho-5668838/
+</a>.  Acesso em: 1 fev. 2021.
+<br></p>
+			
+		  </div> 
+	</div>
+	</div>
+    
+    <div class="bg-final adequacao-app-ev-mobile">
+      <div class="c-p-cons adequacao-app-ev-mobile">
+        <h1 class="heading-4 adequacao-app-ev-mobile" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><strong class="bold-text-90">Parabéns!</strong></h1>
+        <div class="linha-branca linha-br"></div>
+        <p class="p-cont branco-p adequacao-app-ev-mobile" style="text-align: left;">Você finalizou o curso de Postura e Imagem Profissional. Esperamos que você tenha tido um excelente aprendizado. <br><br>
+ 
+Com o conhecimento adquirido, você não só terá um desempenho profissional mais eficaz e produtivo, como também passará a aperfeiçoar as suas habilidades e competências associadas ao convívio humano.  <br><br>
+
+Até a próxima!
+</p>
+<div class="layout conteudo-vertical p-cont branco-p" id="fim-de-curso">
+  <div class="container superior">
+      <h1 class="titulo-artigo">Você chegou ao final do curso!</h1>
+      <div class="componente imagem-ilustrativa fixa" data-creditos="GoodStudio/Shutterstock.com"></div>
+  </div>
+  <div class="container inferior">
+      <div class="container-alinhamento">
+          <div class="conteudo-desktop container">
+              <p>Para sair do curso no <b>computador</b>, feche esta janela, clicando no "<span class="caixa-baixa">X</span>" no seu navegador. <br>Veja o exemplo na imagem abaixo:</p>
+              <figure class="componente imagem-estrutural">
+                  <img src="./fim_de_curso_desktop.png" alt="Para sair do curso, feche a janela do seu navegador, clicando no botão Fechar, localizado no canto superior direito da janela.">
+              </figure>
+          </div>
+          <div class="conteudo-mobile container">
+              <p>Se você estiver usando o <b>computador</b>, feche esta janela, clicando no "<span class="caixa-baixa">X</span>" no seu navegador. <br>Veja o exemplo na imagem abaixo:</p>
+              <figure class="componente imagem-estrutural">
+                  <img src="./fim_de_curso_desktop.png" alt="Para sair do curso, feche a janela do seu navegador, clicando no botão Fechar, localizado no canto superior direito da janela.">
+              </figure>
+              <p>Se estiver usando o <b>App</b>, use o <b>botão Voltar</b>, localizado no <b>canto superior esquerdo</b> da tela. <br>Veja o exemplo na imagem abaixo:</p>
+              <figure class="componente imagem-estrutural">
+                  <img src="./fim_de_curso_app.png" alt="Para sair do curso no App, toque no botão Voltar, localizado no canto superior esquerdo da tela.">
+              </figure>
+          </div>
+      </div>
+  </div>
+</div>
+        <div class="div-block-152">
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html" class="a-botton branco-bt new-espaco w-inline-block">
+            <div class="text-a">Voltar</div>
+          </a>
+		  <a id="concluir-button-end-modulo" href="javascript: void(0)" class="a-botton-2 branco-bt w-inline-block">
+          <div class="text-a">
+            <strong>Concluir Curso</strong></div>
+        </a>
+		  </div>
+      </div>
+    </div>
+  </div>
+	
+  <div class="nav wf-section" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    <div class="menu">
+      <div class="main-menu">
+        <div class="logo"><img src="./logo_fb.svg" loading="lazy" alt="" class="image-22"></div>
+        <div class="titulo-cursoi">Postura e Imagem Profissional</div>
+        <div class="dropdown-trigger h1-tiulo">
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+        </div>
+        <div style="opacity:0;display:none" class="nav-menu">
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-0.html" class="link-nav w-inline-block">
+            <p class="text-nav">Abertura</p>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-1.html" class="link-nav w-inline-block">
+            <p class="text-nav">Módulo 1</p>
+            <div class="percentual-avanco">
+              <div class="barra1 ocutar"></div>
+              <div class="barra-progresso barra-zerada ocutar"></div>
+              
+              <div class="div-block-153"></div><div class="percent concluido">Concluído</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html" class="link-nav w-inline-block">
+            <p class="text-nav">Módulo 2</p>
+            <div class="percentual-avanco">
+              <div class="barra1 ocutar"></div>
+              <div class="barra-progresso barra-zerada ocutar"></div>
+              <div class="div-block-153"></div><div class="percent concluido">Concluído</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html" class="link-nav w-inline-block w--current">
+            <p class="text-nav">Módulo 3</p>
+            <div class="percentual-avanco">
+              <div class="barra1 ocutar"></div>
+              <div class="barra-progresso ocutar" style="width: 99px;"></div>
+              <div class="div-block-153"></div><div class="percent concluido">Concluído</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/FichaTecnica_postura-img.pdf" target="_blank" class="link-nav mais-escuro w-inline-block">
+            <p class="text-nav boldi">Ficha Técnica</p>
+          </a>
+          <div class="div-block-3">
+            <div class="div-block-4">Acessibilidade</div>
+            <div class="text-acess">
+              <div class="acess-font">Fonte:</div>
+              <div class="acess-font-2">Contraste:</div>
+            </div>
+            <div class="div-block-5">
+              <div class="bt-font">
+                <div id="a_mais" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./plus.svg" loading="lazy" alt="" class="image-20">
+                </div>
+                <div id="a_menos" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./menos.svg" loading="lazy" alt="" class="image-20">
+                </div>
+                <div id="a_reset" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./reset.svg" loading="lazy" alt="" class="image-20 reset-bt">
+                </div>
+              </div>
+              <div class="div-block-6">
+                <div class="div-block-7">
+                  <div class="icon-a"><img src="./moon.svg" loading="lazy" alt="" class="image-21 moon">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html#" class="toogle-switch w-inline-block" data-id="moon">
+                      <div class="toogle-switch-before"></div>
+                      <div class="toogle-switch-checked"></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="div-block-7">
+                  <div class="icon-a"><img src="./sun.svg" loading="lazy" alt="" class="image-21">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html#" class="toogle-switch w-inline-block" data-id="sun">
+                      <div class="toogle-switch-before"></div>
+                      <div class="toogle-switch-checked"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./jquery-3.5.1.min.dc5e7f18c8.js.download" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" style="filter: grayscale(0%) brightness(100%) contrast(100%);"></script>
+  <script src="./webflow.js.download" type="text/javascript" style="filter: grayscale(0%) brightness(100%) contrast(100%);"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+  <script style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    if (
+      navigator.userAgent.match(/Phone/i) ||
+      navigator.userAgent.match(/DROID/i) ||
+      navigator.userAgent.match(/Android/i) ||
+      navigator.userAgent.match(/webOS/i) ||
+      navigator.userAgent.match(/iPhone/i) ||
+      navigator.userAgent.match(/iPod/i) ||
+      navigator.userAgent.match(/BlackBerry/) || 
+      navigator.userAgent.match(/Windows Phone/i) || 
+      navigator.userAgent.match(/ZuneWP7/i) || 
+      navigator.userAgent.match(/IEMobile/i) ||
+      navigator.userAgent.match(/Tablet/i) ||
+      navigator.userAgent.match(/iPad/i) ||
+      navigator.userAgent.match(/Kindle/i) ||
+      navigator.userAgent.match(/Playbook/i) ||
+      navigator.userAgent.match(/Nexus/i) ||
+      navigator.userAgent.match(/Xoom/i) ||
+      navigator.userAgent.match(/SM-N900T/i) ||
+      navigator.userAgent.match(/GT-N7100/i) ||
+      navigator.userAgent.match(/SAMSUNG-SGH-I717/i) ||
+      navigator.userAgent.match(/SM-T330NU/i)
+    ) {
+      $(".branco-p.adequacao-app-ev-mobile .adequacao-app-ev-mobile").hide()
+      $(".body-home").addClass("mobile")
+    }
+    else {
+      $(".body-home").addClass("desktop")
+    }
+</script>
+
+
+
+</body></html>

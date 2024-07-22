@@ -1,0 +1,889 @@
+///////////////////////////////////////////////////////////////////////////////////
+// IMPLEMENTA ADAPTADOR SCORM
+
+////////////////////////////////////////////////////////////////////////////////////
+//Define variaveis globais e inicializa objeto de interacao com servidor
+var LastError = 0;
+var LastDiagnostic = ""
+////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+function mpMakeAjaxRequest(posturl, postdata, forceAsync) {
+    var resultado;
+
+    if (posturl.toLowerCase().includes('setscodata') && "sendBeacon" in navigator) {
+        var beaconResult = navigator.sendBeacon(posturl, postdata);
+        return beaconResult ? "OK" : "False";
+    }
+
+    var asyncMode = (forceAsync === true); 
+    $.ajaxSetup({ async: asyncMode });
+    
+    $.ajax({
+        type: 'POST',
+        url: posturl,
+        data: postdata,
+        contentType: "text/xml",
+        dataType: "text",
+        async: asyncMode,
+        beforeSend: function (request) {
+            request.setRequestHeader("Cache-Control", "no-cache");
+        },
+        error: function (xhr, ajaxOptions,thrownError) {
+            console.log('CDS LMS Request Error:' + xhr.status + '-'+xhr.statusText);
+            console.log(thrownError);
+        }
+    }).done(function (res) {
+        resultado = res;
+        $.ajaxSetup({ async: true });
+    });
+    return resultado;
+}
+
+
+function SendPost(url, postdata, forceAsync) {
+    var timeout;
+    var nTries = 0;
+
+    LastDiagnostic = "";
+
+    do {
+        try {
+            timeout = false;
+
+            var data = mpMakeAjaxRequest(url, postdata, forceAsync);
+            return data;
+        }
+        catch (e) {
+            nTries++;
+            if (nTries < 10) {
+                timeout = true;
+            }
+            else {
+                var msg = "";
+
+                if (typeof e.description === "undefined") {
+                    if (typeof e === "undefined") msg = "timeout (-1001)";
+                    else msg = e;
+                }
+                else {
+                    msg = e.description;
+                }
+
+                alert("Error Sending Data to Server: " + msg + "\nOcorreu um erro em sua conex\343o Internet. Por favor, feche a janela do curso e acesse novamente.");
+            }
+        }
+    } while (timeout)
+
+    return "";
+}
+
+////////////////////////////////////////////////////////////////////////////////////
+// Reporta Erro durante o parse do XML
+function XmlError(e) {
+    alert("Xml parser error: " + e);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Cookies
+function getCookieVal(offset) {
+    var endstr = document.cookie.indexOf(";", offset);
+    if (endstr == -1)
+        endstr = document.cookie.length;
+    return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie(name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg)
+            return getCookieVal(j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Fun��o Initialize
+function MPScormInitialize(parameter) {
+    //Initilize s� pode ser chamado com parametro Vazio.
+    if (parameter != "") {
+        LastError = 201;
+        return ("false");
+    }
+
+    //Initilize n�o pode ser inicializado 2 (duas) vezes.
+    if (this.initialized) {
+        LastError = 101;
+        return ("false");
+    }
+
+    //Obtem dados do servidor
+    var s = SendPost(top._api_cgiexec + "?action=getscodata", "");
+    LastError = 0;
+    if (s) {
+        //Carrega dados recebidos no proxy XML
+        this.Data = new XMLDoc(s, XmlError);
+        if (this.Data) this.DataRoot = this.Data.docNode;
+
+        if (this.DataRoot) {
+            //Sucesso
+            this.initialized = true;
+            return ("true");
+        }
+        else {
+            //Erro
+            LastError = 101;
+            return ("false");
+        }
+    }
+    else {
+        //Erro
+        LastError = 101;
+        this.DataRoot = null;
+        LastDiagnostic = s;
+        return ("false");
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Fun��o Commit
+function MPScormCommit(parameter) {
+    if (!this.initialized) {
+        LastError = 301;
+        return ("false");
+    }
+    else {
+        LastError = 0;
+    }
+
+    //Commit s� pode ser chamado com parametro Vazio.
+    if (parameter != "") {
+        LastError = 201;
+        return ("false");
+    }
+
+    //C�digo abaixo comentado, criamos um novo sistema de contagem de progresso no servidor do CDS
+    /*
+    //Verifica se deve atualizar flag "PercentCompleted" (de uso interno do LMS)
+    try
+    {
+        var x;
+
+        if (top.CDSTree) x = top.CDSTree.TreeGetPercentCompleted();
+        else x = "";
+
+        var node = this.GetNode("cmi.percentcompleted", false);
+        if (x != node.getAttribute("value")) {
+            node.addAttribute("value", x);
+            this.DataChanged = true;
+        }
+    }
+    catch (e)
+    {
+    }
+    */
+
+    if (this.DataChanged) {
+        //Grava dados do proxy XML no servidor
+        var s = SendPost(top._api_cgiexec + "?action=setscodata", this.DataRoot.getUnderlyingXMLText(), true);
+        if (s != "OK") {
+            s = SendPost(top._api_cgiexec + "?action=setscodata", this.DataRoot.getUnderlyingXMLText(), true);
+        }
+
+        if (s == "OK") {
+            //Sucesso
+            if (top.CDSTree) {
+                //Atualiza �rvore de conte�do, conforme necess�rio (LMS ajusta os cookies examinados abaixo para indicar isso)
+                if (document.cookie.indexOf("ResetTree=true") != -1) {
+                    top.CDSTree.TreeInit();
+                }
+                else if (document.cookie.indexOf("SetSCOCompleted=true") != -1) {
+                    top.CDSTree.TreeSetCompleted(GetCookie("SetScoID"), true);
+                }
+                else if (document.cookie.indexOf("SetSCOCompleted=false") != -1) {
+                    top.CDSTree.TreeSetCompleted(GetCookie("SetScoID"), false);
+                }
+            }
+
+            this.DataChanged = false;
+            return ("true");
+        }
+        else {
+            //Erro
+            LastError = 101;
+            LastDiagnostic = s;
+            return ("false");
+        }
+    }
+    else {
+        //N�o tem nenhuma altera��o para gravar
+        return ("true");
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Fun��o Finish
+function MPScormFinish(parameter) {
+    var node;
+    var v1, v2, a1, a2;
+
+    //Finish s� pode ser chamado com parametro Vazio.
+    if (parameter != "") {
+        LastError = 201;
+        return ("false");
+    }
+
+    //Ajusta flag indicando finaliza��o do SCO (n�o faz parte do padr�o, � implementado para uso interno nosso)
+    if (this.initialized) {
+        node = this.GetNode("cmi.finish", false);
+        node.addAttribute("value", "true");
+
+        ////////////////////////////////////////////////////////
+        //Acumula tempo de sess�o
+        node = this.GetNode("cmi.core.total_time", false);
+        v1 = node.getAttribute("value");
+        if (v1 == null || v1 == "") v1 = "0000:00:00.00";
+        a1 = v1.split(":");
+
+        node = this.GetNode("cmi.core.session_time", false);
+        v2 = node.getAttribute("value");
+        if (v2 != null && v2 != "") {
+            var t1 = convertTotalTime(v1);
+            var t2 = convertTotalTime(v2);
+            var sumTimes = t1 + t2;
+
+            node = this.GetNode("cmi.core.total_time", false);
+            node.addAttribute("value", convertTotalSeconds(sumTimes));
+            this.DataChanged = true;
+
+            /*a2 = v2.split(":");
+            if( a2.length == 3 )
+            {
+                var hours   = parseInt(a1[0], 10) + parseInt(a2[0], 10);
+                var minutes = parseInt(a1[1], 10) + parseInt(a2[1], 10);
+                var seconds = parseFloat(a1[2])   + parseFloat(a2[2]);
+                var overflow;
+
+                if ( seconds >= 60 ) {
+                    minutes = minutes + Math.floor(seconds / 60);
+                    seconds = seconds - Math.floor(seconds / 60);
+                }
+                if (minutes >= 60) {
+                    hours = hours + (minutes / 60);
+                    minutes = minutes % 60;
+                }
+
+                var s = hours + ":" + minutes + ":" + seconds;
+                node = this.GetNode("cmi.core.total_time", false);
+                node.addAttribute("value", s);
+                this.DataChanged = true;
+            }*/
+        }
+    }
+
+    ////////////////////////////////////////////////////////
+    //Envia dados ao servidor
+    s = this.LMSCommit("");
+    this.initialized = false;
+
+    return (s);
+}
+
+/*******************************************************************************
+** this function will convert seconds into hours, minutes, and seconds in
+** CMITimespan type format - HHHH:MM:SS.SS (Hours has a max of 4 digits &
+** Min of 2 digits
+*******************************************************************************/
+function convertTotalSeconds(ts) {
+    var sec = (ts % 60);
+
+    ts -= sec;
+    var tmp = (ts % 3600);  //# of seconds in the total # of minutes
+    ts -= tmp;              //# of seconds in the total # of hours
+
+    // convert seconds to conform to CMITimespan type (e.g. SS.00)
+    sec = Math.round(sec * 100) / 100;
+
+    var strSec = new String(sec);
+    var strWholeSec = strSec;
+    var strFractionSec = "";
+
+    if (strSec.indexOf(".") != -1) {
+        strWholeSec = strSec.substring(0, strSec.indexOf("."));
+        strFractionSec = strSec.substring(strSec.indexOf(".") + 1, strSec.length);
+    }
+
+    if (strWholeSec.length < 2) {
+        strWholeSec = "0" + strWholeSec;
+    }
+    strSec = strWholeSec;
+
+    if (strFractionSec.length) {
+        strSec = strSec + "." + strFractionSec;
+    }
+
+    if ((ts % 3600) != 0)
+        var hour = 0;
+    else var hour = (ts / 3600);
+    if ((tmp % 60) != 0)
+        var min = 0;
+    else var min = (tmp / 60);
+
+    if ((new String(hour)).length < 2)
+        hour = "0" + hour;
+    if ((new String(min)).length < 2)
+        min = "0" + min;
+
+    var rtnVal = hour + ":" + min + ":" + strSec;
+
+    return rtnVal;
+}
+
+function convertTotalTime(totalTime) {
+    var lTotalTime = 0.0;
+    var numArray;
+    var hourVal, minVal, secVal;
+
+    numArray = totalTime.split(":");
+    hourVal = parseFloat(numArray[0]);
+    hourVal *= 3600; //3600 equals 60 times 60 (hours times minutes)
+
+    minVal = parseFloat(numArray[1]);
+    minVal *= 60;
+
+    secVal = parseFloat(numArray[2]);
+
+    lTotalTime = hourVal + minVal + secVal;
+
+    return lTotalTime;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Fun��o GetValue e SetValue
+
+function MPScormXMLGetNode(parameter, inSetMode) {
+    //Faz parsing do valor requisitado
+    var r, s, k, aux, node, newnode, data, root, c;
+
+    data = this.Data;
+    root = this.DataRoot;
+
+    r = parameter.split(".");
+    if (r.length <= 1) {
+        //Argumento invalido
+        LastError = 201;
+        return (null);
+    }
+
+    //Monta string para "select" no XML
+    s = "";
+    for (k = 1; k < r.length; k++) {
+        if (r[k].search(/^\d+$/) != -1)
+            //Item e um numero (indice de um elemento de uma colecao)
+            s = s + "/item[" + r[k] + "]";
+        else
+            //Item e um elemento simples
+            s = s + "/" + r[k];
+    }
+
+    //Procura no XML
+    node = root.selectNode(s);
+
+    if (!node) {
+        //N� n�o encontrado -> verifica se est� tentando adicionar um item em uma cole��o
+        if (s.search(/\/item\[/) != -1) {
+            if (parameter.search(/^cmi\.objectives\.\d+/) != -1) {
+                //cmi.objectives.x
+                node = root.selectNode("/objectives/item[" + r[2] + "]");
+
+                if (!node) {
+                    //Precisa criar novo indice
+                    aux = ' \r\n\r\n';
+                    aux = aux + '<item type="object"> \r\n';
+                    aux = aux + '  <id type="CMIIdentifier" access="RW" value="" /> \r\n';
+                    aux = aux + '  <score type="Object"> \r\n';
+                    aux = aux + '      <_children type="CMIString255" access="R" value="raw,min,max" /> \r\n';
+                    aux = aux + '      <raw type="CMIDecimal" accept_null="true" access="RW" value="" /> \r\n';
+                    aux = aux + '      <max type="CMIDecimal" accept_null="true" access="RW" value="" /> \r\n';
+                    aux = aux + '      <min type="CMIDecimal" accept_null="true" access="RW" value="" /> \r\n';
+                    aux = aux + '    </score> \r\n';
+                    aux = aux + '    <status type="CMIVocabulary (passed;completed;failed;incomplete;browsed;not attempted)" access="RW" value="" /> \r\n';
+                    aux = aux + '</item> \r\n';
+
+                    node = root.selectNode("/objectives/_count");
+
+                    c = parseInt(node.getAttribute("value"));
+
+                    //Se o elemento for chamado fora de sequ�ncia, retorna um erro.
+                    if (r[2] != c) {
+                        LastError = 201;
+                        return (null);
+                    }
+
+                    node.addAttribute("value", c + 1);
+
+                    //Se ja existe um item, insere novo item apos o ultimo item
+                    if (c != 0) node = root.selectNode("/objectives/item[" + (c - 1) + "]");
+                    newnode = data.createXMLNode(aux);
+
+                    this.Data = this.Data.insertNodeAfter(node, newnode);
+                    this.DataRoot = this.Data.docNode;
+                    data = this.Data;
+                    root = this.DataRoot;
+
+                    node = root.selectNode(s);
+                }
+            }
+            else if (parameter.search(/^cmi\.interactions\.\d+\.objectives\.\d+/) != -1) {
+                //cmi.interactions.x.objectives.y
+                node = root.selectNode("/interactions/item[" + r[2] + "]/objectives/item[" + r[4] + "]");
+                if (!node) {
+                    //Precisa criar novo indice
+                    aux = ' \r\n\r\n';
+                    aux = aux + '						<item type="Object" parent="interaction_obj' + r[2] + '"> \r\n';
+                    aux = aux + '							<id type="CMIIdentifier" access="W" value=""/> \r\n';
+                    aux = aux + '						</item> \r\n';
+
+                    node = root.selectNode("/interactions/item[" + r[2] + "]/objectives/_count");
+                    if (node) {
+                        c = parseInt(node.getAttribute("value"));
+
+                        //Se o elemento for chamado fora de sequ�ncia, retorna um erro.
+                        if (r[4] != c) {
+                            if (inSetMode)
+                                LastError = 201;
+                            else
+                                LastError = 404;
+                            return (null);
+                        }
+
+                        node.addAttribute("value", c + 1);
+
+                        //Se ja existe um item, insere novo item apos o ultimo
+                        if (c != 0) {
+                            node = root.selectNode("/interactions/item[" + r[2] + "]/objectives/item[" + (c - 1) + "]");
+                        }
+                        newnode = data.createXMLNode(aux);
+
+                        this.Data = this.Data.insertNodeAfter(node, newnode);
+                        this.DataRoot = this.Data.docNode;
+                        data = this.Data;
+                        root = this.DataRoot;
+
+                        node = root.selectNode(s);
+                    }
+                    else {
+                        if (inSetMode)
+                            LastError = 201;
+                        else
+                            LastError = 404;
+                        return (null);
+                    }
+                }
+            }
+            else if (parameter.search(/^cmi\.interactions\.\d+\.correct_responses\.\d+/) != -1) {
+                //cmi.interactions.x.correct_responses.y
+                node = root.selectNode("/interactions/item[" + r[2] + "]/correct_responses/item[" + r[4] + "]");
+
+                if (!node) {
+                    //Precisa criar novo indice
+                    aux = ' \r\n\r\n';
+                    aux = aux + '				<item type="Object" parent="interaction_cr' + r[2] + '"> \r\n';
+                    aux = aux + '					<pattern type="CMIFeedback" access="W" value=""/> \r\n';
+                    aux = aux + '				</item> \r\n';
+
+                    node = root.selectNode("/interactions/item[" + r[2] + "]/correct_responses/_count");
+
+                    if (node) {
+                        c = parseInt(node.getAttribute("value"));
+
+                        //Se o elemento for chamado fora de sequ�ncia, retorna um erro.
+                        if (r[4] != c) {
+                            if (inSetMode)
+                                LastError = 201;
+                            else
+                                LastError = 404;
+                            return (null);
+                        }
+
+                        node.addAttribute("value", c + 1);
+
+                        //Se ja existe um item, insere novo item apos o ultimo
+                        if (c != 0) node = root.selectNode("/interactions/item[" + r[2] + "]/correct_responses/item[" + (c - 1) + "]");
+
+                        newnode = data.createXMLNode(aux);
+
+                        this.Data = this.Data.insertNodeAfter(node, newnode);
+                        this.DataRoot = this.Data.docNode;
+                        data = this.Data;
+                        root = this.DataRoot;
+
+                        node = root.selectNode(s);
+                    }
+                    else {
+                        if (inSetMode)
+                            LastError = 201;
+                        else
+                            LastError = 404;
+                        return (null);
+                    }
+                }
+            }
+            else if (parameter.search(/^cmi\.interactions\.\d+/) != -1) {
+                //cmi.interactions.x
+
+                node = root.selectNode("/interactions/item[" + r[2] + "]");
+                if (!node) {
+                    //Precisa criar novo indice
+                    node = root.selectNode("/interactions/_count");
+                    c = parseInt(node.getAttribute("value"));
+                    //Se o elemento for chamado fora de sequ�ncia, retorna um erro.
+                    if (r[2] != c) {
+                        if (inSetMode)
+                            LastError = 201;
+                        else
+                            LastError = 404;
+                        return (null);
+                    }
+
+                    node.addAttribute("value", c + 1);
+
+                    aux = ' \r\n\r\n';
+                    aux = aux + '		<item type="Object"> \r\n';
+                    aux = aux + '			<id type="CMIIdentifier" access="W" value=""/> \r\n';
+                    aux = aux + '			<objectives type="Object" is_collection="true"> \r\n';
+                    aux = aux + '				<_count type="CMIInteger" access="R" value="0" parent="interaction_obj' + c + '"/> \r\n';
+                    aux = aux + '			</objectives> \r\n';
+                    aux = aux + '			<time type="CMITime" access="W" value=""/> \r\n';
+                    aux = aux + '			<type type="CMIVocabulary (true-false;choice;fill-in;matching;performance;sequencing;likert;numeric)" access="W" value=""/> \r\n';
+                    aux = aux + '			<correct_responses type="Object"> \r\n';
+                    aux = aux + '				<_count type="CMIInteger" access="R" value="0" parent="interaction_cr' + c + '"/> \r\n';
+                    aux = aux + '			</correct_responses> \r\n';
+                    aux = aux + '			<weighting type="CMIDecimal" access="W" value=""/> \r\n';
+                    aux = aux + '			<student_response type="CMIFeedback" access="W" value=""/> \r\n';
+                    aux = aux + '			<result type="CMIVocabulary (correct;wrong;unanticipated;neutral;CMIDecimal)" access="W" value=""/> \r\n';
+                    aux = aux + '			<latency type="CMITimespan" access="W" value=""/> \r\n';
+                    aux = aux + '		</item> \r\n';
+
+                    //Se ja existe um item, insere novo item apos o ultimo item
+                    if (c != 0) node = root.selectNode("/interactions/item[" + (c - 1) + "]");
+                    newnode = data.createXMLNode(aux);
+
+                    this.Data = this.Data.insertNodeAfter(node, newnode);
+                    this.DataRoot = this.Data.docNode;
+                    data = this.Data;
+                    root = this.DataRoot;
+
+                    node = root.selectNode(s);
+                }
+            }
+        }
+    }
+
+    if (node) {
+        if (node.getAttribute("type") == "Object") {
+            //Erro, argumento invalido
+            LastError = 201;
+            return (null);
+        }
+        else {
+            //Sucesso
+            return (node);
+        }
+    }
+    else {
+        //Nao encontrado
+        switch (r[r.length - 1]) {
+            case "_children": LastError = 202; break;
+            case "_count": LastError = 203; break;
+            default: LastError = 201;
+        }
+
+        return (null);
+    }
+}
+
+function MPScormGetValue(parameter) {
+    //Verifica inicializacao
+    if (!this.initialized) {
+        LastError = 301;
+        return ("");
+    }
+    else {
+        LastError = 0;
+    }
+
+    //Tenta achar este valor no proxy XML
+    var node = this.GetNode(parameter, false);
+    if (node) {
+        //Achou valor pedido
+
+        if (node.getAttribute("access").indexOf("R") != -1) {
+            //Tem permissao de leitura
+            if (parameter == "cmi.suspend_data" || parameter == "cmi.launch_data" || parameter == "cmi.comments" || parameter == "cmi.core.lesson_location") {
+                return (convertEscapes(node.getAttribute("value")));
+            }
+            else
+                return (node.getAttribute("value"));
+        }
+        else {
+            //Erro: write-only
+            LastError = 404;
+            return ("");
+        }
+    }
+    else {
+        //Erro ja determinado por MPScormXMLGetNode, apenas retorna vazio
+        return ("");
+    }
+}
+
+function MPScormSetValue(parameter, value) {
+    //Verifica inicializacao
+    if (!this.initialized) {
+        LastError = 301;
+        return ("false");
+    }
+    else {
+        LastError = 0;
+    }
+
+    //Tenta achar este valor no proxy XML
+    var node = this.GetNode(parameter, true);
+    var tp, voc, a, b, type_check;
+    if (node) {
+        //Achou valor pedido
+
+        if (node.getAttribute("access").indexOf("W") != -1) {
+            //Tem permissao de escrita
+
+            //Faz verificacao de tipo
+            tp = node.getAttribute("type");
+            switch (tp) {
+                case "CMIString255":
+                    type_check = (typeof value == "string") && (value.length <= 255);
+                    break;
+                case "CMIString4096":
+                    type_check = (typeof value == "string") && (value.length <= 4096);
+                    break;
+                case "CMIFeedback":
+                    type_check = (typeof value == "string");
+                    break;
+                case "CMIIdentifier":
+                    type_check = (typeof value == "string") && (value.search(/\s/) == -1) && (value.length <= 255);
+                    break;
+                case "CMIDecimal":
+                    type_check = (!isNaN(parseFloat(value)));
+                    if (type_check) {
+                        var sDec = parseFloat(value);
+                        if (parameter.indexOf("score.max") != -1 || parameter.indexOf("score.min") != -1 || parameter.indexOf("score.raw") != -1 || parameter.indexOf("mastery_score") != -1)
+                            type_check = (sDec >= 0 && sDec <= 100);
+                    }
+                    break;
+                case "CMIInteger":
+                    type_check = (String(value).search(/^\d+$/) != -1);
+                    break;
+                case "CMISInteger":
+                    type_check = (!isNaN(parseInt(value, 10)));
+                    if (type_check) {
+                        var sInt = parseInt(value, 10);
+                        if (parameter == "cmi.student_preference.audio")
+                            type_check = sInt >= -1 && sInt <= 100;
+                        else if (parameter == "cmi.student_preference.speed")
+                            type_check = sInt >= -100 && sInt <= 100;
+                        else if (parameter == "cmi.student_preference.text")
+                            type_check = sInt >= -1 && sInt <= 1;
+                    }
+                    break;
+                case "CMITime":
+                    type_check = (String(value).search(/^\d{2}:\d{2}:\d{2}(\.\d{1,2})?$/) != -1);
+                    if (type_check) {
+                        var cmiTime = value.split(":");
+                        type_check = parseInt(cmiTime[0], 10) >= 0 && parseInt(cmiTime[0], 10) < 24 && parseInt(cmiTime[1], 10) >= 0 && parseInt(cmiTime[1], 10) < 60 && Math.round(parseFloat(cmiTime[2])) >= 0 && Math.round(parseFloat(cmiTime[2])) < 60;
+                    }
+                    break;
+                case "CMITimespan":
+                    type_check = (String(value).search(/^\d{2,4}:\d{2}:\d{2}(\.\d{1,2})?$/) != -1);
+                    break;
+                default:
+                    if (tp.search(/^CMIVocabulary /) != -1) {
+                        a = tp.indexOf("(");
+                        b = tp.indexOf(")");
+                        voc = ";" + tp.substring(a + 1, b) + ";";
+                        type_check = (voc.indexOf(";" + value + ";") != -1) || ((voc.indexOf(";CMIDecimal;") != -1) && (!isNaN(parseFloat(value))) || (value == ""));
+
+                        if (type_check && parameter == "cmi.core.lesson_status")
+                            type_check = (value != "not attempted");
+                    }
+                    else {
+                        type_check = true;
+                    }
+            }
+
+            //Verifica aceitacao de nulo
+            if (value == "") type_check = type_check && ((node.getAttribute("accept_null") == "true") || (tp == "CMIString255") || (tp == "CMIString4096") || (tp == "CMIFeedback"));
+
+            if (type_check) {
+                //Sucesso
+                this.DataChanged = true;
+
+                if (parameter == "cmi.suspend_data" || parameter == "cmi.launch_data" || parameter == "cmi.comments" || parameter == "cmi.core.lesson_location") {
+                    if (parameter == "cmi.comments") {
+                        var comments = node.getAttribute("value");
+                        if (comments) comments = comments + convertToEscapes(value);
+                        else comments = convertToEscapes(value);
+                        node.addAttribute("value", comments);
+                    }
+                    else
+                        node.addAttribute("value", convertToEscapes(value));
+                }
+                else
+                    node.addAttribute("value", value);
+
+                return ("true");
+            }
+            else {
+                //Erro: tipo de dado incorreto
+                LastError = 405;
+                return ("false");
+            }
+        }
+        else {
+            //Erro: read-only
+            if (parameter.indexOf("_children") != -1 || parameter.indexOf("_count") != -1)
+                LastError = 402;
+            else
+                LastError = 403;
+            return ("false");
+        }
+    }
+    else {
+        //Erro ja determinado por MPScormXMLGetNode, apenas retorna falso
+        //Erro de "argumento invalido" e transformado em erro de "elemento � uma palavra chave" no caso do SetValue
+        //if (LastError == 201) LastError = 402;
+        return ("false");
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Fun��es de Erro
+function MPScormGetLastError() {
+    //Verifica inicializacao
+    return (LastError.toString());
+}
+
+function MPScormGetErrorString(errornumber) {
+    switch (parseInt(errornumber)) {
+        case 0: return ("No Error");
+        case 101: return ("General Exception");
+        case 201: return ("Invalid Argument Error");
+        case 202: return ("Element cannot have children");
+        case 203: return ("Element not an array - cannot have count");
+        case 301: return ("Not initialized");
+        case 401: return ("Not implemented error");
+        case 402: return ("Invalid set value, element is a keyword");
+        case 403: return ("Element is read only");
+        case 404: return ("Element is write only");
+        case 405: return ("Incorrect Data Type");
+        default: return ("");
+    }
+}
+
+function MPScormGetDiagnostic(parameter) {
+    return (LastDiagnostic);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+// Fun��es Performa
+function MPLSPerformaGetValue(parameter, callback) {
+    if (typeof callback !== "function")
+        throw new Error("callback not a function!");
+
+    $.post(top._api_cgiexec + "?action=getscoanalytics", { value: parameter || "" }, function (response) {
+        try {
+            callback(JSON.parse(response));
+        } catch (e) {
+            console.error(e.message);
+            callback(("false"));
+        }
+    });
+}
+
+function MPLSPerformaSetValue(parameter, callback) {
+    if (typeof parameter !== "object")
+        throw new Error("parameter not an object!");
+
+    if (typeof callback !== "function")
+        throw new Error("callback not a function!");
+
+    $.post(top._api_cgiexec + "?action=setscoanalytics", { value: JSON.stringify(parameter) }, function (response) {
+        if (response == "OK") callback(("true"));
+        callback(("false"));
+    });
+}
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+//Constructor MPScormAdapter()
+function MPScormAdapter() {
+    this.Data = null;
+    this.DataRoot = null;
+    this.DataChanged = false;
+    this.initialized = false;
+    this.GetNode = MPScormXMLGetNode;
+
+    this.LMSInitialize = MPScormInitialize;
+    this.LMSFinish = MPScormFinish;
+    this.LMSGetValue = MPScormGetValue;
+    this.LMSSetValue = MPScormSetValue;
+    this.LMSCommit = MPScormCommit;
+    this.LMSGetLastError = MPScormGetLastError;
+    this.LMSGetErrorString = MPScormGetErrorString;
+    this.LMSGetDiagnostic = MPScormGetDiagnostic;
+
+    this.LMSPerformaGetValue = MPLSPerformaGetValue;
+    this.LMSPerformaSetValue = MPLSPerformaSetValue;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+
+// Conversion factors as varants to eliminate all the multiplication
+var SECONDS_CF = 1000;
+var MINUTES_CF = 60000;          // 60 * 1000
+var HOURS_CF = 3600000;        // 60 * 60 * 1000
+var DAYS_CF = 86400000;       // 24 * 60 * 60 * 1000
+var WEEKS_CF = 604800000;      // 7 * 24 * 60 * 60 * 1000
+var FORTNIGHTS_CF = 1209600000;     // 14 * 24 * 60 * 60 * 1000
+var MONTHS_CF = 2592000000;     // 30 * 24 * 60 * 60 * 1000  (approx = 1 month)
+var QUARTERS_CF = 7776000000;     // 90 * 24 * 60 * 60 * 1000  (approx = 3 months)
+var YEARS_CF = 31557600000;    // 365 * 24 * 60 * 60 * 1000 (approx = 1 year)
+var DECADES_CF = 315576000000;   // 10 * 365 * 24 * 60 * 60 * 1000 (approx = 1 decade)
+var CENTURIES_CF = 3155760000000;  // 100 * 365 * 24 * 60 * 60 * 1000 (approx = 1 century)
+
+// Non-destructive instance methods
+Date.prototype.addMilliseconds = function (ms) {
+    return new Date(new Date().setTime(this.getTime() + (ms)));
+}
+Date.prototype.addSeconds = function (s) {
+    return this.addMilliseconds(s * SECONDS_CF);
+}
+Date.prototype.addMinutes = function (m) {
+    return this.addMilliseconds(m * MINUTES_CF);
+}
+Date.prototype.addHours = function (h) {
+    return this.addMilliseconds(h * HOURS_CF);
+}
+Date.prototype.addDays = function (d) {
+    return this.addMilliseconds(d * DAYS_CF);
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////
+//Instanciamento de objetos
+var APIAdapter = new MPScormAdapter();

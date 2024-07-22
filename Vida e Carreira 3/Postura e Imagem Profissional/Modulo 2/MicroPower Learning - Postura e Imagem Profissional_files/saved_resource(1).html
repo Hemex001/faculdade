@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- saved from url=(0078)https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/index.html# -->
+<html lang="en"><div id="in-page-channel-node-id" data-channel-name="in_page_channel_10Eo5C"></div><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Final_Fundacao_Bradesco_PG</title>
+
+  <script src="./adapt_scorm.js.download"></script>
+
+  <script>
+    const $ = scorm.$
+    window.top.scorm = scorm  
+
+    window.endListener = function (e) {
+        e.preventDefault();
+        e.returnValue = '';
+    }
+
+    // window.addEventListener('beforeunload', window.endListener);
+
+    $(() => {
+      // if(scorm.data.curr > 0) {
+      //   if(window.top.confirm('Você quer continuar de onde parou?')){
+      //     $('iframe').attr('src', `./modulo-${scorm.data.curr}.html`)
+      //   }
+      // }
+
+      window.top.scorm.changeLocation = scorm.changeLocation = (module) => {
+        $('iframe').attr('src', module)
+      }
+    })
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+    }
+    iframe {
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      overflow:hidden;
+      position: fixed;
+    }
+    iframe::-webkit-scrollbar {
+         display: none;
+    }
+  </style>
+</head>
+<body __processed_0acc5762-d9e3-44ff-8c7e-2157d52d8ffe__="true">
+  <iframe frameborder="0" marginheight="0px" marginwidth="0px" src="./modulo-0.html">
+</body>
+</html></iframe><div><div id="MenuSCO" style="width:25px;height:15px;position: fixed;top: 0;left: 0;z-index: 99999999;padding: 5px 5px 5px 5px;"><a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/index.html#" onclick="top.apiChangeSplitter()"><hr style="height:4px;border:none;background: #5a5a5a;margin:3px;"><hr style="height:4px;border:none;background: #5a5a5a;margin:3px;"><hr style="height:4px;border:none;background: #5a5a5a;margin:3px;"></a></div></div></body></html>

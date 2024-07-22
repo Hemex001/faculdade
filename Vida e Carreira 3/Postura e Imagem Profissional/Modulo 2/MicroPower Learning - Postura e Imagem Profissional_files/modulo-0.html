@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<!-- saved from url=(0080)https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html -->
+<html data-wf-page="6132866aeb2b4f3c8cb0e55c" data-wf-site="61328588219ec1cbc8a4eaec" class="w-mod-js wf-opensans-n3-active wf-opensans-i3-active wf-opensans-n4-active wf-opensans-i4-active wf-opensans-n6-active wf-opensans-i6-active wf-opensans-n7-active wf-opensans-i7-active wf-opensans-n8-active wf-opensans-i8-active wf-montserrat-n1-active wf-montserrat-i1-active wf-montserrat-n2-active wf-montserrat-i2-active wf-montserrat-n3-active wf-montserrat-i3-active wf-montserrat-n4-active wf-montserrat-i4-active wf-montserrat-n5-active wf-montserrat-i5-active wf-montserrat-n6-active wf-montserrat-i6-active wf-montserrat-n7-active wf-montserrat-i7-active wf-montserrat-n8-active wf-montserrat-i8-active wf-montserrat-n9-active wf-montserrat-i9-active wf-active w-mod-ix"><div id="in-page-channel-node-id" data-channel-name="in_page_channel_cpJcxY"></div><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style>.wf-force-outline-none[tabindex="-1"]:focus{outline:none;}</style>
+  
+  <title>Módulo 2 - Postura e convivência social</title>
+  <meta content="modulo_1" property="og:title">
+  <meta content="modulo_1" property="twitter:title">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <meta content="Webflow" name="generator">
+  <link href="./normalize.css" rel="stylesheet" type="text/css">
+  <link href="./webflow.css" rel="stylesheet" type="text/css">
+  <link href="./final-fundacao-bradesco-pg.webflow.css" rel="stylesheet" type="text/css">
+  <script src="./webfont.js.download" type="text/javascript"></script>
+  <link rel="stylesheet" href="./css" media="all"><script type="text/javascript">WebFont.load({ google: { families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic", "Montserrat:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic"] } });</script>
+  <!-- [if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js" type="text/javascript"></script><![endif] -->
+  <script type="text/javascript">!function (o, c) { var n = c.documentElement, t = " w-mod-"; n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch") }(window, document);</script>
+  <link href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/images/favicon.png" rel="shortcut icon" type="image/x-icon">
+  
+  <script src="./jquery.min(1).js.download"></script>
+  <script src="./adapt_scorm.js.download"></script>
+  <script type="text/javascript">
+    function strReplace(haystack = '', needle, replacement) {
+      var temp = haystack.split(needle);
+      return temp.join(replacement);
+    }
+    $(document).ready(function () {
+      const f = 'grayscale(0%) brightness(100%) contrast(100%)'
+      $('body').children().css('filter', f)
+      const filters = $('a.toogle-switch').data('filter', f)
+      filters.off().on('click', (e) => {
+        const t = $(e.currentTarget)
+        const ball = t.find('.toogle-switch-before')
+        const back = t.find('.toogle-switch-checked')
+        let filter
+
+        if(Math.round(ball.position().left) === 4) {
+          gsap.to(ball[0], {left: 24, duration: 0.2})
+          gsap.to(back[0], {backgroundColor: 'rgb(48,48,48)', duration: 0.2})          
+
+          if(t.data('id') === 'moon') {
+            filter = t.data('filter').replace(/grayscale\(\d+\%\)/, 'grayscale(100%)')            
+            
+          } else if (t.data('id') === 'sun') {
+            filter = t.data('filter').replace(/brightness\(\d+\%\)/, 'brightness(120%)').replace(/contrast\(\d+\%\)/, 'contrast(110%)')
+          }
+          
+        } else {
+          gsap.to(ball[0], {left: 4, duration: 0.2})
+          gsap.to(back[0], {backgroundColor: '#898989', duration: 0.2})
+
+          if(t.data('id') === 'moon') {
+            filter = t.data('filter').replace(/grayscale\(\d+\%\)/, 'grayscale(0%)')            
+            
+          } else if (t.data('id') === 'sun') {
+            filter = t.data('filter').replace(/brightness\(\d+\%\)/, 'brightness(100%)').replace(/contrast\(\d+\%\)/, 'contrast(100%)')
+          }
+        }
+
+        filters.data('filter', filter)
+        gsap.to($('body').children(), {filter, duration: 0.2})
+
+      })
+
+      $('body').removeAttr('style')
+
+      const menubt = $('.dropdown-trigger').data('open', false)
+      const menu = $('.nav-menu')
+
+      menubt.off().on('click', () => {
+        if(!menubt.data('open')) {
+          menubt.data('open', true)
+          gsap.fromTo(menu, {display: 'block'}, {autoAlpha: 1, duration: 0.3})
+
+          $(window).off('pointerdown').on('pointerdown', (e) => {            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            const bounds = menu[0].getBoundingClientRect();
+
+            if (
+              mouseX < bounds.x ||
+              mouseY < bounds.y ||
+              mouseX > bounds.x + bounds.width ||
+              mouseY > bounds.y + bounds.height
+            ) {
+              menuClose()
+            }
+          })
+        }
+      })
+
+      function menuClose(){
+        $(window).off('pointerdown')        
+        gsap.to(menu, {autoAlpha: 0, duration: 0.3, onComplete: () => {
+          menu.css('display', 'none')
+          menubt.data('open', false)
+        }})
+      }
+
+
+      var div = '#content-2',
+        contador = 0,
+        obj_tratados = [
+          div + " *"
+        ],
+
+        reset_fonte = [],
+        reset_linha = [];
+      setDefaultZoom(obj_tratados, reset_fonte, reset_linha, contador);
+      $('#a_mais,#a_menos,#a_reset').on('click', function () {
+        var id = $(this).attr('id');
+        var min = 6;
+        var max = 150;
+        for (var i in obj_tratados) {
+          var tratados = $(obj_tratados[i]);
+          var tamanho_fonte = strReplace(tratados.css('fontSize'), 'px', '');
+          var tamanho_entrelinha = strReplace(tratados.css('lineHeight'), 'px', '');
+          switch (id) {
+            case 'a_mais':
+              if (tamanho_fonte <= max) {
+                tamanho_fonte++;
+                // tamanho entrelinha aumento
+                tamanho_entrelinha = (tamanho_fonte * 1.8);
+                tamanho_entrelinha++;
+                contador++;
+              }
+              break;
+            case 'a_menos':
+              if (tamanho_fonte >= min) {
+                tamanho_fonte--;
+                // tamanho entrelinha redução;
+                var val = tamanho_entrelinha - (tamanho_entrelinha * 3 / 100);
+                // tamanho_entrelinha = arredondarValor(val);
+                tamanho_entrelinha = (tamanho_fonte * 1.8);
+                tamanho_entrelinha--;
+                contador++;
+              }
+              break;
+            case 'a_reset':
+            default:
+              // resetar 
+              tamanho_fonte = reset_fonte[i];
+              tamanho_entrelinha = reset_linha[i];
+              break;
+          }
+          tratados.css({ 'fontSize': tamanho_fonte + 'px', 'lineHeight': tamanho_entrelinha + 'px' });
+        }
+        //cancel a click event
+        return false;
+      });
+      function setDefaultZoom(obj_tratados, reset_fonte, reset_linha, contador) {
+        for (var i in obj_tratados) {
+          var tratados = $(obj_tratados[i]);
+          if (contador == 0) {
+            reset_fonte[i] = strReplace(tratados.css('fontSize'), 'px', '');
+            reset_linha[i] = strReplace(tratados.css('lineHeight'), 'px', '');
+          }
+        }
+      }
+    });
+  </script>
+
+  <style>
+    .ocutar {
+      display: none;
+    }
+  </style>
+
+  <script>
+    $(() => {
+      // const abertura = $('.link-nav .text-nav').parent()
+      // abertura.off().on('click', () => {
+      //   scorm.gotoModule(0)
+      // })
+
+      const nav = $('.link-nav .percentual-avanco')
+
+      const check = nav.find('.div-block-153')
+      check.remove()
+
+      nav.children().removeClass('ocultar-1')
+      nav.children().removeClass('ocultar-2')
+
+      nav.find('.barra-progresso').addClass('barra-zerada')
+      nav.find('.percent').removeClass('concluido').text('0%')
+
+      const current = 2
+
+      scorm.current = current
+
+      if(scorm.data.mod[current].full) {
+        scorm.setLoc(current, 0)
+      }
+
+
+      // if(scorm.data.curr !== current) {
+      //   if(scorm.data.mod[current].pct > 0) {
+      //     if(window.top.confirm('Você quer continuar de onde parou?')){
+      //       scorm.gotoModule(scorm.data.curr)
+      //     } else {
+      //       scorm.setLoc(0, 0)
+      //       scorm.current = current
+      //     }
+      //   }
+      //   else {
+      //     scorm.setLoc(0, 0)
+      //     scorm.current = current
+      //   }        
+      // }
+      // else {
+      //   scorm.current = current
+      // }
+
+      nav.parent().each((index, item) => {
+        const it = $(item)
+        it.data('id', index + 1)
+        const module = scorm.data.mod[index + 1]
+        if (module.full) {
+          it.find('.barra1').addClass('ocutar')
+          it.find('.barra-progresso').addClass('ocutar')
+          it.find('.percent').before(check.clone(true)).addClass('concluido').text('Concluído')
+        } else {
+          if (module.pct > 0) {
+            const bp = it.find('.barra-progresso').removeClass('barra-zerada').css('width', `${module.pct}px`)
+            it.find('.percent').text(`${module.pct}%`)
+          }
+        }
+      })
+      // .off().on('click', gotoModule)
+
+      // $('#avancar-button').off().on('click', () => {
+      //   scorm.gotoModule(1)
+      // })
+
+      scorm.onProgress = (pct) => {
+        const index = scorm.data.curr
+        const mod = scorm.data.mod[index]
+        const tg = $(nav[index - 1])
+
+        if (!mod.full) {
+          tg.find('.barra-progresso').removeClass('barra-zerada').css('width', `${pct}px`)
+          tg.find('.percent').text(`${pct}%`)
+        } else {
+          if (tg.find('.percent').text() !== 'Concluído') {
+            tg.find('.barra1').addClass('ocutar')
+            tg.find('.barra-progresso').addClass('ocutar')
+            tg.find('.percent').before(check.clone(true)).addClass('concluido').text('Concluído')
+          }
+        }
+      }
+
+      function gotoModule(e) {
+        const target = $(e.currentTarget)
+        const id = target.data('id')
+
+        if ((scorm.data.mod[id].full || scorm.data.mod[id - 1].pct === 100) && id !== scorm.current) {
+          scorm.gotoModule(id)
+        }
+      }
+    })
+  </script>
+	
+	<script type="text/javascript">
+	
+	function abrirJanela(pagina, largura, altura) {
+	// Definindo centro da tela
+	var esquerda = (screen.width - largura)/2;
+	var topo = (screen.height - altura)/2;
+	// Abre a nova janela
+	minhaJanela = window.open(pagina,'','height=' + altura + ', width=' + largura + ', top=' + topo + ', left=' + esquerda);
+	}
+	</script>
+	
+	<script>
+    $(() => {
+      $("#animated-arrow").off().on('click', (e) => {
+        e.preventDefault()
+        gsap.to("html", {scrollTo: "#animated-arrow-target", duration: 1})
+      })
+    })
+  </script>
+	
+	<style>
+	
+	/* IMAGEM DESTAQUE E TEXTO */
+	.imagem11 {	
+		background-image: url("images/img-cont09.jpg");
+	}	  
+	 .imagem2 {	
+		background-image: url("images/img-cont21.JPG");
+	}
+		.imagem22{background-image: url("images/subst-img-2.JPG");}
+		
+	/* IMAGENS SLIDES */
+	  
+	.img1 {
+		background-image: url("images/slider-1.png");
+		background-position: 0% 0%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}  
+	  
+	.img2 {
+		background-image: url("images/slider-2.png");
+		background-position: 0% 0%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	} 
+		.img3 {
+		background-image: url("images/slider-3.png");
+		background-position: 0% 0%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+		.img4 {
+		background-image: url("images/slider-4.png");
+		background-position: 0% 0%;
+		background-size: contain;
+		background-repeat: no-repeat;
+	}
+		.img121{
+			background-image: url("images/img-cont-14.jpeg");
+			background-position: center;
+			background-size: cover;
+		}
+
+</style>	
+</head>
+
+<body class="body-home" marginwidth="0" marginheight="0" __processed_e0e8daaa-3181-4cf6-b525-a06dc8e41686__="true">
+  <div class="capa-modulo wf-section" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    <div class="main-capa">
+      <div class="titulo">
+        <h4 class="modulo-titulo" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Módulo 2</h4>
+        <h1 class="heading"><strong class="bold-text-91" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Postura e convivência social</strong></h1>
+        <div class="linha-branca"></div>
+        <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html" id="animated-arrow" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); opacity: 0.30075; transform-style: preserve-3d; will-change: opacity;" class="setaa w-inline-block"><img src="./arrow-whitte.png" loading="lazy" data-w-id="19b31c16-65ed-b662-9fc2-141051a748aa" sizes="(max-width: 1279px) 40px, (max-width: 1439px) 3vw, 40px" srcset="images/arrow-whitte-p-500.png 500w, images/arrow-whitte.png 512w" alt=""></a>
+      </div>
+    </div>
+    <div class="img-capa bg-img-capa"><p id="elemento-acessibilidade">#PraCegoVer: na imagem, existem cinco funcionários de uma empresa sentados em uma mesa de escritório. Quatro estão conversando ao fundo, enquanto que uma funcionária está digitando no notebook que está na sua frente.</p></div>
+  </div>
+  <div id="content-2" class="content wf-section" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    <div class="bg-apresentacao adequacao-app-ev-mobile">
+    
+		<div id="animated-arrow-target" class="box--fundo">
+			
+		<div style="height: 50px;"></div> 	  
+		  
+			<p class="p-cont">Anteriormente, você aprendeu sobre conceitos e princípios ligados à representação de si no que diz respeito à imagem pessoal e profissional. Agora, você aprenderá sobre os pontos importantes para uma convivência sadia no ambiente profissional e na vida como um todo, com ênfase em sua postura profissional e seu desenvolvimento.</p>
+			<p class="p-cont">Iniciaremos os estudos refletindo sobre o conceito de postura. </p>
+			
+			<!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Estamos falando de postura física ou atitudes?</h1>
+        </div>
+		<!-- FIM H1 -->
+			
+			<p class="p-cont">Na verdade, falaremos sobre as duas coisas, pois num ambiente profissional, a postura física é muito importante por questões de saúde(ergonomia) e a postura profissional (que é diferente da sua imagem) também diz muito sobre você.</p>
+			<p class="p-cont">“Como assim?”</p>
+			
+						
+			<!-- BOX NA PRÁTICA -->  		  
+        <div class="box-atencao" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <div class="fundo-icon fundo-napratica" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./610d6c929ae0c185346ccb04_na-pratica-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque titulo-pratica">Na Prática</h3>
+            <div class="cont-box-p p-cont"><p>Imagine que sua liderança lhe peça um relatório e você está sentado de qualquer jeito, sem os calçados nos pés, ativo em redes sociais, com comida espalhada pela mesa e rindo alto. Parece algo absurdo, mas acontece e as pessoas não se atentam a isso.</p></div>
+          </div>
+        </div>
+			
+			<p class="p-cont">Para esta liderança, você acredita que vai passar a imagem de uma pessoa responsável, séria e comprometida com suas atividades? Provavelmente não. Logo, é importante repensar sobre nossa postura física, tanto para passar uma boa impressão, quanto para nossa saúde - e também repensar sobre nossas ações, modo de expressarmos, agirmos e brincarmos com as pessoas, que devem condizer com o ambiente em que estamos inseridos. Aqui vale a atenção para não sermos robóticos, mas sim, humanos, tratando tudo com bom senso.</p>
+			
+			<!-- IMAGEM --> 
+		<!-- ALTERAR ENDEREÇO DA IMAGEM, LEGENDA E FONTE (SE NECESSÁRIO ALTERAR WIDTH NA DIV)-->
+        <div class="box-img">
+          <img src="./img-cont09.jpg" loading="lazy" style="opacity: 1;" data-w-id="4874a766-01d2-44cf-7618-ad2e77b83a0a" alt="" class="image-24">
+          
+			<p class="elemento-acessibilidade">#PraCegoVer: na figura, há um homem, sorrindo, de óculos e de camisa azul clara sentado em uma mesa de escritório, digitando em um notebook. Na mesa, há uma agenda aberta e, do lado dela, papéis empilhados.</p>
+        </div>
+		<!--FIM BOX IMAGEM -->
+			
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="texto-destaque">
+          <p class="paragraph-179">Devemos ter em mente que reunir conhecimentos técnicos, ter uma boa indicação ou uma imagem atraente não é sinônimo de contratação, tão pouco de sucesso. Muito pelo contrário, pois empresas sérias têm investido em profissionais especialistas em comportamento humano tanto psicológico, quanto físico, pois sabemos que o corpo fala e transmite de maneira inconsciente muito do que estamos pensando e/ou sentindo. Sendo assim, vale termos atenção redobrada em nossa postura mais sincera com bom senso, empatia e profissionalismo.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->  
+			
+		
+			<p class="p-cont">Até aqui, compreendemos que postura está muito mais atrelada a como você age e reage no local em que está inserido, do que com a posição que o seu corpo está. Assim, considerando isso, quais seriam as posturas ideais que uma pessoa deveria ter, sobretudo, em seu ambiente de trabalho? </p>
+			
+			<p class="p-cont">Nesse sentido, pode-se afirmar que tais posturas são mais simples do que você imagina, como por exemplo, recepcionar educadamente alguém que entra em uma sala de reunião.</p>
+			
+			<!-- IMAGEM --> 
+		<!-- ALTERAR ENDEREÇO DA IMAGEM, LEGENDA E FONTE (SE NECESSÁRIO ALTERAR WIDTH NA DIV)-->
+        <div class="box-img">
+          <img src="./img-cont-10.jpeg" loading="lazy" style="opacity: 1;" data-w-id="4874a766-01d2-44cf-7618-ad2e77b83a0a" alt="" class="image-24">
+          
+			<p class="elemento-acessibilidade">#PracegoVer:duas pessoas se cumprimentando e outra pessoa do lado esquerdo observando a cena, ambas as pessoas estão em um ambiente de escritório.</p>
+        </div>
+		<!--FIM BOX IMAGEM -->
+			
+			<p class="p-cont">Desta forma, confira no <em>podcast</em> a seguir, algumas ações que proporcionam uma postura profissional adequada e consistente, principalmente, associadas ao falar, gesticular e agir.</p>
+			
+						
+		<!-- PODCAST -->
+        <div class="box-podcast">
+          <div class="box-img-video podcast-icon"><img src="./podcast_1podcast.png" loading="lazy" alt="" class="image-26"></div>
+          <div class="div-block-151">
+            <h1 data-w-id="4874a766-01d2-44cf-7618-ad2e77b839f8" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="titulo-destaque h3-poscast">
+              <em>Podcast</em></h1>
+            <div class="linha-branca linha-content"></div>
+            <p data-w-id="4874a766-01d2-44cf-7618-ad2e77b839fb" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="p-cont branco-p">Acompanhe com atenção!<br></p>
+            <div class="html-embed-2 w-embed">
+              <div>
+                <audio controls="">
+                  <source src="https://videos3.fb.org.br/FundacaoBradesco/Externos/DE/EV/Postura/V2_FB_podcast_imagem_2_trilha02.mp3" type="audio/mp3">
+                </audio>
+              </div>
+				
+            </div>
+			  <p class="p-video">Confira <a class="link-3" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/videos-podcasts/podcast-3.pdf" target="_blank">aqui</a> o que foi abordado no <em>podcast</em>.</p>
+          </div>
+        </div>
+		<!-- FIM PODCAST -->	
+		
+			<p class="p-cont">No <em>podcast</em> que acabou de ouvir, foi possível refletir acerca da relevância das ações associadas ao falar, gesticular e agir no ambiente de trabalho. Inclusive, essas ações fazem parte dos meios pelos quais uma pessoa pode se comunicar com a outra. Todavia, dependendo de como isso será feito, a comunicação pode ter uma inclinação mais intensa, ou não. Abordaremos esse ponto com mais detalhes no tópico a seguir.</p>
+			
+			<!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Comunicação não violenta - CNV</h1>
+        </div>
+		<!-- FIM H1 -->
+			
+			
+			<p class="p-cont">Quem de nós nunca ouviu que é bem melhor ser pacífico e conciliador ao invés de tempestuoso e agressivo? Isso é verdade e muito importante para uma boa convivência social. E no meio dos negócios é ainda mais importante, pois, indivíduos conciliadores tendem a se destacar mais no mercado, além de assumirem posições de liderança e frentes estratégicas. Mas por quê?
+</p>
+			<p class="p-cont">O psicólogo Rosenberg se aprofundou neste assunto e assegurou a existência de diversos benefícios quando assumimos uma postura e uma comunicação mais empática, principalmente, em relações em que existem diferenças religiosas, de orientação sexual, racial e social. Atualmente, este tema foi além dessas frentes, sendo trabalhado no universo da educação, da gestão pública e até no tratamento de pessoas no âmbito da saúde.</p>
+			
+			<!-- BOX ATENÇÃO -->  		  
+        <div class="box-atencao" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">
+          <div class="fundo-icon fundo-atencao" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./610d6c929ae0c111b96ccb01_atencao-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque tutilo-atencaooi">Atenção</h3>
+            <div class="cont-box-p p-cont"><p>A CNV entende que toda comunicação tem o objetivo de demonstrar uma necessidade, ou seja, sempre existe uma reivindicação encoberta por detrás de cada mensagem, seja ela verbal ou física (gestual). Sendo assim, é compreensível que a CNV não trata somente do que é emitido por meio da nossa fala, mas de todo modo como transmitimos uma mensagem, reagimos a um assunto ou expressamos uma opinião.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX ATENÇÃO -->
+		<p class="p-cont">Por isso devemos ter em mente a importância da empatia e de treinar timbres vocais e gestos sutis ao tratarmos com as pessoas. Quando nos comunicamos de forma não violenta, evitamos conflitos desnecessários e criamos um ambiente mais agradável para a convivência e desenvolvimento das atividades diárias.</p>	
+		<p class="p-cont">Uma CNV tem diversas finalidades e entre elas estão:</p>
+			
+		<!-- TABS -->
+		<!-- ALTERAR ID AO INCLUIR TABS NO BLOCO -->  
+        <div class="aba-horizontal">
+          <div data-duration-in="300" data-duration-out="100" class="tabs-5 w-tabs">
+			  
+            <div class="tabs-menu-3 w-tab-menu" role="tablist">
+			  <!-- TAB 1 -->
+			  <a data-w-tab="Tab 1" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-0" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-0" role="tab" aria-controls="w-tabs-0-data-w-pane-0" aria-selected="false" tabindex="-1">
+                <div class="text-block-20" style="text-align: center;"><strong class="bold-text-81">1</strong></div>
+              </a>
+			  <!-- TAB 2 -->
+              <a data-w-tab="Tab 2" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-1" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-1" role="tab" aria-controls="w-tabs-0-data-w-pane-1" aria-selected="false" tabindex="-1">
+                <div style="text-align: center;"><strong class="bold-text-81">2</strong></div>
+              </a>
+			  <!-- TAB 3 -->
+              <a data-w-tab="Tab 3" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-2" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-2" role="tab" aria-controls="w-tabs-0-data-w-pane-2" aria-selected="false" tabindex="-1">
+                <div style="text-align: center;"><strong class="bold-text-81">3</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 4" class="tab-link-tab-1-4 w-inline-block w-tab-link w--current" id="w-tabs-0-data-w-tab-3" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-3" role="tab" aria-controls="w-tabs-0-data-w-pane-3" aria-selected="true">
+                <div style="text-align: center;"><strong class="bold-text-81">4</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 5" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-4" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-4" role="tab" aria-controls="w-tabs-0-data-w-pane-4" aria-selected="false" tabindex="-1">
+                <div style="text-align: center;"><strong class="bold-text-81">5</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 6" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-5" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-5" role="tab" aria-controls="w-tabs-0-data-w-pane-5" aria-selected="false" tabindex="-1">
+                <div style="text-align: center;"><strong class="bold-text-81">6</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 7" class="tab-link-tab-1-4 w-inline-block w-tab-link" id="w-tabs-0-data-w-tab-6" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-0-data-w-pane-6" role="tab" aria-controls="w-tabs-0-data-w-pane-6" aria-selected="false" tabindex="-1">
+                <div style="text-align: center;"><strong class="bold-text-81">7</strong></div>
+              </a>
+				
+            </div>
+			  
+			  
+            <div class="tabs-content-6 w-tab-content">
+				
+              <!-- TAB 1 -->
+			  <div data-w-tab="Tab 1" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-0" style="">
+                <p class="paragraph-178">Foco na redução de agressões verbais e possivelmente físicas.</p>
+              </div>
+				
+			  <!-- TAB 2 -->
+              <div data-w-tab="Tab 2" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-1" style="">
+                <p class="paragraph-178">A manutenção das relações em geral e a redução de conflitos.</p>
+              </div>
+				
+			  <!-- TAB 3 -->
+              <div data-w-tab="Tab 3" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-2" style="">
+                <p class="paragraph-178"><strong class="bold-text-18">Uma gestão otimizada de equipes tanto operacionais, quanto estratégicas.</strong></p>
+              </div>
+				
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 4" class="tab-pane-tab-1-3 w-tab-pane w--tab-active" id="w-tabs-0-data-w-pane-3" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-3" style="opacity: 1; transition: opacity 300ms ease 0s;">
+                <p class="paragraph-178"><strong class="bold-text-18">O desenvolvimento e manutenção de ambientes acolhedores e sadios.</strong></p>
+              </div>
+				
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 5" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-4" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-4" style="">
+                <p class="paragraph-178"><strong class="bold-text-18">Um novo olhar para diálogos com variados pontos de vista.</strong></p>
+              </div>
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 6" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-5" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-5" style="">
+                <p class="paragraph-178"><strong class="bold-text-18">Trabalho em equipe e fortalecimento da cultura organizacional.</strong></p>
+              </div>
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 7" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-0-data-w-pane-6" role="tabpanel" aria-labelledby="w-tabs-0-data-w-tab-6" style="">
+                <p class="paragraph-178"><strong class="bold-text-18">A humanização dos atendimentos em todas as áreas de atuação humana.</strong></p>
+              </div>
+				
+            </div>
+          </div>
+        </div>
+	    <!-- FIM TABS --> 	
+			
+		<p class="p-cont">Uma boa maneira de praticar a CNV é com diálogos que visam não julgar, rompendo vícios de pensamentos condicionados pela sociedade, revisitando pontos de vistas e trabalhando a empatia entre os participantes desses diálogos, pois, a grande parcela das comunicações violentas, partem do julgamento, influências e de conclusões precipitadas. Sendo assim, precisamos focar em novos olhares e maior calmaria ao nos comunicarmos, condicionando a trabalhar emoções e nos permitindo mudar para melhor.</p>	
+			
+		<!-- IMAGEM --> 
+		<!-- ALTERAR ENDEREÇO DA IMAGEM, LEGENDA E FONTE (SE NECESSÁRIO ALTERAR WIDTH NA DIV)-->
+        <div class="box-img">
+          <img src="./img-88.jpg" loading="lazy" style="opacity: 1;" data-w-id="4874a766-01d2-44cf-7618-ad2e77b83a0a" alt="" class="image-24">
+          
+			<p class="elemento-acessibilidade">#PraCegoVer: na imagem, há um homem e uma mulher, ambos de perfil e gritando um com o outro. O homem está de moletom branco e a mulher com uma camisa amarela.</p>
+        </div>
+		<!--FIM BOX IMAGEM -->	
+			<p class="p-cont">Depois de entender sobre o conceito de Comunicação Não Violenta, bem como observar as suas finalidades e benefícios, está na hora de você estudar a relação entre uma postura adequada e a sua saúde, principalmente, considerando o aspecto ergométrico.</p>
+			
+			<!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Boa postura para a saúde</h1>
+        </div>
+		<!-- FIM H1 -->
+			
+			
+			
+		<!-- VÍDEO -->
+        <div class="video-destaque">
+          <div class="box-video-left">
+            <div class="box-img-video"><img src="./610d6c929ae0c173ae6ccb06_video-br.png" loading="lazy" alt="" class="image-26"></div>
+            <h1 data-w-id="4874a766-01d2-44cf-7618-ad2e77b83979" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="titulo-destaque h3-video">
+              Vídeo</h1>
+            <div class="linha-branca linha-content"></div>
+            <p data-w-id="4874a766-01d2-44cf-7618-ad2e77b8397c" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="p-cont branco-p">Para iniciarmos esse tema assista ao vídeo que preparamos para você!<br></p>
+			  <p class="p-video">Confira <a class="link-3" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/videos-podcasts/video-3.pdf" target="_blank">aqui</a> o que foi abordado no vídeo.</p>
+          </div>
+          <div class="box-video-right">
+            <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b83980" style="opacity: 1;" class="video-width video-cont-int">
+              <div class="video">
+                <div style="padding-top:56.17021276595745%" class="video-2 w-video w-embed">
+                  <!-- <iframe
+                    class="embedly-embed"
+                    src="https://videos3.fb.org.br/FundacaoBradesco/Externos/DE/EV/Postura/2_Postura_e_Imagem_Profissional.mp4"
+                    scrolling="no" title="YouTube embed" frameborder="0" allow=" fullscreen"
+                    allowfullscreen="true">
+                  </iframe> -->
+                  <video controls="" name="media"><source src="https://videos3.fb.org.br/FundacaoBradesco/Externos/DE/EV/Postura/2_Postura_e_Imagem_Profissional.mp4" type="video/mp4"></video> 
+                  </div>
+				    <!-- ACESSIBILIDADE -->
+				    <p class="elemento-acessibilidade"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+		<!-- FIM VÍDEO -->	
+			<p class="p-cont">No vídeo, você pôde entender o conceito de ergonomia, sobretudo, associada às atividades físicas cotidianas que, ao serem executadas de qualquer modo, podem provocar lesões graves, afetando até o ambiente profissional. Para se evitar isso (inclusive esse último) as organizações mobilizam profissionais específicos, como Técnicos de Segurança do trabalho, Médicos, Bombeiros etc.</p>
+			<p class="p-cont">Observe as imagens a seguir que demonstram alguns exemplos de postura adequada ao realizar atividades profissionais:</p>
+			
+			<!-- SLIDE IMAGENS -->
+		<!-- ALTERAR CLASS E INCLUIR NO CSS NO TOPO DESTA PAGINA -->
+        <div class="box-slider">
+          <div data-animation="slide" data-duration="500" data-infinite="1" class="slider-3 w-slider" style="height: 500px;" role="region" aria-label="carousel">
+            
+			  <div class="mask-3 w-slider-mask" id="w-slider-mask-0"><!-- ALTERAR CLASS IMAGEM1 --><div class="slide w-slide img1" aria-label="1 of 4" role="group" style="transform: translateX(0px); opacity: 1; transition: transform 500ms ease 0s;">
+                <div class="div_conteudo_slider slide01 teste">
+                  <p class="p-slider">Postura ideal na cadeira: coluna ereta e sentar até as costas entrar em contato com o encosto da cadeira.</p>
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide-2 w-slide img2" aria-label="2 of 4" role="group" style="transform: translateX(0px); opacity: 1; transition: transform 500ms ease 0s;" aria-hidden="true">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Postura ideal de agachamento: é necessário flexionar os joelhos e manter a coluna ereta ao se agachar.</p>
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide-2 w-slide img3" aria-label="3 of 4" role="group" style="transform: translateX(0px); opacity: 1; transition: transform 500ms ease 0s;" aria-hidden="true">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Postura ideal ao carregar algo pesado: o ideal seria dividir o peso com outra pessoa, a fim de não haver lesão.</p>
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide-2 w-slide img4" aria-label="4 of 4" role="group" style="transform: translateX(-2219.32px); opacity: 1; transition: transform 500ms ease 0s;" aria-hidden="true">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Postura ideal para andar: a coluna deve estar ereta e a linha dos olhos deve estar paralela ao chão.</p>
+                </div>
+              </div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore="">Slide 1 of 4.</div></div>
+            <div class="w-slider-arrow-left" role="button" tabindex="0" aria-controls="w-slider-mask-0" aria-label="previous slide">
+              <div class="w-icon-slider-left"></div>
+            </div>
+            <div class="w-slider-arrow-right" role="button" tabindex="0" aria-controls="w-slider-mask-0" aria-label="next slide">
+              <div class="w-icon-slider-right"></div>
+            </div>
+            <div class="w-slider-nav w-round"><div class="w-slider-dot w-active" data-wf-ignore="" aria-label="Show slide 1 of 4" aria-pressed="true" role="button" tabindex="0"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 2 of 4" aria-pressed="false" role="button" tabindex="-1"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 3 of 4" aria-pressed="false" role="button" tabindex="-1"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 4 of 4" aria-pressed="false" role="button" tabindex="-1"></div></div>
+          </div>
+        </div>
+		<!-- FIM SLIDE IMAGENS -->  
+			
+		<p class="p-cont">Assim, você pôde conhecer mais a relação entre postura e a sua saúde, principalmente, a partir da ergonomia. No próximo tópico, você verá uma outra dimensão da postura, associada à boa impressão profissional, que é muito importante não só para o dia a dia de qualquer empresa, mas também para desenvolver a sua credibilidade profissional.</p>
+			
+				<!-- TÍTULO H1 -->  
+        <div class="destaque-titulo">
+          <h1 class="heading-6" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;">Postura para uma boa impressão profissional</h1>
+        </div>
+		<!-- FIM H1 -->		
+		
+			
+		<p class="p-cont">Quando falamos sobre postura para ter uma boa impressão pessoal, devemos ter em mente que o ambiente profissional requer certas condutas, tais como: educação, gentileza, paciência, empatia, proatividade entre outras. Por exemplo, quando passamos por alguém no ambiente de trabalho (ou em qualquer ambiente social em que estejamos) e vamos cumprimentar essa pessoa, é importante sermos cordiais, nos mantermos eretos(as), pegarmos a mão da pessoa sem violência, mas com firmeza, olharmos nos olhos e sermos claros com palavras ditas, mantendo sempre um distanciamento seguro que não invada o espaço da pessoa, gerando assim, algum tipo de desconforto.
+</p>	
+			<!-- IMAGEM DESTAQUE E TEXTO -->
+        <div class="box-img-texto">
+			<!-- ALTERAR CLASS imagem1 E INCLUIR NO STYLE NO TOPO DESTE CÓDIGO INFORMANDO O BACKGROUND-IMAGE DA CLASS-->
+          <div class="img-text-img imagem2" style="opacity: 1; transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;"><p class="elemento-acessibilidade">#PraCegoVer: em um escritório, dois empresários estão apertando as mãos e sorrindo um para o outro. Enquanto isso, dois funcionários estão sentados na mesa de reunião conversando entre si.</p></div>
+          <div class="div-block-150">
+            <p class="p-img-e-texto">A postura profissional é um conjunto de atitudes e características pessoais, somadas às boas práticas dos ambientes sociais e profissionais. Tais ambientes, são frequentados ao longo da vida, estando completamente atrelados a ética e ao comprometimento. </p>
+          </div>
+		  
+        </div>
+		<!-- FIM IMAGEM DESTAQUE E TEXTO -->  
+			
+			<p class="p-cont">Desta forma, você notou o quanto uma boa postura no ambiente de trabalho influencia positivamente na impressão profissional, sobretudo, quando algumas condutas são aplicadas, a exemplo da proatividade, paciência e empatia. </p>
+			<p class="p-cont">Porém, a maioria delas converge para um outro ponto que merece muito destaque e que veremos a seguir: a educação. </p>
+			
+			
+		<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Educação</h1>
+		<!-- FIM H2 --> 	
+			
+			<p class="p-cont">Até esse ponto você estudou sobre a relevância que uma boa postura gera para a impressão profissional. Agora, vamos focar para um desdobramento disso, inclusive, que muitos colaboradores acabam não levando em consideração durante suas práticas diárias nas empresas, a educação.</p>
+			<p class="p-cont">Um dos pilares para uma boa convivência em qualquer lugar é a educação que está totalmente atrelada ao respeito. Muitas vezes até podemos não gostar de todas as características de determinados indivíduos, mas, devemos ser educados com ele, tratá-lo bem e de forma respeitosa. É importante relembrarmos as palavras mágicas: por favor, obrigada(o), bom dia, boa tarde, boa noite, desculpe-me e com licença. Além disso, devemos atentar para as gírias e palavrões que devem ser evitados ao máximo, principalmente com lideranças e clientes, em momentos de atendimento e apresentações. Uma boa educação diz muito sobre quem somos e abre portas onde quer que estejamos.</p>
+			<p class="p-cont">A boa educação é uma habilidade social que permite conhecermos novas pessoas, criando laços importantes tanto no âmbito social, quanto no profissional.
+</p>
+			<p class="p-cont">Existem algumas regras bem básicas quanto os princípios da educação, vamos conhecê-las:</p>
+			
+			<!-- TABS -->
+		<!-- ALTERAR ID AO INCLUIR TABS NO BLOCO -->  
+        <div class="aba-horizontal">
+          <div data-duration-in="300" data-duration-out="100" class="tabs-5 w-tabs">
+			  
+            <div class="tabs-menu-3 w-tab-menu" role="tablist">
+			  <!-- TAB 1 -->
+			  <a data-w-tab="Tab 1" class="tab-link-tab-1-4 w-inline-block w-tab-link w--current" id="w-tabs-1-data-w-tab-0" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-0" role="tab" aria-controls="w-tabs-1-data-w-pane-0" aria-selected="true">
+                <div class="text-block-20" style="text-align: center;"><strong class="bold-text-81">1</strong></div>
+              </a>
+			  <!-- TAB 2 -->
+              <a data-w-tab="Tab 2" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-1" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-1" role="tab" aria-controls="w-tabs-1-data-w-pane-1" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">2</strong></div>
+              </a>
+			  <!-- TAB 3 -->
+              <a data-w-tab="Tab 3" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-2" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-2" role="tab" aria-controls="w-tabs-1-data-w-pane-2" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">3</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 4" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-3" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-3" role="tab" aria-controls="w-tabs-1-data-w-pane-3" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">4</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 5" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-4" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-4" role="tab" aria-controls="w-tabs-1-data-w-pane-4" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">5</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 6" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-5" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-5" role="tab" aria-controls="w-tabs-1-data-w-pane-5" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">6</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 7" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-6" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-6" role="tab" aria-controls="w-tabs-1-data-w-pane-6" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">7</strong></div>
+              </a>
+				<!-- TAB 3 -->
+              <a data-w-tab="Tab 8" class="tab-link-tab-1-4 w-inline-block w-tab-link" tabindex="-1" id="w-tabs-1-data-w-tab-7" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#w-tabs-1-data-w-pane-7" role="tab" aria-controls="w-tabs-1-data-w-pane-7" aria-selected="false">
+                <div style="text-align: center;"><strong class="bold-text-81">8</strong></div>
+              </a>
+				
+            </div>
+			  
+			  
+            <div class="tabs-content-6 w-tab-content">
+				
+              <!-- TAB 1 -->
+			  <div data-w-tab="Tab 1" class="tab-pane-tab-1-3 w-tab-pane w--tab-active" id="w-tabs-1-data-w-pane-0" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-0">
+                <p class="paragraph-178">Desejar que o outro tenha um bom dia, ou uma boa tarde, ou boa noite.</p>
+              </div>
+				
+			  <!-- TAB 2 -->
+              <div data-w-tab="Tab 2" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-1" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-1">
+                <p class="paragraph-178">Buscar sempre manter um sorriso agradável no rosto que não precisa ser falso, mas ser convidativo a um "olá".</p>
+              </div>
+				
+			  <!-- TAB 3 -->
+              <div data-w-tab="Tab 3" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-2" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-2">
+                <p class="paragraph-178"><strong class="bold-text-18">Não se dirigir a alguém quando estiver irritado ou chateado se não consegue conter facilmente as emoções.</strong></p>
+              </div>
+				
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 4" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-3" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-3">
+                <p class="paragraph-178"><strong class="bold-text-18">Abusar de expressões como por favor, obrigada(o) e com licença.</strong></p>
+              </div>
+				
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 5" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-4" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-4">
+                <p class="paragraph-178"><strong class="bold-text-18">Se interessar pelo bem-estar do outro, o questionando sobre estar bem ou precisar de ajuda.</strong></p>
+              </div>
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 6" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-5" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-5">
+                <p class="paragraph-178"><strong class="bold-text-18">Ter ouvidos atentos e abertos para o que o outro tem a dizer.</strong></p>
+              </div>
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 7" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-6" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-6">
+                <p class="paragraph-178"><strong class="bold-text-18">Não atropelar as falas do outro, aguardando seu momento de falar.</strong></p>
+              </div>
+				<!-- TAB 3 -->
+              <div data-w-tab="Tab 8" class="tab-pane-tab-1-3 w-tab-pane" id="w-tabs-1-data-w-pane-7" role="tabpanel" aria-labelledby="w-tabs-1-data-w-tab-7">
+                <p class="paragraph-178"><strong class="bold-text-18">Ceder lugar a alguém mais necessitado, seja idoso, gestante, portador de alguma deficiência ou somente por gentileza mesmo.</strong></p>
+              </div>
+				
+            </div>
+          </div>
+        </div>
+	    <!-- FIM TABS -->
+		<p class="p-cont">Devemos ter em mente que somos diferentes uns dos outros e que não necessariamente todos tem a mesma educação. Logo, é necessário que você desenvolva resiliência e sempre deve estar atento ao seu estado emocional, mantendo a calma em situações delicadas em que muitos não tratarão você com a devida educação que gostaria.</p>
+			
+			<div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0;" class="texto-destaque">
+          <p class="paragraph-179">Outro ponto de atenção sobre a educação é a diferenciação entre a <strong>educação formal </strong>que é aquela expressada em ambientes acadêmicos e profissionais, em momentos de apresentação a grandes públicos e em momentos de entrevistas. E a <strong>educação informal</strong> que é aquela onde interagimos com familiares, amigos próximos, em locais de lazer e em momentos de descontração que mesmo sendo situações mais "leves", merecem uma boa e sadia educação na hora de tratarmos com o outro.</p></div>
+			
+			<p class="p-cont">Assim, não só destacamos o ponto da educação no ambiente de trabalho, a qual deve ser uma conduta aplicada de modo recorrente, mas também refletimos que ela possibilita a criação de vínculos entre pessoas tanto no contexto profissional, quanto no social.</p>
+			<p class="p-cont">Em virtude disso, veremos outra conduta atrelada à educação, a qual também deve ser ressaltada e praticada naquelas circunstâncias, a gentileza. Acompanhe!
+</p>
+			
+			<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Gentileza</h1>
+		<!-- FIM H2 -->
+		<p class="p-cont">Seja no trabalho, na sua casa, na rua, enfim, em qualquer lugar, estamos convivendo em sociedade. Por conta disso, nossas ações, ainda que pequenas, acabam refletindo em outras pessoas.
+</p>
+			<p class="p-cont">Nesse sentido, quanto mais nossas condutas forem benéficas, há uma tendência disso se espalhar socialmente. Desta maneira, mudar nossas condutas individuais é um primeiro passo (de muitos), para um ambiente de trabalho, uma residência, um bairro e, por sua vez, uma sociedade mais gentil. </p>
+			
+			
+			<!-- VÍDEO -->
+        <div class="video-destaque adequacao-app-ev-mobile">
+          
+          <div class="box-video-right">
+            <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b83980" style="opacity: 0;" class="video-width video-cont-int">
+              <div class="video">
+                <div style="padding-top:56.17021276595745%" class="video-2 w-video w-embed">
+                  <!-- <iframe
+                    class="embedly-embed"
+                    src="https://videos3.fb.org.br/FundacaoBradesco/Externos/DE/EV/Postura/3_Postura_e_Imagem_Profissional.mp4"
+                    scrolling="no" title="YouTube embed" frameborder="0" allow=" fullscreen"
+                    allowfullscreen="true">
+                  </iframe> -->
+                  <video controls="" name="media"><source src="https://videos3.fb.org.br/FundacaoBradesco/Externos/DE/EV/Postura/3_Postura_e_Imagem_Profissional.mp4" type="video/mp4"></video> 
+                  </div>
+				    <!-- ACESSIBILIDADE -->
+				    <img class="imagem-codigo" alt="">
+					<img class="imagem-resultado-codigo" alt="">
+              </div>
+            </div>
+          </div>
+			<div class="box-video-left">
+            <div class="box-img-video video-icon-mobile adequacao-app-ev-mobile"><img src="./610d6c929ae0c173ae6ccb06_video-br.png" loading="lazy" alt="" class="image-26"></div>
+            <h1 data-w-id="4874a766-01d2-44cf-7618-ad2e77b83979" style="opacity: 0;" class="titulo-destaque h3-video">
+              Vídeo</h1>
+            <div class="linha-branca linha-content"></div>
+            <p data-w-id="4874a766-01d2-44cf-7618-ad2e77b8397c" style="opacity: 0;" class="p-cont branco-p">Diante disso, preparamos o vídeo a seguir que detalha sobre as mudanças que queremos. Acompanhe!<br></p>
+				<p class="p-video">Confira <a class="link-3" href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/videos-podcasts/video-4.pdf" target="_blank">aqui</a> o que foi abordado no vídeo.</p>
+          </div>
+        </div>
+		<!-- FIM VÍDEO -->
+			
+		<p class="p-cont">Assim como você viu no vídeo, as vantagens são muitas para quem pratica ações gentis, observe abaixo algumas atitudes que o ajudam a ser mais gentil e espalhar essa atitude/mudança ao seu redor:</p>	
+		<!-- ACCORDION+ E - -->  
+        <div class="sanfona-menor">
+			
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540789" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Não tenha preconceito</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Não fazer distinção de pessoa nenhuma, independentemente de sua raça, religião, sexualidade, classe social ou qualquer outra diferença.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->
+			
+		  <!-- ITEM ACCORDION -->	
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540796" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Sorria</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer"> Sorrir mais, mesmo que seja apenas como um exercício.
+                </p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+		  
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Seja prestativo</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Ajudar as pessoas mesmo em situações aparentemente bobas ou simples demais.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			<!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Dê votos de confiança</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Dar voto de confiança e segunda chance às pessoas.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			<!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Elogie mais</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Fazer elogios sem inveja, e sem esperar nada em troca, apenas para que a outra pessoa fique motivada e feliz.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			
+			<!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Não reclame</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Não resmungar o tempo todo, pois além de chato, ainda faz o ambiente ficar desagradável e impossível de conviver.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			<!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Se envolva</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">Se envolver em trabalhos voluntários sem se autopromover.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			
+        </div>
+		<!-- FIM ACCORDION + E - -->	
+			
+		<p class="p-cont">Você já deve ter ouvido o ditado: "gentileza gera gentileza", não é mesmo? Pratique-o sempre, isso fara com que seu ambiente de trabalho fique mais leve, harmonioso e produtivo.</p>
+			<p class="p-cont">Até aqui, você estudou mais sobre a gentileza, evidenciando o quanto ela merece destaque e deve ser praticada, independente do contexto em que você está. Além disso, no vídeo apresentado, refletimos sobre cada um de nós assumirmos o papel de agentes de transformação do mundo em que vivemos, por meio de condutas gentis. Por último, conheceu algumas ações eficazes que promovem a gentileza. </p>
+			<p class="p-cont">Siga adiante para conhecer outras duas condutas essenciais e que fazem muita diferença no convívio entre as pessoas nos dias de hoje, a paciência e a inteligência emocional. </p>
+			
+			<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Paciência e inteligência emocional</h1>
+		<!-- FIM H2 -->
+		<p class="p-cont">Infelizmente notamos que as pessoas estão cada vez menos pacientes umas com as outras, mas no ambiente de trabalho parece que a situação se agrava, pois em nome de prazos e metas, muitas pessoas acabam por desrespeitar colegas de trabalho, passar por cima de ordens, normas, regras e/ou protocolos, não esperar que o outro termine a explanação de raciocínio, dentre tantas outras situações.</p>
+			
+			<!-- IMAGEM DESTAQUE E TEXTO; em elemento-acessibilidade, incluir o #PraCegoVer-->
+        <div class="box-img-texto">
+          <div class="div-block-150">
+            <p class="p-img-e-texto">Por exemplo, ao gritar acabamos expondo outras pessoas, essas atitudes geram um ambiente super nocivo a saúde mental, além de deixar bem clara a necessidade de estudo sobre a Inteligência Emocional (conceito da psicologia que trata da capacidade de reconhecer, avaliar e saber lidar com seus próprios sentimentos, assim também com os das pessoas ao nosso redor, por meio de observação e convivência).</p>
+          </div>
+		  <!-- ALTERAR CLASS imagem1 E INCLUIR NO STYLE NO TOPO DESTE CÓDIGO INFORMANDO O BACKGROUND-IMAGE DA CLASS-->
+          <div class="img-text-img imagem1" style="background-image: url(&quot;images/img-cont23.jpg&quot;); opacity: 0;"></div>
+		  <p class="elemento-acessibilidade">#PraCegoVer: na imagem, existem quatro pessoas em uma sala de reunião de uma empresa. Em pé, há um chefe gritando com seus colaboradores, enquanto três deles estão com uma postura de acuados, gesticulando de modo se desculpar com o seu superior.</p>
+        </div>
+		<!-- FIM IMAGEM DESTAQUE E TEXTO -->  
+			
+			
+			
+			<p class="p-cont">Não seja esse tipo de pessoa, fale em tom compreensível e claro, chame as pessoas para um café ou um bate papo mais reservado, pratique meditação, oração, leituras e músicas que te acalmam em momentos de tensões, não exponha ninguém, quando estiver nervoso, peça licença e saia para respirar, mantenha sua mente sã e mostre que tem um caráter íntegro.</p>
+			
+			<!-- BOX ATENÇÃO -->  		  
+        <div class="box-atencao" style="opacity: 0;">
+          <div class="fundo-icon fundo-atencao" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./610d6c929ae0c111b96ccb01_atencao-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque tutilo-atencaooi">Atenção</h3>
+            <div class="cont-box-p p-cont"><p>Devemos entender que possuímos duas mentes, uma que é emocional e outra mais racional, elas trabalham juntas e em conformidade na maior parte do tempo, nos ajudando a escolher as melhores rotas, ou seja, elas se alimentam do conhecimento adquirido e armazenado em cada uma. Somos seres incrivelmente inteligentes e com todas as ferramentas internas e externas para desempenhar nosso melhor, basta utilizarmos o bom senso e respirar, buscando sempre a melhor saída, sem exaltação.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX ATENÇÃO -->
+			
+		<p class="p-cont">Daniel Goleman, escritor do <em>best-seller</em> “Inteligência Emocional” fala que devemos tomar consciência de nossas emoções, para aí sim desenvolvermos nosso potencial de inteligência geral, pois com o autoconhecimento e aprendizado ao lidarmos com nossas emoções é que facilitamos ou dificultamos o ápice de nossas experiências escolares, acadêmicas, profissionais, sociais e até mesmo espirituais.
+</p>
+			
+		<p class="p-cont">Abaixo, estão os cinco pilares da Inteligência Emocional segundo Daniel Goleman:</p>
+			
+			<!-- ACCORDION -->  
+        <div class="acordion-grande">
+          <div class="accordion-2">
+			
+			<!-- ITEM ACCORDION -->
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b839cc" class="accordion-title-2">
+                  <h2 class="titulo-accordion"><strong>Conhecer as próprias emoções</strong></h2><img src="./arrow-branca-baixo.svg" loading="lazy" width="30" alt="" class="seta-animada">
+                </div>
+                <div style="height: 0px;" class="acordion_content-2">
+                  <div class="text-block-53">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" target="_blank" class="link"><span class="text-span-13"><p>Essa talvez seja a chave para entender sobre inteligência emocional e tudo o que a rodeia, pois você deve estar ciente de que se trata de um processo gradual e completamente variável, ou seja, cada indivíduo aprende e evolui de forma diferente neste assunto. Não queira apressar seu caminho, respeite suas emoções, se autoconheça.</p></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- FIM ITEM -->
+			  
+			<!-- ITEM ACCORDION -->  
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b839db" class="accordion-title-2">
+                  <h2 class="titulo-accordion"><strong>Controlar as próprias emoções</strong></h2><img src="./arrow-branca-baixo.svg" loading="lazy" width="30" alt="" class="seta-animada">
+                </div>
+                <div style="height: 0px;" class="acordion_content-2">
+                  <div class="text-block-53">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" target="_blank" class="link"><span class="text-span-13"><p>Devemos ter em mente que temos momentos estressantes, desanimadores, outros momentos são de euforia, de ansiedade, entre tantos outros, mas a grande questão é aprendermos a lidar com essas variadas emoções e controlá-las frente a cada necessidade, o que nos trará equilíbrio e melhor visualização da situação. Uma grandiosa dica é sermos positivistas mesmo que sob pressão e se autoconhecer como já vimos, é a chave para aprender os pontos a se trabalhar e controlar.</p></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- FIM ITEM -->
+			  
+			<!-- ITEM ACCORDION -->  
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b839ea" class="accordion-title-2">
+                  <h2 class="titulo-accordion"><strong>Automotivação é fundamental</strong></h2><img src="./arrow-branca-baixo.svg" loading="lazy" width="30" alt="" class="seta-animada">
+                </div>
+                <div style="height: 0px;" class="acordion_content-2">
+                  <div class="text-block-53">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" target="_blank" class="link"><span class="text-span-13"><p>Devemos sempre pensar antes de agir ou tomar decisões para que não tenhamos arrependimentos, pois sabemos que tudo é possível, talvez não exatamente da forma que esperávamos, mas é possível sim e, para isso, não é necessário passar por cima de outras pessoas ou tomar caminhos tortuosos e que venham a manchar nossa imagem. Ser e manter-se positivo e alegre sempre será é a melhor das motivações.</p></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- FIM ITEM -->
+			  <!-- ITEM ACCORDION -->  
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b839ea" class="accordion-title-2">
+                  <h2 class="titulo-accordion"><strong>Saber se relacionar</strong></h2><img src="./arrow-branca-baixo.svg" loading="lazy" width="30" alt="" class="seta-animada">
+                </div>
+                <div style="height: 0px;" class="acordion_content-2">
+                  <div class="text-block-53">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" target="_blank" class="link"><span class="text-span-13"> <p>Ambientes positivos são fundamentais para uma boa execução das atividades e ter boas relações interpessoais melhora não só nossa qualidade de vida, mas também contagia todo ambiente em que estamos inseridos e fortalece nossa marca pessoal positivamente.</p></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- FIM ITEM -->
+			  <!-- ITEM ACCORDION -->  
+            <div class="accordion-wrapper">
+              <div class="accordion-item">
+                <div data-w-id="4874a766-01d2-44cf-7618-ad2e77b839ea" class="accordion-title-2">
+                  <h2 class="titulo-accordion"><strong>Ser empático(a)</strong></h2><img src="./arrow-branca-baixo.svg" loading="lazy" width="30" alt="" class="seta-animada">
+                </div>
+                <div style="height: 0px;" class="acordion_content-2">
+                  <div class="text-block-53">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" target="_blank" class="link"><span class="text-span-13"><p>Temos obrigatoriamente que aprender a nos colocar no lugar do outro, sentir como o outro, nos propor a ajudar o outro e reconhecer suas emoções como importantes, tanto quanto as nossas.</p></span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+			<!-- FIM ITEM -->
+			  
+          </div>
+        </div>
+		<!-- FIM ACCORDION -->
+			<p class="p-cont">Assim, você passou não só a conhecer, mas também a refletir sobre a relevância que as condutas da paciência e da inteligência emocional possuem no contexto contemporâneo. Conheceu também os cinco pilares da inteligência emocional e como colocá-los em prática. </p>
+			<p class="p-cont">Em função disso, vamos aprofundar o conhecimento no conceito associado a uma conduta que é citada recorrentemente: a empatia. </p>
+			
+			<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Empatia</h1>
+		<!-- FIM H2 -->
+			
+		<p class="p-cont">Essa palavra é muito comentada nos dias de hoje e é uma valiosa característica do indivíduo que, com certeza, deve ser desenvolvida por todos. Quantas vezes já ouvimos a seguinte frase: “Eu não tenho nada a ver com o que o outro entendeu do que eu falei. O problema é dele e não meu.”?
+</p>
+			<p class="p-cont">Isso é muito grave, pois, nem todas as pessoas foram forjadas ao longo de suas vidas, como nós. Você se lembra que cada ser é único? Então, a empatia é se colocar no lugar do outro, tentar imaginar como ele se sente com determinada ação e evitar agir daquela forma, tendo em vista que isso pode gerar algo muito negativo na vida daquela pessoa. 
+</p>
+			<p class="p-cont">Obviamente que vivenciamos inúmeras situações em que pessoas se vitimizam, porém, é possível identificar quando é real, mas na dúvida, opte sempre por ser educado, gentil, paciente e se colocar no lugar do outro, principalmente no ambiente profissional que já um ambiente em que se exige bastante das pessoas, o que pode ocasionar certas tensões que tendem a impactar diretamente no psicológico de cada indivíduo.</p>
+			
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0;" class="texto-destaque">
+          <p class="paragraph-179">A empatia está fortemente relacionada a Inteligência Emocional e estudos sobre o tema apontam a existência de três tipos de empatia, onde cada uma delas tem característica próprias, o que nos ajuda a entender ainda mais sobre o assunto, e a ficarmos mais sensíveis para agir ou não, quando estivermos frente a necessidade de ter empatia com a situação de alguém.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			
+			
+			<p class="p-cont">Vamos conhecê-las:</p>
+			
+			<!-- ACCORDION+ E - -->  
+        <div class="sanfona-menor">
+			
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540789" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Empatia Emocional</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">É quando compartilhamos diretamente os sentimentos do outro, ela também é conhecida como empatia afetiva e envolve o ato de criar conexão emocional com o outro por meio do compartilhamento das emoções e sensações. Esse tipo de empatia sintoniza as pessoas num mesmo mundo, numa mesma dor ou qualquer outro sentimento. O desenvolvimento desse tipo de empatia requer autoconhecimento e uma grande regulação e controle do emocional.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->
+			
+		  <!-- ITEM ACCORDION -->	
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d04303540796" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Empatia Compassiva</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">É quando percebemos que o outro necessita de ajuda e nos colocamos a sua disposição. Neste caso a empatia gera uma ação quase que instantânea, após a compreensão de sua necessidade, pois além do compartilhamento de emoções ou sensações, a pessoa se vê motivada a ajudar o outro. Esse tipo é também conhecido como preocupação empática e apresenta o equilíbrio entre a razão e a emoção da pessoa empática.
+                </p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+		  
+		  <!-- ITEM ACCORDION -->
+          <div class="questin-drop">
+            <div data-w-id="87d77ff1-09ed-d364-f470-d043035407a3" class="dropdown-question">
+              <div class="drop-button">
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-h-5"></div>
+                <div style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg); transform-style: preserve-3d;" class="drop-button-v-5"></div>
+              </div>
+              <div class="button-down-2">
+                <div class="text-block-4"><strong class="bold-text-83"><p>Empatia Cognitiva</p></strong></div>
+              </div>
+            </div>
+            <div style="height: 0px;" class="dropdown-content-answer-5">
+              <div class="block-text">
+                <p class="paragraph-answer">É quando entendemos o ponto de vista da outra pessoa. Este tipo é o mais conhecido e até mesmo considerado o único ou principal, e está atrelado em se colocar no lugar do outro. Essa é uma capacidade de entender não somente os sentimentos da pessoa, mas também como ela está pensando. É conhecido como tomada de perspectiva e pode ser considerado como não contendo sentimento suficiente, pois, o empático não está sentindo diretamente, mas sim, fazendo apenas uma análise lógica das emoções e sensações da outra pessoa.</p>
+              </div>
+            </div>
+          </div>
+		  <!-- FIM ITEM -->	
+			
+        </div>
+		<!-- FIM ACCORDION + E - -->
+			
+		<p class="p-cont">Esses três tipos são os pilares que servem de base para que possamos realizar a prática de nos colocarmos no lugar do outro, isto é, ser mais empático, independente se você estiver no âmbito social e/ou profissional. </p>
+			<p class="p-cont">Aliás, por falar no âmbito profissional, a próxima conduta que você verá é a da proatividade, a qual está ligada à responsabilidade, à superação de obstáculos e à resolução de problemas. Confira!</p>
+			
+			
+		<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Proatividade</h1>
+		<!-- FIM H2 -->	
+			
+		<p class="p-cont">A proatividade é super falada em momentos de entrevista, tanto pelo entrevistador, quanto pelo entrevistado, porém, nem sempre é praticada.</p>	
+			
+			<!-- BOX ATENÇÃO -->  		  
+        <div class="box-atencao" style="opacity: 0;">
+          <div class="fundo-icon fundo-atencao" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./610d6c929ae0c111b96ccb01_atencao-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque tutilo-atencaooi">Atenção</h3>
+            <div class="cont-box-p p-cont"><p>Uma pessoa proativa não é a que tem sempre que fazer tudo, ou deve ser a primeira em tudo, mas sim, ser uma pessoa disposta a assumir responsabilidades, encarar desafios, tentar resolver as coisas o quanto antes, se mostrar interessada, além de estar em constante desenvolvimento pessoal e profissional.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX ATENÇÃO -->
+			<p class="p-cont">Outro ponto bastante interessante do exercício da proatividade é ter em mente a antecipação das ações, gerando assim um ambiente cada vez mais ativo estratégico, pois, é da proatividade que podemos metrificar atividades e desenhar novas melhorias e inovações nas ações, produtos e serviços. </p>
+			<p class="p-cont">Mas atenção para não ser uma pessoa inconveniente, pois, existem pessoas que acabam confundindo a proatividade com atitudes que não agregam nenhum valor, tais como querer ser o primeiro em tudo, passar por cima dos outros, entrar em conversas sem ser convidado, ficar elogiando pessoas influentes somente por interesse, praticar simpatia e disposição somente quando convém ou quando tem que se mostrar a alguém. Pois essas atitudes são perceptíveis e isso pode ser muito ruim para sua imagem profissional.
+</p>
+			<p class="p-cont">Veja alguns exemplos de como ser uma pessoa mais proativa (positivamente):</p>
+			
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Provoque discussões sadias e pertinentes.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Proponha soluções simples ou inovadoras.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Entenda todos os processos de onde trabalha.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Seja curioso(a).</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Desenvolva conhecimentos variados.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Questione-se continuamente.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Esteja aberto a mudanças.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Saiba ouvir críticas e evolua com elas.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Desenvolva seu espírito de servir.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+			<!-- BOX DESTAQUE -->  		  
+        <div data-w-id="9f4167f1-d83f-661a-8304-5a8660ad23b4" style="opacity: 0; margin: 15px auto !important;" class="texto-destaque">
+          <p class="paragraph-179" style="padding: 20px !important;">Procure ver o copo sempre "meio cheio" do que "meio vazio": positivismo.</p>
+        </div>
+		<!-- FIM BOX DESTAQUE -->
+		
+			
+			
+			
+			<p class="p-cont">Você acabou de estudar sobre a proatividade, conduta associada às atividades de resolução de problemas e de atribuição de responsabilidades. Nesse sentido, não só refletimos sobre os limites dela em relação à inconveniência, como elencamos algumas práticas que a estimulam.</p>
+			<p class="p-cont">É relevante frisar que, embora você passe a praticar as condutas das quais abordamos anteriormente (a educação, a gentileza, a paciência e a inteligência emocional, a empatia e a proatividade), resta falar sobre a última e que interfere nas demais, a ética. </p>
+			
+			
+			<!-- TÍTULO H2 -->  
+        <h1 class="titulo-conteudo-h1" style="opacity: 0;">Ética</h1>
+		<!-- FIM H2 --> 
+			
+			<!-- BOX ENTENDA O CONCEITO -->  		  
+        <div class="box-atencao" style="opacity: 0;">
+          <div data-w-id="76ec7998-2f35-1f17-a100-7092b97502f8" class="fundo-icon fundo-entendaconceito" style="transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg) rotateY(0deg) rotateZ(7deg) skew(0deg, 0deg); transform-style: preserve-3d; will-change: transform;"><img src="./entenda-conceito-br_1entenda-conceito-br.png" loading="lazy" alt="" class="image-23"></div>
+          <div class="content-box-destaque box-content-1">
+            <h3 class="titulo-destaque titulo-entenda">Entenda o Conceito</h3>
+            <div class="cont-box-p p-cont"><p>A Filosofia Moral, mais conhecida como ética, é uma área do conhecimento que está atrelada a Filosofia e consiste em investigações de ações e princípios humanos, com base em seus hábitos e/ou costumes.</p></div>
+          </div>
+        </div>
+		<!-- FIM BOX ENTENDA O CONCEITO --> 
+			
+			<p class="p-cont">Ouvimos muito a expressão "É preciso ser ético" ou "Tal pessoa não tem ética", mas o que isso quer realmente nos dizer?</p> 
+			<p class="p-cont">Para vivermos em sociedade algumas regras precisam ser estabelecidas e bem claras, além de disseminadas entre todos. Deste modo, não importa onde estejamos, saberemos como nos portar de maneira que não haja nenhuma exposição desnecessária ou incômodo no ambiente. Essas regras são conhecidas também como conduta e estão diretamente ligadas ao desenvolvimento do caráter pessoal que por sua vez, se estende ao profissional, onde os códigos de conduta são estabelecidos pelos órgãos competentes de cada área.</p>  
+			<p class="p-cont">Aqui podemos ver algumas situações que ilustram a forma ética para lidarmos:</p>  
+			
+			<!-- SLIDE IMAGENS -->
+		<!-- ALTERAR CLASS E INCLUIR NO CSS NO TOPO DESTA PAGINA -->
+        <div class="box-slider1">
+          <div data-animation="slide2" data-duration="500" data-infinite="1" class="slider-3 w-slider" role="region" aria-label="carousel">
+            
+		   <div class="mask-3 w-slider-mask img121" id="w-slider-mask-1"><!-- ALTERAR CLASS IMAGEM1 --><div class="slide2 w-slide" aria-label="1 of 4" role="group" style="transform: translateX(0px); opacity: 1;">
+                <div class="div_conteudo_slider slide01 teste">
+                  <p class="p-slider">Não devemos utilizar de posições políticas e cargos públicos para obter vantagens pessoais de forma ilícita, o que serve para ambientes privados também.</p>
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide2 w-slide" aria-label="2 of 4" role="group" aria-hidden="true" style="transform: translateX(0px); opacity: 1; visibility: hidden;">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Não devemos obter benefícios por meio de ações incorretas, ilícitas ou que venham de alguma maneira causar prejuízo ou mal estar a outrem.</p>
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide2 w-slide" aria-label="3 of 4" role="group" aria-hidden="true" style="transform: translateX(0px); opacity: 1; visibility: hidden;">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Não devemos nos apropriar de pertences, propriedade ou mesmo considerações alheias, sem que sejam devidamente merecidas por nós mesmos.</p>
+					
+                </div>
+              </div><!-- ALTERAR CLASS IMAGEM2 --><div class="slide2 w-slide" aria-label="4 of 4" role="group" aria-hidden="true" style="transform: translateX(0px); opacity: 1; visibility: hidden;">
+                <div class="div_conteudo_slider slide01 teste" aria-hidden="true">
+                  <p class="p-slider" aria-hidden="true">Devemos respeitar a vida e a individualidade de toda e qualquer pessoa, evitando exposições, brincadeiras sem a devida aprovação e demais situações constrangedoras.</p>
+					
+                </div>
+              </div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div><div aria-live="off" aria-atomic="true" class="w-slider-aria-label" data-wf-ignore=""></div></div>
+            <div class="w-slider-arrow-left" role="button" tabindex="0" aria-controls="w-slider-mask-1" aria-label="previous slide">
+              <div class="w-icon-slider-left"></div>
+            </div>
+            <div class="w-slider-arrow-right" role="button" tabindex="0" aria-controls="w-slider-mask-1" aria-label="next slide">
+              <div class="w-icon-slider-right"></div>
+            </div>
+            <div class="w-slider-nav w-round"><div class="w-slider-dot w-active" data-wf-ignore="" aria-label="Show slide 1 of 4" aria-pressed="true" role="button" tabindex="0"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 2 of 4" aria-pressed="false" role="button" tabindex="-1"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 3 of 4" aria-pressed="false" role="button" tabindex="-1"></div><div class="w-slider-dot" data-wf-ignore="" aria-label="Show slide 4 of 4" aria-pressed="false" role="button" tabindex="-1"></div></div>
+          </div>
+        </div>
+		<!-- FIM SLIDE IMAGENS -->
+			
+		<p class="p-cont">Esse senso ético que todos devemos ter, faz com que haja equilíbrio e um bom funcionamento da sociedade em todas as suas esferas, sejam sociais ou profissionais, visando uma convivência mais saudável e produtiva a todos.</p>	
+			
+			<!-- IMAGEM DESTAQUE E TEXTO -->
+        <div class="box-img-texto">
+          <div class="div-block-150">
+            <p class="p-img-e-texto">É importante evidenciar que vivemos em um dilema, pois nós como seres humanos precisamos sempre estar atentos a buscar o equilíbrio nas organizações à qual estamos inseridos. Precisamos buscar o consenso entre o certo e o errado, entre fazer e não fazer, mas sempre lembrando que vivemos em convívio com outras pessoas.</p>
+          </div>
+		  <!-- ALTERAR CLASS imagem1 E INCLUIR NO STYLE NO TOPO DESTE CÓDIGO INFORMANDO O BACKGROUND-IMAGE DA CLASS-->
+          <div class="img-text-img imagem22" style="opacity: 0;"><div class="elemento-acessibilidade">#pracegover: imagem com foco em um notebook, papel e óculos em cima da mesa. Ao fundo há duas pessoas apontando para a mesma direção no escritório. No centro da imagem há um ícone de uma balança.</div></div>
+        </div>
+		<!-- FIM IMAGEM DESTAQUE E TEXTO --> 
+			 
+			<p class="p-cont">Conforme citado anteriormente precisamos de regras, e elas precisam buscar o equilíbrio para que não seja benefício somente para um dos lados, de fato, a figura acima demonstra que a vida em sociedade é feita de escolhas e essas escolhas devem sempre levar em consideração a empatia e a individualidade de cada um de nós, apresentaremos mais adiante sobre essas situações. </p>
+			
+			
+			
+			
+			
+			
+			
+		<!-- =============================================================================  --> 
+		<div style="height: 50px;"></div> 
+									  
+		  
+      </div>
+	  
+	</div>
+    
+	  
+    <div class="bg-final adequacao-app-ev-mobile">
+      <div class="c-p-cons adequacao-app-ev-mobile">
+        <h1 class="heading-4 adequacao-app-ev-mobile" style="opacity: 0;"><strong class="bold-text-90">Parabéns! Você chegou ao final do módulo 2.</strong></h1>
+        <div class="linha-branca linha-br"></div>
+        <p class="p-cont branco-p adequacao-app-ev-mobile" style="text-align: left;">Aqui você viu sobre a importância da postura profissional adequada, com a apresentação de uma série de ações, relacionadas ao falar, gesticular e agir. <br><br>
+
+Destacamos que essas ações precisam se basear no Comunicação Não Violenta, a qual possibilita uma coexistência plena e harmônica entre as pessoas, principalmente, os colaboradores de uma empresa. Você pôde conferir, também, a postura a partir da dimensão da saúde, envolvendo aspectos ergométricos e seus impactos na produtividade das organizações e a qualidade de vida dos indivíduos. <br><br>
+
+Além da postura no aspecto da saúde, você estudou sobre a postura para gerar uma boa impressão profissional, sobretudo, associada às condutas da educação, da gentileza, da paciência e da inteligência emocional, da empatia, da produtividade e, por fim, da ética. <br><br>
+
+Esse conjunto de saberes é extremamente relevante porque garante um bom desempenho da sua saúde física e mental, como também contribui para alicerçar a sua credibilidade profissional, para que você possa atuar de modo eficaz no contexto da cultural organizacional em relação ao da individualidade, assunto que trataremos no próximo módulo. Vamos lá?<br><br>
+
+Selecione o botão “Avançar” e confira!
+</p>
+        <div class="div-block-152">
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-1.html" class="a-botton branco-bt new-espaco w-inline-block">
+            <div class="text-a">Voltar</div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html" class="a-botton branco-bt new-espaco w-inline-block">
+            <div class="text-a"><strong>Avançar</strong></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="nav wf-section" style="filter: grayscale(0%) brightness(100%) contrast(100%);">
+    <div class="menu">
+      <div class="main-menu">
+        <div class="logo"><img src="./logo_fb.svg" loading="lazy" alt="" class="image-22"></div>
+        <div class="titulo-cursoi">Postura e Imagem Profissional</div>
+        <div class="dropdown-trigger h1-tiulo">
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+          <div style="background-color:rgb(255,255,255)" class="div-block mein"></div>
+        </div>
+        <div style="opacity:0;display:none" class="nav-menu">
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-0.html" class="link-nav w-inline-block">
+            <p class="text-nav">Abertura</p>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-1.html" class="link-nav w-inline-block">
+            <p class="text-nav">Módulo 1</p>
+            <div class="percentual-avanco">
+              <div class="barra1 ocutar"></div>
+              <div class="barra-progresso barra-zerada ocutar"></div>
+              
+              <div class="div-block-153"></div><div class="percent concluido">Concluído</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html" class="link-nav w-inline-block w--current">
+            <p class="text-nav">Módulo 2</p>
+            <div class="percentual-avanco">
+              <div class="barra1"></div>
+              <div class="barra-progresso" style="width: 44px;"></div>
+              <div class="percent">44%</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-3.html" class="link-nav w-inline-block">
+            <p class="text-nav">Módulo 3</p>
+            <div class="percentual-avanco">
+              <div class="barra1"></div>
+              <div class="barra-progresso barra-zerada"></div>
+              <div class="percent">0%</div>
+            </div>
+          </a>
+          <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/pdfs/FichaTecnica_postura-img.pdf" target="_blank" class="link-nav mais-escuro w-inline-block">
+            <p class="text-nav boldi">Ficha Técnica</p>
+          </a>
+          <div class="div-block-3">
+            <div class="div-block-4">Acessibilidade</div>
+            <div class="text-acess">
+              <div class="acess-font">Fonte:</div>
+              <div class="acess-font-2">Contraste:</div>
+            </div>
+            <div class="div-block-5">
+              <div class="bt-font">
+                <div id="a_mais" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./plus.svg" loading="lazy" alt="" class="image-20">
+                </div>
+                <div id="a_menos" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./menos.svg" loading="lazy" alt="" class="image-20">
+                </div>
+                <div id="a_reset" class="bt-font-am">
+                  <div class="text-block-3">Aa</div><img src="./reset.svg" loading="lazy" alt="" class="image-20 reset-bt">
+                </div>
+              </div>
+              <div class="div-block-6">
+                <div class="div-block-7">
+                  <div class="icon-a"><img src="./moon.svg" loading="lazy" alt="" class="image-21 moon">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" class="toogle-switch w-inline-block" data-id="moon">
+                      <div class="toogle-switch-before"></div>
+                      <div class="toogle-switch-checked"></div>
+                    </a>
+                  </div>
+                </div>
+                <div class="div-block-7">
+                  <div class="icon-a"><img src="./sun.svg" loading="lazy" alt="" class="image-21">
+                    <a href="https://lms.ev.org.br/mpls/Custom/Cds/COURSES/3201-PIP_Adapt/curso/modulo-2.html#" class="toogle-switch w-inline-block" data-id="sun">
+                      <div class="toogle-switch-before"></div>
+                      <div class="toogle-switch-checked"></div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./jquery-3.5.1.min.dc5e7f18c8.js.download" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" style="filter: grayscale(0%) brightness(100%) contrast(100%);"></script>
+  <script src="./webflow.js.download" type="text/javascript" style="filter: grayscale(0%) brightness(100%) contrast(100%);"></script>
+  <!-- [if lte IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/3.0.2/placeholders.min.js"></script><![endif] -->
+
+
+</body></html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!-- saved from url=(0096)https://lms.ev.org.br/mpls/Custom/Cds/THEMES//HTML5_FB_2019_v3/templates/CDSTree.htm#joustEntry0 -->
+<html><div id="in-page-channel-node-id" data-channel-name="in_page_channel_mbZrB2"></div><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script><script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+    <title>MPLS COURSE TREE</title>
+    
+    <meta name="ROBOTS" content="NOINDEX,NOFOLLOW">
+
+    <style id="MPLSStyles" type="text/css">
+        <!--
+        .menuItem {
+            position: absolute;
+            visibility: hidden;
+            left: 0px;
+        }
+
+            .menuItem BR {
+                clear: both;
+            }
+
+        .node {
+            color: black;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .node A:link {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .node A:visited {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .node A:active {
+            }
+
+            .node A:hover {
+            }
+
+        .leaf {
+            color: black;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .leaf A:link {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .leaf A:visited {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .leaf A:active {
+            }
+
+            .leaf A:hover {
+            }
+
+
+        .nodeCompleted {
+            color: black;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .nodeCompleted A:link {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .nodeCompleted A:visited {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .nodeCompleted A:active {
+            }
+
+            .nodeCompleted A:hover {
+            }
+
+        .leafCompleted {
+            color: black;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+        .leafCompleted {
+            color: black;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .leafCompleted A:link {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .leafCompleted A:visited {
+                color: #006699;
+                text-decoration: underline;
+            }
+
+            .leafCompleted A:active {
+            }
+
+            .leafCompleted A:hover {
+            }
+
+
+        .disabled {
+            color: #CCCCCC;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .disabled A:link {
+                color: #CCCCCC;
+                text-decoration: none;
+            }
+
+            .disabled A:visited {
+                color: #CCCCCC;
+                text-decoration: none;
+            }
+
+            .disabled A:active {
+            }
+
+            .disabled A:hover {
+            }
+
+        .selected {
+            color: white;
+            background: #CDE0F4;
+            font-family: "Verdana", "Arial", "MS Sans Serif", sans-serif;
+            font-size: 8pt;
+        }
+
+            .selected A:link {
+                color: 006699;
+                text-decoration: none;
+            }
+
+            .selected A:visited {
+                color: 006699;
+                text-decoration: none;
+            }
+
+            .selected A:active {
+            }
+
+            .selected A:hover {
+            }
+        -->
+    </style>
+
+    <!--
+    Joust Outliner Version 2.5.4
+    (c) Copyright 1996-2001, MITEM (Europe) Ltd. All rights reserved.
+    This code may be freely copied and distributed provided that it is accompanied by this
+    header.  For full details of the Joust license, as well as documentation and help, go
+    to http://www.ivanpeters.com/.
+
+    Do not modify anything between here and the "End of Joust" marker unless you know what you
+    are doing.
+    -->
+
+    <script language="JavaScript">
+<!--
+var theMenuRef = "parent.theMenu";
+var theMenu = eval(theMenuRef);
+var theBrowser = parent.theBrowser;
+var belowMenu = null;
+var menuStart = 0;
+if (parent.theBrowser) {
+	if (parent.theBrowser.canOnError) {
+		window.onerror = parent.defOnError;
+	}
+}
+
+if (theMenu) {
+	theMenu.amBusy = true;
+	if (theBrowser.hasDHTML) {
+		if (document.all) {
+			with (document.styleSheets["MPLSStyles"]) {
+				addRule ("#menuTop", "position:absolute");
+				addRule ("#menuBottom", "position:absolute");
+				addRule ("#menuBottom", "visibility:hidden");
+				addRule ("#statusMsgDiv", "position:absolute");
+			}
+		}
+		else {
+			if (document.layers) {
+				document.ids.menuTop.position = "absolute";
+				document.ids.menuBottom.position = "absolute";
+				document.ids.menuBottom.visibility = "hidden";
+				document.ids.statusMsgDiv.position = "absolute";
+			}
+			else {
+				if (theBrowser.hasW3CDOM) {
+					var styleSheetElement = document.styleSheets[0];
+    				var styleSheetLength = styleSheetElement.cssRules.length;
+					styleSheetElement.insertRule("#menuTop { position:absolute } ", styleSheetLength++);
+					styleSheetElement.insertRule("#menuBottom { position:absolute } ", styleSheetLength++);
+					styleSheetElement.insertRule("#menuBottom { visibility:hidden } ", styleSheetLength++);
+					styleSheetElement.insertRule("#statusMsgDiv { position:absolute } ", styleSheetLength++);
+				}
+			}
+		}
+	}
+}
+function getDHTMLObj(objName) {
+	if (theBrowser.hasW3CDOM) {
+		return document.getElementById(objName).style;
+	}
+	else {
+		return eval('document' + theBrowser.DHTMLRange + '.' + objName + theBrowser.DHTMLStyleObj);
+	}
+}
+function getDHTMLObjHeight(objName) {
+	if (theBrowser.hasW3CDOM) {
+		return document.getElementById(objName).offsetHeight;
+	}
+	else {
+		return eval('document' + theBrowser.DHTMLRange + '.' + objName + theBrowser.DHTMLDivHeight);
+	}
+}
+function myVoid() { ; }
+function setMenuHeight(theHeight) {
+	getDHTMLObj('menuBottom').top = theHeight;
+}
+function drawStatusMsg() {
+	if (document.layers) {
+		document.ids.statusMsgDiv.top = menuStart;
+	}
+	else {
+		if (document.all) {
+			document.styleSheets["MPLSStyles"].addRule ("#statusMsgDiv", "top:" + menuStart);
+		}
+	}
+	document.writeln('<DIV ID="statusMsgDiv"><CENTER>Building Menu...</CENTER></DIV>');
+}
+function drawLimitMarker() {
+	var b = theBrowser;
+	if (theMenu && b.hasDHTML && b.needLM) {
+		var limitPos = theMenu.maxHeight + menuStart + getDHTMLObjHeight('menuBottom');
+		if (b.code == 'NS') {
+			document.ids.limitMarker.position = "absolute";
+			document.ids.limitMarker.visibility = "hidden";
+			document.ids.limitMarker.top = limitPos;
+		}
+		if (b.code == 'MSIE') {
+			with (document.styleSheets["MPLSStyles"]) {
+				addRule ("#limitMarker", "position:absolute");
+				addRule ("#limitMarker", "visibility:hidden");
+				addRule ("#limitMarker", "top:" + limitPos + "px");
+			}
+		}
+		document.writeln('<DIV ID="limitMarker">&nbsp;</DIV>');
+	}
+}
+function setTop() {
+	if (theMenu && theBrowser.hasDHTML) {
+		if (getDHTMLObj('menuTop')) {
+			drawStatusMsg();
+			menuStart = getDHTMLObjHeight("menuTop");
+		}
+		else {
+			theBrowser.hasDHTML = false;
+		}
+	}
+}
+function setBottom() {
+	if (theMenu) {
+		if (theBrowser.hasDHTML) {
+			var mb = getDHTMLObj('menuBottom');
+			if (mb) {
+				drawLimitMarker();
+				getDHTMLObj("statusMsgDiv").visibility = 'hidden';
+				menuStart = getDHTMLObjHeight("menuTop");
+				theMenu.refreshDHTML();
+				if (theMenu.autoScrolling) {theMenu.scrollTo(theMenu.lastPMClicked);}
+				mb.visibility = 'visible';
+			}
+			else {
+				theBrowser.hasDHTML = false;
+				self.location.reload();
+			}
+		}
+		theMenu.amBusy = false;
+	}
+}
+
+function frameResized() {
+	if (theBrowser.hasDHTML) {
+		theMenu.refreshDHTML();
+	}
+}
+
+//	############################   End of Joust   ############################
+    //-->
+function AlterTarget()
+{
+    if (!top.CDSContent.ifContent)  {
+        var links = document.querySelectorAll("a[target='ifContent']");
+        for (var i = 0; i < links.length; i++) {
+            links[i].setAttribute("target", "CDSContent");
+        }
+        top.CDSContent.ifContent = top.CDSContent;
+    }
+}
+    </script>
+
+
+</head>
+<body bgcolor="white" link="#000000" marginwidth="0" marginheight="0" onresize="frameResized();" onload="AlterTarget()" __processed_9117dbb6-0d2f-4f9b-ad65-ee425b570fa3__="true">
+
+
+    <script language="JavaScript">
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        var xmlHttp = null;
+
+        if (window.XMLHttpRequest) {
+            //Mozilla / Webkit
+            xmlHttp = new XMLHttpRequest()
+        }
+        else if (window.ActiveXObject) {
+            //IE
+            xmlHttp = new ActiveXObject("Microsoft.xmlHttp")
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+
+        function SendPost(url, postdata) {
+            var timeout;
+            var nTries = 0;
+            var url2;
+
+            //Adicionado devido a problema com engine do mozilla no Linux (às vezes perde domínio da página atual).
+            if (window.XMLHttpRequest) url2 = location.protocol + "//" + location.host + url;
+            else url2 = url;
+
+            if (xmlHttp) {
+                do {
+                    try {
+                        timeout = false;
+
+                        xmlHttp.open("GET", url2, false);
+                        xmlHttp.setRequestHeader("Cache-Control", "no-cache");
+                        xmlHttp.send(postdata);
+
+                        if (xmlHttp.status == 200) {
+                            return (xmlHttp.responseText);
+                        }
+                        else if (xmlHttp.status >= 400 && xmlHttp.status < 500) {
+                            alert("CDSTree - CDS's url does not exist");
+                        }
+                        else if (xmlHttp.status >= 500) {
+                            alert("CDSTree - CDS returned Internal Server Error");
+                        }
+                        else {
+                            alert("CDSTree - Error retrieving data");
+                        }
+                    }
+                    catch (e) {
+                        nTries++;
+                        if (nTries < 10) {
+                            timeout = true;
+                        }
+                        else {
+                            var msg = "";
+
+                            if (typeof e.description === "undefined") {
+                                if (typeof e === "undefined") msg = "timeout (-1001)";
+                                else msg = e;
+                            }
+                            else {
+                                msg = e.description;
+                            }
+
+                            alert("CDSTree - Erro ao acessar índice do curso: " + msg + ' [URL Chamada: ' + url2 + ']');
+                        }
+                    }
+                } while (timeout)
+            }
+            return "";
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        function getCookieVal(offset) {
+            var endstr = document.cookie.indexOf(";", offset);
+            if (endstr == -1)
+                endstr = document.cookie.length;
+            return unescape(document.cookie.substring(offset, endstr));
+        }
+
+        function GetCookie(name) {
+            var arg = name + "=";
+            var alen = arg.length;
+            var clen = document.cookie.length;
+            var i = 0;
+            while (i < clen) {
+                var j = i + alen;
+                if (document.cookie.substring(i, j) == arg)
+                    return getCookieVal(j);
+                i = document.cookie.indexOf(" ", i) + 1;
+                if (i == 0) break;
+            }
+            return null;
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        function TreeInit() {
+            var open_nodes = TreeGetOpenNodes();
+
+            var code = SendPost(top._api_cgiexec + "?action=GetTree", "")
+            var tree_init = new Function("", code);
+
+            while (theMenu.firstEntry != -1) theMenu.rmvEntry(theMenu.firstEntry);
+            tree_init();
+            theMenu.reload();
+
+            TreeReopenNodes(open_nodes);
+            TreeSync();
+            TreeSetCourseProgress();
+        }
+
+        function TreeSync() {
+            //Define qual a pagina atual levando em conta caso especial do ADS
+            var curScoID = GetCookie("CurrentScoID");
+            var entry = theMenu.findEntry(curScoID, "", "exact");
+
+            if (entry != -1 && entry != theMenu.lastSelectedEntry) {
+                if (theMenu.lastSelectedEntry != -1) {
+                    theMenu.entry[theMenu.lastSelectedEntry].CSSClass = theMenu.entry[theMenu.lastSelectedEntry].backupCSSClass;
+                }
+
+                theMenu.selectEntry(entry);
+                theMenu.setEntry(entry, true);
+
+                theMenu.entry[entry].backupCSSClass = theMenu.entry[entry].CSSClass;
+                theMenu.entry[entry].CSSClass = "selected";
+                theMenu.lastSelectedEntry = entry;
+
+                //Faz refresh e volta à posição anterior
+                top._treeScrollPos = this.document.body.scrollTop;
+                theMenu.refresh();
+                if (top._treeFirstSync) theMenu.scrollTo(entry);
+                top._treeFirstSync = false;
+
+                TreeSetCourseProgress();
+            }
+        }
+
+        //Liga ou desliga flag "Completed" do item relativo à página atualmente selecionada
+        function TreeSetCompleted(scoID, state) {
+            //Define qual a pagina atual levando em conta caso especial do ADS
+            var entry = theMenu.findEntry(scoID.toString(), "", "exact");
+            if (entry != -1 && !theMenu.entry[entry].completed) {
+                theMenu.entry[entry].completed = state;
+
+                if (state) theMenu.CompletedItems = theMenu.CompletedItems + 1;
+                else theMenu.CompletedItems = theMenu.CompletedItems - 1;
+
+                //Faz refresh e volta à posição anterior
+                top._treeScrollPos = this.document.body.scrollTop;
+                theMenu.refresh();
+
+                TreeSetCourseProgress();
+            }
+        }
+
+        //Ajusta o status de progresso no curso de acordo com o número de scos disponível e completados
+        function TreeSetCourseProgress() {
+            var entry = theMenu.selectedEntry;
+
+            if (theMenu.ValidTrackedItems != 0) top.apiProgressBar(theMenu.CompletedItems / theMenu.ValidTrackedItems * 100);
+
+            if (entry != -1)
+                top.apiPagePosition(theMenu.entry[theMenu.selectedEntry].item_idx, theMenu.ValidItems);
+            else
+                top.apiPagePosition("-", theMenu.ValidItems);
+        }
+
+        function TreeGetPercentCompleted() {
+            return (theMenu.CompletedItems / theMenu.ValidTrackedItems * 100);
+        }
+
+        function TreeGetOpenNodes() {
+            var nodes = (theMenu) ? theMenu.NodesList : "";
+            var a, v, r;
+
+            if (nodes) {
+                //Nodes é uma lista com os índices dos nós que possuem filhos
+                a = nodes.split(";");
+                for (k = 0; k < a.length; k++) {
+                    if (a[k] != "") {
+                        v = parseInt(a[k]);
+                        if (theMenu.entry[v].isopen) {
+                            r = r + theMenu.entry[v].item_uid + "'";
+                        }
+                    }
+                }
+                return (r);
+            }
+            else {
+                return ("");
+            }
+        }
+
+        function TreeReopenNodes(nodes) {
+            var entry;
+            var k;
+            var a;
+
+            if (nodes != null) {
+                a = nodes.split("'");
+                for (k = 0; k < a.length; k++) {
+                    if (a[k] != "") {
+                        entry = theMenu.findEntry(a[k], "item_uid");
+                        if (entry != -1) {
+                            theMenu.entry[entry].isopen = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        function TreeSetBookmark() {
+            var r = SendPost(top._api_cgiexec + "?action=savebookmark", "");
+
+            if (r == "OK") alert("Página marcada com sucesso!");
+            else if (r == "BOOKMARK ALREADY EXISTS") alert("Esta página já está marcada");
+        }
+
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        //Inicialização
+        ////////////////////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////////
+        if (!parent.TreeInitialized) TreeInit();
+
+        var menu = false;
+        function Menu() {
+            if (menu == false) top.apiShowToc();
+            if (menu == true) top.apiHideToc();
+            menu = !menu;
+        }
+
+    </script>
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+            <td valign="top">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                    <tbody><tr>
+                        <td width="100%" bgcolor="#999999"><img src="./top_cdstree.gif" width="256" height="60"></td>
+                    </tr>
+                </tbody></table>
+                <br>
+                <div id="menuTop">
+                    <!-- Place anything you want to appear before the menu between these DIV tags. -->
+                </div>
+                <script language="JavaScript">
+<!--
+setTop();
+//-->
+                </script>
+                <!-- Set up any font's, colours, etc. that should apply to the menu here -->
+                <font face="GENEVA, ARIAL, MS SANS SERIF, SANS-SERIF" size="1">
+                    <table width="190" border="0" cellpadding="5" cellspacing="0">
+                        <tbody><tr>
+                            <td>
+                                <div id="treeContents" name="treeContents">
+                                    <script language="JavaScript">
+                                        if (theMenu) parent.DrawMenu(theMenu);
+                                    </script><nobr><span class="selected"><a name="joustEntry0" href="https://lms.ev.org.br/mpls/WebCds/cds.aspx?action=TreeRedir&amp;id=11515" target="CDSContent" onclick="return parent.theMenu.itemClicked(0);" onmouseover="return parent.theMenu.entry[0].mouseOver(&#39;docIcon&#39;,this);" onmouseout="return parent.theMenu.entry[0].mouseOut(&#39;docIcon&#39;);" title="EAD"><img src="./doc_sel.gif" width="18" height="16" border="0" align="left" hspace="0" vspace="0" name="docIcon0" alt="EAD">EAD</a></span></nobr><br clear="ALL">
+
+
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody></table>
+                </font>
+                <p>
+                    <font face="GENEVA, ARIAL, MS SANS SERIF, SANS-SERIF" size="1">
+                        <!-- Close any tags you set up for the menu here -->
+                    </font> <br>
+                    <a href="javascript:top.apiChangeSplitter()"><img src="./bt_ocultarmenu.gif" width="109" height="9" border="0"></a>
+                </p>
+                <div id="menuBottom">
+                    <!-- Place anything you want to appear after the menu between these DIV tags. -->
+                    &nbsp;
+                </div>
+                <script language="JavaScript">
+<!--
+setBottom();
+//-->
+                </script>
+            </td>
+        </tr>
+    </tbody></table>
+
+</body></html>

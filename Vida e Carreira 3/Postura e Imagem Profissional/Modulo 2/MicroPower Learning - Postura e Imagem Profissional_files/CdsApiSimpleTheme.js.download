@@ -1,0 +1,747 @@
+// Global API variables
+var _CurrentDate = new Date;
+var _splitterVisible = true;
+var _splitterState = true;
+var _notesContentVisible = true;
+var _courseLastPosition = 1;
+var _courseFrameSetCols = "";
+var _masterFrameSetRows = null;
+var _courseFrameSetRows = "";
+var _frameMargin = 20;
+var _api_windowWidth = 800;
+var _api_windowHeight = 600;
+var _api_cgifullpath = "";
+var _api_cgiexec = "";
+var _api_theme_baseurl = "";
+var _api_course_baseurl = "";
+var _api_ws_baseurl = "";
+var _api_dtstartsession = "";
+var _api_tmstartsession = "";
+var _api_userId = "";
+var _api_userName = "";
+var _api_courseName = "";
+var _api_classGuid = "";
+var _api_lockTree = false;
+var _api_countInNavPath = 0;
+var _api_auto_ticket = true;
+var _api_notesHideImg = "../images/buttons/bt_notas_hide.gif";
+var _api_notesShowImg = "../images/buttons/bt_notas_show.gif";
+var _api_collaboration_url = "";
+var _api_checksession = false;
+var _api_checksessionInterval = null;
+var _treeScrollPos = 0;
+var _treeFirstSync = true;
+var _NotesDisplay = 0;
+
+// Global API arrays
+var arrMonth = new Array(12);
+arrMonth[0] = 'Jan';
+arrMonth[1] = 'Fev';
+arrMonth[2] = 'Mar';
+arrMonth[3] = 'Abr';
+arrMonth[4] = 'Mai';
+arrMonth[5] = 'Jun';
+arrMonth[6] = 'Jul';
+arrMonth[7] = 'Ago';
+arrMonth[8] = 'Set';
+arrMonth[9] = 'Out';
+arrMonth[10] = 'Nov';
+arrMonth[11] = 'Dez';
+
+/////////////////////////////////////////////////////////////
+// Rotinas Diversas
+/////////////////////////////////////////////////////////////
+function apiLogout(e) {
+    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
+        navigator.serviceWorker.controller.postMessage(top._api_current_enroll);
+    }
+
+    var url = _api_cgiexec + "?action=logout";
+    CallPost(url, null);
+}
+/////////////////////////////////////////////////////////////
+// Rotinas Basicas
+/////////////////////////////////////////////////////////////
+
+function apiGetCurrentDate(formato)
+// Formato: DMY, MDY, YMD
+{
+    if (formato == 'DMY')
+        return (_CurrentDate.getDate() + ' ' + arrMonth[_CurrentDate.getMonth()] + ' ' + _CurrentDate.getFullYear());
+    else if (formato == 'MDY')
+        return (_CurrentDate.getMonth() + ' ' + arrMonth[_CurrentDate.getDate()] + ' ' + _CurrentDate.getFullYear());
+    else if (formato == 'YMD')
+        return (_CurrentDate.getFullYear() + ' ' + arrMonth[_CurrentDate.getMonth()] + ' ' + _CurrentDate.getFullDate());
+}
+
+function apiGetFormatDate(date, formato) {// Formato: DMY, MDY, YMD
+    if (formato == 'DMY')
+        return [date.getDate(), arrMonth[date.getMonth()], date.getFullYear()].join('/');
+    else if (formato == 'MDY')
+        return [date.getMonth(), arrMonth[date.getDate()], date.getFullYear()].join('/');
+    else if (formato == 'YMD')
+        return [date.getFullYear(), arrMonth[date.getMonth()], date.getFullDate()].join('/');
+}
+
+function apiGetFormatDateTime(date, formato) {// Formato: DMY, MDY, YMD
+    var strDate = apiGetFormatDate(date, formato);
+    return strDate + ' ' + [date.getHours(), date.getMinutes()].join(':');
+}
+
+function apiSupressPx(valor) {
+    pospx = valor.indexOf("px");
+    return (parseInt(valor.substr(0, pospx)));
+}
+
+function apiQueryCustomUrl(sName) {
+    var sSource = _api_customUrl;
+    var sReturn = "";
+    var sQUS = "?";
+    var sAMP = "&";
+    var sEQ = "=";
+    var iPos;
+
+    iPos = sSource.indexOf(sQUS);
+
+    var strQuery = sSource.substr(iPos, sSource.length - iPos);
+    var strLCQuery = strQuery.toLowerCase();
+    var strLCName = sName.toLowerCase();
+
+    iPos = strLCQuery.indexOf(sQUS + strLCName + sEQ);
+    if (iPos == -1) {
+        iPos = strLCQuery.indexOf(sAMP + strLCName + sEQ);
+        if (iPos == -1)
+            return "";
+    }
+
+    sReturn = strQuery.substr(iPos + sName.length + 2,
+        strQuery.length - (iPos + sName.length + 2));
+
+    var iPosAMP = sReturn.indexOf(sAMP);
+
+    if (iPosAMP == -1)
+        return sReturn;
+    else {
+        sReturn = sReturn.substr(0, iPosAMP);
+    }
+
+    return sReturn;
+}
+
+//////////////////////////////////////////////////////////////
+// Rotinas para manipulacao do Frameset
+//////////////////////////////////////////////////////////////
+function apiResizeWindow() {
+    apiPosWindow(); apiFixWindowSize();
+}
+
+function apiPosWindow() {
+    var x = (screen.availWidth - _api_windowWidth) / 2; if (x < 0) x = 0;
+    var y = (screen.availHeight - _api_windowHeight) / 2; if (y < 0) y = 0;
+    top.resizeTo(_api_windowWidth, _api_windowHeight);
+    top.moveTo(x, y);
+}
+
+function apiFixWindowSize() {
+    window.resizeTo(_api_windowWidth, _api_windowHeight);
+}
+
+function apiLoadMasterFrameSet() {
+    if (top.frames["CDSTree"]) top.frames["CDSTree"].document.location.replace(_api_theme_baseurl + 'templates/CDSTree.htm');
+    top.apiLoadFrameContent();
+
+    if (typeof jQuery == 'undefined') {
+        // jQuery is not loaded => load it:
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        if (_api_cgifullpath.slice(-1) == '/')
+            script.src = _api_cgifullpath + 'api/scripts/jquery.min.js';
+        else
+            script.src = _api_cgifullpath + '/api/scripts/jquery.min.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+    }
+
+    if (_api_checksession) {
+        _api_checksessionInterval = window.setInterval("top.apiCheckSession()", 60000);
+        window.setTimeout("top.apiCheckSession()", 100);
+    }
+}
+
+function apiLoadFrameBottom() {
+}
+
+function apiLoadFrameLeft() {
+}
+
+function apiLoadFrameRight() {
+}
+
+function apiLoadFrameNavbar() {
+}
+
+function apiLoadFrameTree() {
+    if (top.frames["CDSTree"]) top.frames["CDSTree"].document.location.replace(_api_theme_baseurl + 'templates/CDSTree.htm');
+}
+
+function apiLoadFrameContent() {
+    var date = new Date();
+    var ticks = date.getTime();
+
+    top.frames["CDSContent"].document.location.replace(_api_cgiexec + "?action=refresh&time=" + ticks);
+
+    // Força o logout caso o usuário feche a página
+    //masterframeset.onbeforeunload = top.apiLogout;
+    //Trocado pois no Firefox não estava funcionando com o 'masterframeset'
+    if (this.onbeforeunload) {
+        var oneStepBefore = this.onbeforeunload;
+        this.onbeforeunload = function () {
+            oneStepBefore();
+            top.apiLogout();
+        }
+    }
+    else
+        this.onbeforeunload = top.apiLogout;
+}
+
+function apiLoadMasterFrameSetOneByOne() {
+}
+
+function apiOnLoadContent(win) {
+    var date = new Date();
+    var ticks = date.getTime();
+
+    top.ContentFrame = win;
+    win.location.replace(_api_cgiexec + "?action=refresh&time=" + ticks);
+}
+
+function CallPost(posturl, postdata, callback) {
+    $.ajaxSetup({ async: true });
+    
+    $.ajax({
+        type: 'POST',
+        url: posturl,
+        data: postdata,
+        contentType: "text/plain",
+        dataType: "text",
+        beforeSend: function (request) {
+            request.setRequestHeader("Cache-Control", "no-cache");
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            console.log('CDS LMS Request Error:' + xhr.status + '-' + xhr.statusText);
+            console.log(thrownError);
+        }
+    }).done(function (res) {
+        if (callback) callback(res);
+    });
+}
+
+//////////////////////////////////////////////////////////////
+var _restrictionServerTime = null;
+var _restrictionChecked = false;
+var _restrictionUserDisconnect = null;
+var _restrictionReminder = null;
+var _restrictionMessage = null;
+var _restrictionMessageTitle = "Alerta";
+
+function apiCheckSession() {
+    if (top._restrictionServerTime == null) {
+        var date = new Date();
+        var ticks = date.getTime();
+
+        var url = _api_cgiexec + "?action=checksession&time=" + ticks;
+
+        CallPost(url, null, function (response) {
+
+            if (response && response == "False") {
+                this.onbeforeunload = null;
+                window.document.location.replace(_api_cgiexec + "/checkSession");
+            }
+            else if (this.onbeforeunload == null) {
+                this.onbeforeunload = top.apiLogout;
+            }
+
+        });
+    }
+
+    if (top._restrictionServerTime == null && !top._restrictionChecked) {
+        top.GetAccessRestriction(_api_userId, function (data, status) {
+            if (status == "success") {
+                if (!data.RestrictionEnabled) {
+                    top._restrictionChecked = true;
+                    return;
+                }
+                top._restrictionServerTime = new Date(Date.parse(data.ServerTime));
+                top._restrictionUserDisconnect = new Date(Date.parse(data.DisconnectTime));
+                top._restrictionReminder = new Date(top._restrictionUserDisconnect.valueOf() - (60000 * data.ReminderMinutes));
+                top._restrictionMessage = data.DisconnectMsg;
+                top._restrictionMessageTitle = data.DisconnectTitle;
+                clearInterval(_api_checksessionInterval);
+                setInterval('top.checkTimeReminder()', 1000);
+            }
+        });
+    }
+}
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////
+function showFrameAlert(title, msg, autoHide, hideCallback) {
+    var dvAlert = $('.alert', top.frames['CDSFrame'].document);
+    if (dvAlert.length == 0) return;
+
+    if (top._masterFrameSetRows == null) {
+        top._masterFrameSetRows = $('#masterFrameSet').attr('rows');
+
+        var currentRows = top._masterFrameSetRows.split(',');
+
+        var newRow = dvAlert.height() + "px";
+        for (var i = 1; i < currentRows.length; i++) {
+            newRow = newRow + "," + currentRows[i];
+        }
+        $('#masterFrameSet').attr('rows', newRow);
+        if (autoHide) {
+            setTimeout('hideFrameAlert()', 10000);
+        }
+        $('#CDSFrame').show();
+        dvAlert.show();
+    }
+
+    $('strong', dvAlert).html(title);
+    $('span', dvAlert).html(msg);
+    var closeBtn = $('.close', dvAlert);
+    closeBtn.unbind('click');
+    if (hideCallback) {
+        closeBtn.bind('click', function () {
+            hideCallback();
+            top.hideFrameAlert();
+        });
+    } else {
+        closeBtn.bind('click', function () {
+            top.hideFrameAlert();
+        });
+    }
+}
+function hideFrameAlert() {
+    if (top._masterFrameSetRows != null) {
+        $('#masterFrameSet').attr('rows', top._masterFrameSetRows);
+        top._masterFrameSetRows = null;
+        $('#CDSFrame').hide();
+        var dvAlert = $('.alert', top.frames['CDSFrame'].document);
+        if (dvAlert.length > 0) dvAlert.hide();
+    }
+}
+//////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////
+//// Time Reminder - Integração LMS
+//////////////////////////////////////////////////////////////
+function checkTimeReminder() {
+    top._restrictionServerTime.setMilliseconds(top._restrictionServerTime.getMilliseconds() + 1000);
+
+    if (top._restrictionServerTime.valueOf() > top._restrictionReminder.valueOf())
+        top.showTimeReminder();
+
+    if (top._restrictionServerTime.valueOf() > top._restrictionUserDisconnect.valueOf())
+        window.close();
+}
+
+var _reminderMinutes = 0;
+var _reminderClosed = false;
+function showTimeReminder() {
+    var seconds = (top._restrictionUserDisconnect.valueOf() - top._restrictionServerTime.valueOf()) / 1000;
+    if (top._reminderClosed && Math.ceil(seconds / 60) >= top._reminderMinutes) return;
+    top._reminderMinutes = Math.ceil(seconds / 60);
+    var msg = top._restrictionMessage.replace('[0]', top._reminderMinutes); //  'Voc&ecirc; ser&aacute; desconectado em ' + top._reminderMinutes + ' minuto(s)';
+    //if( seconds<60) msg = 'Voc&ecirc; ser&aacute; desconectado em ' + seconds + ' segundos';
+    top.showFrameAlert(top._restrictionMessageTitle, msg, false, top.hideTimeReminder);
+    top._reminderClosed = false;
+}
+
+function hideTimeReminder() {
+    top._reminderClosed = true;
+}
+//////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////
+
+function apiUnloadMasterFrameSet() {
+}
+
+function apiReloadBookmark() {
+}
+
+function apiReloadIndex() {
+}
+
+//////////////////////////////////////////////////////////////
+// Rotinas de Manipulacao do Frameset do Usuario
+//////////////////////////////////////////////////////////////
+
+function apiLockTree(state) {
+}
+
+function apiGetSplitterState() {
+    var frameset = top.document.getElementById("courseFrameSet");
+    if (frameset) {
+        var listArray = frameset.cols.split(",");
+        if (parseInt(listArray[0], 10) == 0)
+            return (false);
+        else
+            return (true);
+    }
+}
+
+function apiSetTocDefinition(cols) {
+}
+
+function apiHideNavbar() {
+}
+
+function apiShowNavbar() {
+}
+
+function apiHideShowNotesContent() {
+}
+
+function apiShowNotesContent() {
+}
+
+function apiHideNotesContent() {
+}
+
+//////////////////////////////////////////////////////////////
+// Rotinas para navegacao no curso
+//////////////////////////////////////////////////////////////
+
+function apiGoNextPage() {
+    top.CDSContent.location.href = _api_cgiexec + "?action=nextsco";
+}
+
+function apiGoPreviousPage() {
+    top.CDSContent.location.href = _api_cgiexec + "?action=prevsco";
+}
+
+function apiJump(elementID) {
+    top.CDSContent.location.href = _api_cgiexec + "?action=redirsid&id=" + elementID;
+}
+
+function apiShowCDSHelp() {
+}
+
+function apiShowCustomInfo(page) {
+}
+
+function apiShowCollab() {
+}
+
+function apiShowInfo(page) {
+}
+
+function apiCloseInfo(page) {
+}
+
+function apiPrintInfo() {
+}
+
+function apiLoadCourseInfo() {
+}
+
+function apiLoadBookmark() {
+}
+
+function apiDeleteBookmark(elementid) {
+}
+
+function apiLoadGlossary() {
+}
+
+function apiSaveBookmark() {
+}
+
+function apiLoadRating() {
+}
+
+function apiLoadLocalNotes() {
+}
+
+function apiDeleteNotes(elementid) {
+}
+
+function apiShowAllNotes() {
+}
+
+function apiLoadContentByElementId(ElementId) {
+    window.CDSContent.location.replace(_api_cgiexec + "?action=TreeRedir&id=" + ElementId);
+    apiCloseInfo();
+}
+
+function apiShowPopup(ElementId, Top, Left, Width, Height, Resizable, Status, Scroll) {
+    var pagina = _api_cgiexec + '?action=redirsid&popup=1&id=' + ElementId;
+    var winLeft = 0;
+    var winTop = 0;
+    var winWidth = 0;
+    var winHeight = 0;
+    var winOptions = "";
+
+    // Maximizado
+    if (Width == 0) winWidth = screen.availWidth; else winWidth = Width;
+    if (Height == 0) winHeight = screen.availHeight; else winHeight = Height;
+    // Centralizado
+    if (Left == -1) winLeft = (screen.availWidth - Width) / 2; else winLeft = Left;
+    if (Top == -1) winTop = (screen.availHeight - Height) / 2; else winTop = Top;
+
+    if (Resizable) winOptions += "resizable,";
+    if (Status) winOptions += "status,";
+    if (Scroll) winOptions += "SCROLLBARS,";
+    winOptions += "DEPENDENT";
+
+    if (winTop < 0) { winTop = 0; winHeight = screen.availHeight; }
+    if (winLeft < 0) { winLeft = 0; winWidth = screen.availWidth; }
+    if (Status) winHeight -= 48;
+
+    window.open(pagina, "Página", "HEIGHT=" + winHeight + ",WIDTH=" + (winWidth - 10) + ",TOP=" + winTop + ",LEFT=" + winLeft + "," + winOptions);
+}
+
+//////////////////////////////////////////////////////////////
+// Rotinas para informacao sobre o andamento do curso
+//////////////////////////////////////////////////////////////
+function apiProgressBar(valor) {
+}
+
+function apiPagePosition(currentPos, count) {
+}
+
+/************************************************************************************************
+* DEPRECATED FUNCTIONS
+************************************************************************************************/
+function apiGoFirstPage() { }
+function apiGoLastPage() { }
+
+/////
+// MPLS 1 backward compatibility
+/////
+function apiTreeLoadContent(key) {
+    var str = new String(key);
+    var elementID = 'S' + (str.charCodeAt(0) - 95);
+
+    if (findQuest(elementID + '_QUEST')) {
+        elementID += '_QUEST';
+    }
+
+    top.apiJump(elementID);
+}
+
+function apiLoadContent(key) { }
+function apiLoadLocalGlossary() { }
+function apiGoLastPoint(ElementId) { }
+
+/************************************************************************************************
+* QueryString: retorna o valor de uma variável da QueryString Customizada
+************************************************************************************************/
+function apiQueryCustomUrl(sName) {
+    var sSource = _api_customUrl;
+    var sReturn = "";
+    var sQUS = "?";
+    var sAMP = "&";
+    var sEQ = "=";
+    var iPos;
+
+    iPos = sSource.indexOf(sQUS);
+
+    var strQuery = sSource.substr(iPos, sSource.length - iPos);
+    var strLCQuery = strQuery.toLowerCase();
+    var strLCName = sName.toLowerCase();
+
+    iPos = strLCQuery.indexOf(sQUS + strLCName + sEQ);
+    if (iPos == -1) {
+        iPos = strLCQuery.indexOf(sAMP + strLCName + sEQ);
+        if (iPos == -1)
+            return "";
+    }
+
+    sReturn = strQuery.substr(iPos + sName.length + 2,
+        strQuery.length - (iPos + sName.length + 2));
+
+    var iPosAMP = sReturn.indexOf(sAMP);
+
+    if (iPosAMP == -1)
+        return sReturn;
+    else {
+        sReturn = sReturn.substr(0, iPosAMP);
+    }
+
+    return sReturn;
+}
+
+function apiHideToc() {
+    if (_api_lockTree) return;
+    var frameset = top.document.getElementById("courseFrameSet");
+
+    if (frameset) {
+        var listArray = frameset.cols.split(",");
+        if (parseInt(listArray[0], 10) > 0) {
+            _courseFrameSetCols = frameset.cols;
+
+            var newSize = "0";
+            for (i = 1; i < listArray.length; i++) newSize = newSize + ',' + listArray[i];
+            frameset.cols = newSize;
+        }
+    }
+    _splitterVisible = false;
+}
+
+function apiShowToc() {
+    if (_api_lockTree) return;
+    var frameset = top.document.getElementById("courseFrameSet");
+
+    if (frameset) {
+        var listArray = frameset.cols.split(",");
+        if (parseInt(listArray[0], 10) == 0) {
+            frameset.cols = _courseFrameSetCols;
+        }
+    }
+    _splitterVisible = true;
+}
+
+function apiChangeSplitter() {
+    if (_api_lockTree) return;
+
+    if (_splitterVisible) apiHideToc(); else apiShowToc();
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+//Cookies
+function getCookieVal(offset) {
+    var endstr = document.cookie.indexOf(";", offset);
+    if (endstr == -1)
+        endstr = document.cookie.length;
+    return unescape(document.cookie.substring(offset, endstr));
+}
+
+function GetCookie(name) {
+    var arg = name + "=";
+    var alen = arg.length;
+    var clen = document.cookie.length;
+    var i = 0;
+    while (i < clen) {
+        var j = i + alen;
+        if (document.cookie.substring(i, j) == arg)
+            return getCookieVal(j);
+        i = document.cookie.indexOf(" ", i) + 1;
+        if (i == 0) break;
+    }
+    return null;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+//Força sincronização da árvore
+
+var lastScoID = "";
+function CheckContent() {
+    var pageChanged = (GetCookie("CurrentScoID") != lastScoID);
+
+    if (pageChanged || _treeFirstSync) {
+        var x;
+        try {
+            //Sincroniza item selecionado na árvore
+            lastScoID = GetCookie("CurrentScoID");
+
+            //Verifica se deve marcar item como visitado (para o caso de ter saído de um item do tipo "asset")
+            if (document.cookie.indexOf("SetPageVisited=true") != -1) {
+                top.CDSTree.TreeSetCompleted(GetCookie("SetScoID"), true);
+            }
+
+            top.CDSTree.TreeSync();
+
+            if (pageChanged && top.divPageDetails.style.display == "block") {
+                //Recarrega anotações para o novo item selecionado
+                if (_NotesDisplay == 2) apiLoadRating();
+                else apiLoadLocalNotes();
+            }
+        }
+        catch (x) { }
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+//LMS and CDS Integration Fuctions
+
+//Return Enrollment Status and Last Access
+//clID : classID - stID: studentID
+function GetLastEnrollmentStatus(clID, stID, callback) {
+    $.ajax({
+        type: "GET"
+        , contentType: "application/json; charset=utf-8"
+        , url: _api_ws_baseurl + "/GetLastEnrollmentStatus"
+        , data: { classID: clID, studentID: stID }
+        , dataType: "json"
+        , success: function (data, status) { if (callback) callback(data.d, status); }
+        , error: function (xmlHttpRequest, status, err) { if (callback) callback(err, status); }
+    });
+}
+
+//Return URL to launch the course
+//clID : classID - stID: studentID
+function GoToCourse(clID, stID, callback) {
+    $.ajax({
+        type: "GET"
+        , contentType: "application/json; charset=utf-8"
+        , url: _api_ws_baseurl + "/GoToCourse"
+        , data: { classID: clID, studentID: stID }
+        , dataType: "json"
+        , success: function (data, status) { if (callback) callback(data.d, status); }
+        , error: function (xmlHttpRequest, status, err) { if (callback) callback(err, status); }
+    });
+}
+
+function GetAccessRestriction(stID, callback) {
+    if (stID == "" || top._api_ws_baseurl == "") return;
+
+    $.ajax({
+        type: "GET"
+        , contentType: "application/json; charset=utf-8"
+        , url: _api_ws_baseurl + "/GetUserRestriction"
+        , data: { studentID: stID }
+        , dataType: "json"
+        , success: function (data, status) { if (callback) callback(data.d, status); }
+        , error: function (xmlHttpRequest, status, err) { if (callback) callback(err, status); }
+    });
+}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// Helper functions: for MPLs 1 backward compatibility
+////
+function findQuest(questID) {
+    var found = false;
+
+    for (var i = 0; i < theMenu.count; i++) {
+        if (theMenu.entry[i].status.indexOf(questID) != -1) {
+            found = true;
+            break;
+        }
+    }
+
+    return (found);
+}
+
+//window.setInterval("CheckContent()", 1000);
+
+////////////////////////////////////////////////////////////////
+// Atualizar o tempo de permanência no curso a cada 30 segundos
+////////////////////////////////////////////////////////////////
+function updateTime() {
+    var url = _api_cgiexec + "?action=updatetime";
+
+    CallPost(url, null, function (resp) {
+        const respItem = JSON.parse(resp);
+
+        if (!respItem.success) {
+            alert("Usu\u00e1rio fora do turno de trabalho");
+            location.href = respItem.redirectUrl;
+        }
+    });
+}
+
+window.setInterval(updateTime, 30000);
+////////////////////////////////////////////////////////////////
