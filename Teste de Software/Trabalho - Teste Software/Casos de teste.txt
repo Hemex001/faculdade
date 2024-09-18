@@ -1,0 +1,13 @@
+Casos de teste - calculadora simples: 
+
+- divisão por 0 (hemerson)
+
+- limpar a tela (hemerson)
+
+- armazenamento do ultimo calculo na memoria (hemerson)
+
+- multiplicação (camila)
+
+- divisão (camila)
+
+- soma (camila)

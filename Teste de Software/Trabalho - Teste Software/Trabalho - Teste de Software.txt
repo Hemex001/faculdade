@@ -1,0 +1,84 @@
+1 – Informe o nome da equipe e o nome dos 4 alunos que farão todos os TDE’s em grupo:
+- Code Solution
+
+
+
+
+2 – Você deverá pensar em uma ideia de software simples para ser desenvolvido. Descreva aqui a ideia do software e pelo menos 5 requisitos.
+- O software será uma calculadora básica que permitirá aos usuários realizar operações matemáticas simples como: soma, subtração, multiplicação, divisão e cálculo de porcentagem.
+
+--- Requisitos do Software:
+-- Interface de Usuário Simples:
+- Deve ter botões para cada operação (soma, subtração, multiplicação, divisão, porcentagem).
+- Deve ter um campo de entrada para o usuário inserir os números.
+- Deve ter um display para mostrar os resultados das operações.
+
+-- Operações Básicas:
+- Deve permitir a realização de operações de soma, subtração, multiplicação, divisão e porcentagem.
+
+
+-- Validação de Entrada:
+- Deve validar as entradas do usuário para garantir que são números válidos.
+- Deve tratar erros como divisão por zero e entradas inválidas de forma amigável.
+
+-- Memória de Cálculo:
+- Deve ter uma funcionalidade para armazenar o último resultado calculado, permitindo seu uso em operações futuras.
+
+-- Compatibilidade e Responsividade:
+- Deve ser compatível com diferentes dispositivos e tamanhos de tela, garantindo uma boa experiência de uso em desktops, tablets e smartphones.
+- A interface deve ser responsiva, ajustando-se ao tamanho da tela do dispositivo.
+
+
+
+
+
+3 - Como você planejaria a construção de um software?
+Definição do Escopo
+
+Objetivo: Desenvolver uma calculadora básica com operações de soma, subtração, multiplicação, divisão e porcentagem.
+Requisitos Funcionais
+
+Interface simples com botões de operação e display de resultados.
+Realização de operações básicas e cálculo de porcentagens.
+Validação de entrada para garantir números válidos.
+Memória para armazenar o último resultado.
+Compatibilidade e responsividade para diferentes dispositivos.
+Ferramentas e Tecnologias
+
+Front-End: HTML, CSS, JavaScript.
+Frameworks: React (opcional para melhor gestão de estados).
+Controle de Versão: Git, GitHub.
+Passos de Implementação
+
+Configurar ambiente de desenvolvimento.
+Desenvolver a interface com layout básico.
+Implementar funções JavaScript para operações.
+Realizar testes unitários e de integração.
+Deploy em plataforma de hospedagem (GitHub Pages, Vercel).
+Testes e Validação
+
+Testes unitários, de integração, de usabilidade e de compatibilidade.
+Documentação
+
+Código comentado, manual do usuário e documentação técnica.
+Manutenção
+
+Correção de bugs e adição de melhorias com base no feedback dos usuários.
+
+
+
+
+
+4 - Que desafios você acha que seriam os mais difíceis?
+Validação de Entrada: Implementar verificações e mensagens de erro claras.
+Responsividade e Compatibilidade: Usar design responsivo e testar em vários dispositivos.
+Experiência do Usuário: Conduzir testes de usabilidade e ajustar o design.
+Manutenção do Código: Adotar boas práticas de programação e documentação.
+Gerenciamento de Estado: Usar ferramentas e padrões apropriados para gerenciar o estado (se usar React).
+
+
+5 - Que fase você considera como a mais complicada?
+A fase mais complicada é o desenvolvimento da interface de usuário e experiência do usuário devido à necessidade de criar um design intuitivo, responsivo, acessível e que forneça feedback imediato e amigável aos usuários.
+
+
+
