@@ -1,0 +1,28 @@
+Table fAvaliacoes {
+  id integer [pk]
+  nota number(2,2)
+  disciplina_id integer
+  aluno_id integer
+
+}
+
+Table dDisciplinas {
+  id integer [pk]
+  descricao varchar
+  carga_horaria integer
+  qt_aulas integer [note: 'Contagem de Aulas da disciplina']
+  nm_professor_principal varchar [note: 'moda do nome do professor da disciplina. Desempate: quem deu a última aula (max)']
+}
+
+Table dAlunos {
+  id integer [pk]
+  nome varchar
+  idade integer [note: 'Calculado a partir da data do nascimento']
+  faixa_etaria integer [note: '-19, 19-24, 25-30, +30']
+}
+
+
+
+Ref: "dDisciplinas"."id" < "fAvaliacoes"."disciplina_id"
+
+Ref: "dAlunos"."id" < "fAvaliacoes"."aluno_id"

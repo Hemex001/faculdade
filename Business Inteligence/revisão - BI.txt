@@ -1,0 +1,10 @@
+Revisão - BI
+
+### Business Intelligence;
+BI é o conujunto de processos e ferramentas que proporcionam o processamento e transformação de dados brutos em informações valiosas para
+a tomada de decisões e formação de conhecimento.
+
+Dado -> Informação -> Conhecimento -> Sabedoria
+
+
+### Papéis na área de Dados:

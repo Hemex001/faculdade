@@ -1,0 +1,34 @@
+Table fVenda {
+  codVenda integer
+  dataVenda date
+  codCliente integer
+  codVendedor integer
+  codProduto integer
+}
+
+Table dProduto {
+  codProduto integer [pk]
+  descricao varchar
+  tipo varchar [note: 'P = Produto, S = Serviço']
+  classificacao varchar [note: 'classificacao.descricao']
+  unidade varchar
+  quantidade number(10,2)
+  valor number(10,2)
+}
+
+Table dCliente {
+  codCliente integer [pk]
+  nome varchar
+  cidade varchar [note: 'cidades.descricao']
+}
+
+Table dVendedor {
+  codVendedor integer [pk]
+  nome varchar
+}
+
+Ref: "dProduto"."codProduto" < "fVenda"."codProduto"
+
+Ref: "dCliente"."codCliente" < "fVenda"."codCliente"
+
+Ref: "dVendedor"."codVendedor" < "fVenda"."codVendedor"

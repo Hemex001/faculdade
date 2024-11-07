@@ -1,0 +1,8 @@
+expo init ReceitasApp
+cd ReceitasApp
+Escolha o template "blank (TypeScript)".
+
+npm install @react-navigation/native @react-navigation/bottom-tabs @react-navigation/stack
+npm install react-native-screens react-native-safe-area-context
+npm install axios @react-native-async-storage/async-storage
+npm install @expo/vector-icons
